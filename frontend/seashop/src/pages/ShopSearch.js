@@ -1,47 +1,16 @@
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import React, { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 
 
 function ShopSearch() {
+    const navigate = useNavigate();
     const [shop, setShop] = useState([])
     const { PeopleNum, PriceNum, RatingNum } = useParams()
-    /*  handlePeopletTwo = () => {
-          PeopleNum = 2
-      }
-      handlePeopleFive = () => {
-          PeopleNum = 5
-      }
-      handlePeopleTen = () => {
-          PeopleNum = 10
-      }
-  
-      handlePriceTwo = () => {
-          PriceNum = 2
-      }
-  
-      handlePriceFive = () => {
-          PriceNum = 5
-      }
-  
-      handlePriceTen = () => {
-          PriceNum = 10
-      }
-  
-      handleRatingTwo = () => {
-          RatingNum = 2
-      }
-  
-      handleRatingFive = () => {
-          RatingNum = 5
-      }
-      handleRatingTen = () => {
-          RatingNum = 10
-      }
-  
-  
-  */
+   
+
+
 
 
     useEffect(() => {
@@ -70,6 +39,51 @@ function ShopSearch() {
 
 
     }
+    const handlePeopletTwo = () => {
+        navigate('/ShopSearch/Price/500/People/2/Rating/500');
+        fetchData();
+    }
+    const handlePeopleFive = () => {
+        navigate('/ShopSearch/Price/500/People/5/Rating/500');
+        fetchData();
+    }
+    const handlePeopleTen = () => {
+        navigate('/ShopSearch/Price/500/People/10/Rating/500');
+        fetchData();
+    }
+
+    const handlePriceTwoFifty = () => {
+        navigate('/ShopSearch/Price/250/People/500/Rating/500');
+        fetchData();
+    }
+
+    const handlePriceFiveHundred = () => {
+        navigate('/ShopSearch/Price/500/People/500/Rating/500');
+        fetchData();
+    }
+
+    const handlePriceOneThousand = () => {
+        navigate('/ShopSearch/Price/1000/People/500/Rating/500');
+        fetchData();
+    }
+
+    const handleRatingThree = () => {
+        navigate('/ShopSearch/Price/500/People/500/Rating/3');
+        fetchData();
+    }
+
+    const handleRatingFive = () => {
+        navigate('/ShopSearch/Price/500/People/500/Rating/5');
+        fetchData();
+    }
+    const handleRatingEight = () => {
+        navigate('/ShopSearch/Price/500/People/500/Rating/8');
+        fetchData();
+    }
+    const handleRatingTen = () => {
+        navigate('/ShopSearch/Price/500/People/500/Rating/10');
+        fetchData();
+    }
 
 
     return (
@@ -78,11 +92,22 @@ function ShopSearch() {
             <div className="body-content">
                 <h1>東南亞美食商家清單</h1>
                 <p>介紹在台的一些東南亞店家，並介紹特色菜色以利大家交流分享。</p>
-                <h5>用餐人數</h5>
-                <button type="button"> 兩人(含)</button>
-                <button type="button"> 五人以下</button>
-                <button type="button"> 十人以上</button>
-
+                <h5>用餐人數-
+                    <button onClick={handlePeopletTwo}>兩人(含)</button>
+                    <button onClick={handlePeopleFive}> 五人以下</button>
+                    <button onClick={handlePeopleTen}> 十人以上</button>
+                </h5>
+                <h5>用餐價格-
+                    <button onClick={handlePriceTwoFifty}>250以下</button>
+                    <button onClick={handlePriceFiveHundred}> 500以下</button>
+                    <button onClick={handlePriceOneThousand}> 1000以下</button>
+                </h5>
+                <h5>餐廳評價-
+                    <button onClick={handleRatingThree}>三分以下</button>
+                    <button onClick={handleRatingFive}> 五分以下</button>
+                    <button onClick={handleRatingEight}> 八分以下</button>
+                    <button onClick={handleRatingTen}> 十分以下</button>
+                </h5>
                 <ul>
                     {shop.map(item => (
                         <li className='book_item' key={item.id}>
@@ -91,6 +116,7 @@ function ShopSearch() {
                                     <Link to={`http://170.187.229.248:8000/api/Locate/Shop-Detail/${item.id}`} > {item.Name}</Link>
                                     <div className='author'>平均價位：{item.Price}</div>
                                     <div className='publisher'>地址：{item.Address}</div>
+                                    <div className='publisher'>建議人數：{item.People}</div>
                                     <div className='publisher'>代表國家：{item.Country}</div>
                                     <div className='publisher'>評分：{item.Rating}</div>
                                     <div className='ISBN'>介紹:{item.Introduction}</div>

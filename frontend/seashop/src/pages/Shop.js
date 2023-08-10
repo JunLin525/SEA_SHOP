@@ -1,12 +1,15 @@
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import React, { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 
 function Shop() {
     const [shop, setShop] = useState([])
-    const { peopleNum, PriceNum, RatingNum } = useParams()
+    const navigate = useNavigate();
 
+    const handleSearch = () => {
+        navigate('/ShopSearch/Price/5000/People/5000/Rating/5000');
+    }
 
     useEffect(() => {
         fetchData();
@@ -40,6 +43,7 @@ function Shop() {
             <Header />
             <div className="body-content">
                 <h1>東南亞美食商家清單</h1>
+                <h4><button onClick={handleSearch}>進階搜索</button></h4>
                 <p>介紹在台的一些東南亞店家，並介紹特色菜色以利大家交流分享。</p>
 
 
@@ -49,11 +53,12 @@ function Shop() {
                             <div className='book_back'>
                                 <div className='book_info'>
                                     <Link to={`/`} > {item.Name}</Link>
-                                    <div className='author'>平均價位：{item.Price}</div>
+                                    <div className='publisher'>平均價位：{item.Price}</div>
+                                    <div className='publisher'>建議人數：{item.People}</div>
                                     <div className='publisher'>地址：{item.Address}</div>
                                     <div className='publisher'>代表國家：{item.Country}</div>
                                     <div className='publisher'>評分：{item.Rating}</div>
-                                    <div className='ISBN'>介紹:{item.Introduction}</div>
+                                    <div className='publisher'>介紹:{item.Introduction}</div>
                                     <img src={item.Picture} alt="Book Cover" style={{ width: '200px', heigh: '200px' }} />
                                     <hr />
 

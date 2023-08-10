@@ -35,8 +35,9 @@ function Header() {
             ) : (<button className='title' onClick={handleClickLogin}>登入頁面</button>
             )}
             <br />
+            <br />
             {user && <p>Hello {user.pk}</p>}
-
+            <br />
             <br />
             <br />
 

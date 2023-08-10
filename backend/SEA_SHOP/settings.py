@@ -88,7 +88,8 @@ CORS_ALLOWED_ORIGINS = (
     "http://localhost:8000",
 )
 
-CSRF_TRUSTED_ORIGINS = ["http://localhost:3000", "http://192.168.56.1:3000/"]
+CSRF_TRUSTED_ORIGINS = ["http://localhost:3000",
+                        "http://192.168.56.1:3000/", "https://sea-shop.vercel.app/login/"]
 
 TEMPLATES = [
     {

@@ -30,7 +30,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TokenObtainPair'
-          description: ''
+          description: 'Login can connect to this api to get jwt token to visit other content'
   /api-jwt/token/refresh/:
     post:
       operationId: api_jwt_token_refresh_create
@@ -57,16 +57,19 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TokenRefresh'
-          description: ''
+          description: 'can use this api to use refresh token to renew access toekn. Remember to setting js to the renew time. It will store at localstrage(app)'
   /apis/Locate/Comment-Detail/{id}/:
     get:
       operationId: apis_Locate_Comment_Detail_retrieve
+      description: |-
+        Can get the restaruand individual comment use different id.
       parameters:
       - in: path
         name: id
         schema:
           type: integer
         required: true
+
       tags:
       - apis
       security:

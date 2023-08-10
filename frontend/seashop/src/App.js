@@ -26,7 +26,7 @@ function App() {
             <Route path="/Shop" element={<Shop />} />
           </Route>
           <Route element={<PrivateRoute isLogged={true} />}>
-            <Route path="/ShopSearch/:PriceNum/:PeopleNum/:RatingNum" element={<ShopSearch />} />
+            <Route path="/ShopSearch/Price/:PriceNum/People/:PeopleNum/Rating/:RatingNum" element={<ShopSearch />} />
           </Route>
           <Route path="/Login" element={<Login />} />
         </Routes >
