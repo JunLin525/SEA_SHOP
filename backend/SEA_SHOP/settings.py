@@ -65,8 +65,8 @@ INSTALLED_APPS = [
     # local app
     'Apis.apps.ApisConfig',
     'foodie.apps.FoodieConfig',
-    'Locate.apps.LocateConfig',
     'Custom_User.apps.CustomUserConfig',
+    'Restaurant.apps.RestaurantConfig',
 ]
 SITE_ID = 1
 
@@ -155,6 +155,9 @@ USE_I18N = True
 
 USE_TZ = True
 
+# HTTPS
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/

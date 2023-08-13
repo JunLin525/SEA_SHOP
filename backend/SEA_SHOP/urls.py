@@ -48,7 +48,7 @@ urlpatterns = [
     path('api-jwt/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api-jwt/token/refresh/', TokenRefreshView.as_view()),
     path('api/', include('Apis.urls'), name='application-apis'),
-
+    path('Restaurant-api/', include('Restaurant.urls')),
 
 ] + static(
     settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
