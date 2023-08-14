@@ -38,8 +38,11 @@ class specialView(SpectacularAPIView, SpectacularSwaggerView):
 
 urlpatterns = [
     # path('', Home.as_view(), name='home'),
-    path('',
-         SpectacularSwaggerView.as_view(url_name="schema"), name="swagger-ui"),
+    path("api/schema/", SpectacularAPIView.as_view(), name="schema"),
+    path("api/schema/redoc/", SpectacularRedocView.as_view(
+        url_name="schema"), name="redoc",),
+    path("", SpectacularSwaggerView.as_view(
+        url_name="schema"), name="swagger-ui"),
     path('admin/', admin.site.urls),
     path('dj-rest-auth/', include('dj_rest_auth.urls')),
     path('dj-rest-auth/registration/', include('dj_rest_auth.registration.urls')),
@@ -47,9 +50,8 @@ urlpatterns = [
     path('dj-rest-auth/google/', GoogleLogin.as_view(), name='google_login'),
     path('api-jwt/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api-jwt/token/refresh/', TokenRefreshView.as_view()),
-    path('api/', include('Apis.urls'), name='application-apis'),
     path('Restaurant-api/', include('Restaurant.urls')),
-
+    path('Settlement-api/', include('SouthEastAsiaCommunityAtTaiwan.urls')),
 ] + static(
     settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
 )

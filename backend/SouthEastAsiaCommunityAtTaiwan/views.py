@@ -3,19 +3,19 @@ from django.shortcuts import render
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets, filters
 from rest_framework import generics
-from .models import Area, Reply
-from .serilizers import AreaSerializer, ReplySerializer
+from .models import Settlement, Reply
+from .serializers import SettlementSerializer, ReplySerializer
 # Create your views here.
 
 
-class AreaPostList(generics.ListCreateAPIView):
-    queryset = Area.objects.all()
-    serializer_class = AreaSerializer
+class SetlementList(generics.ListAPIView):
+    queryset = Settlement.objects.all()
+    serializer_class = SettlementSerializer
 
 
-class AreaPostDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Area.objects.all()
-    serializer_class = AreaSerializer
+class SettlementDetail(generics.RetrieveAPIView):
+    queryset = Settlement.objects.all()
+    serializer_class = SettlementSerializer
 
 
 # class AreaPostListPrice(viewsets.ModelViewSet):

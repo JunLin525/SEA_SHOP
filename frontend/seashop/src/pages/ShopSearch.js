@@ -8,7 +8,7 @@ function ShopSearch() {
     const navigate = useNavigate();
     const [shop, setShop] = useState([])
     const { PeopleNum, PriceNum, RatingNum } = useParams()
-   
+
 
 
 
@@ -20,7 +20,7 @@ function ShopSearch() {
     const fetchData = async () => {
         try {
             const authTokens = JSON.parse(localStorage.getItem('authTokens')); // 從 localStorage 中獲取 Access Token
-            const response = await fetch(`http://170.187.229.248:8000/api/Restaurant/List?
+            const response = await fetch(`http://170.187.229.248:8000/Restaurant-api/Restaurant-List?
                                             &max_price=${PriceNum}&max_people=${PeopleNum}&max_rating=${RatingNum}`, {
                 method: 'GET',
                 headers: {

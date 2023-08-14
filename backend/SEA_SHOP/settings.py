@@ -63,10 +63,10 @@ INSTALLED_APPS = [
     # django auth
 
     # local app
-    'Apis.apps.ApisConfig',
-    'foodie.apps.FoodieConfig',
+    # 'Apis.apps.ApisConfig',
     'Custom_User.apps.CustomUserConfig',
     'Restaurant.apps.RestaurantConfig',
+    'SouthEastAsiaCommunityAtTaiwan.apps.SoutheastasiacommunityattaiwanConfig',
 ]
 SITE_ID = 1
 
@@ -239,5 +239,7 @@ SPECTACULAR_SETTINGS = {
     "TITLE": "Website API View",
     "DESCRIPTION": "A Simple website to learn about DRF",
     "VERSION": "1.0.0",
+    'SERVE_INCLUDE_SCHEMA': False,
+
     # OTHER SETTINGS
 }

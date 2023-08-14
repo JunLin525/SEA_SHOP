@@ -27,4 +27,4 @@ class Comment(models.Model):
     Photo = models.ImageField(upload_to='Restaurant/Comment/')
 
     def __str__(self):
-        return self.Title
+        return f"❰{self.Restaurant}❱- ❰{self.Title}❱"
