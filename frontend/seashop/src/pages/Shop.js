@@ -52,7 +52,7 @@ function Shop() {
                         <li className='book_item' key={item.id}>
                             <div className='book_back'>
                                 <div className='book_info'>
-                                    <Link to={`/`} > {item.Name}</Link>
+                                    <Link to={`/Shop-Detail/${item.id}`} > {item.Name}</Link>
                                     <div className='publisher'>平均價位：{item.Price}</div>
                                     <div className='publisher'>建議人數：{item.People}</div>
                                     <div className='publisher'>地址：{item.Address}</div>
