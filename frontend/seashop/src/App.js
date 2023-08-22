@@ -8,6 +8,8 @@ import About from './pages/About';
 import Shop from './pages/Shop';
 import ShopSearch from './pages/ShopSearch';
 import Login from './pages/Login';
+import ShopDetail from './pages/ShopDetail';
+import Register from './pages/Register';
 function App() {
   return (
     <Router>
@@ -28,6 +30,10 @@ function App() {
           <Route element={<PrivateRoute isLogged={true} />}>
             <Route path="/ShopSearch/Price/:PriceNum/People/:PeopleNum/Rating/:RatingNum" element={<ShopSearch />} />
           </Route>
+          <Route element={<PrivateRoute isLogged={true} />}>
+            <Route path="/Shop-Detail/:shopID" element={<ShopDetail />} />
+          </Route>
+          <Route path="/Register" element={<Register />} />
           <Route path="/Login" element={<Login />} />
         </Routes >
       </AuthProvider>

@@ -12,7 +12,7 @@ function Food() {
     const fetchData = async () => {
         try {
             const authTokens = JSON.parse(localStorage.getItem('authTokens')); // 從 localStorage 中獲取 Access Token
-            const response = await fetch('http://170.187.229.248:8000/api/SouthEastAsia-In-Taiwan/List', {
+            const response = await fetch('http://170.187.229.248:8000/Settlement-api/List', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -43,8 +43,9 @@ function Food() {
                         <li className='book_item' key={item.pk}>
                             <div className='book_back'>
                                 <div className='book_info'>
-                                    <Link to={`http://170.187.229.248:8000/api/foodie-Area/Area-Detail/${item.pk}`} > {item.Name}</Link>
+                                    <Link to={`http://170.187.229.248:8000/api/foodie-Area/Area-Detail/${item.pk}`} > {item.AreaName}</Link>
                                     <div className='author'>地址：{item.Address}</div>
+                                    <div classNmae='publisher'>交通方式:{item.PublicTransportation}</div>
                                     <div className='publisher'>國家：{item.Country}</div>
                                     <div className='ISBN'>介紹:{item.Introduction}</div>
                                     <img src={item.Picture} alt="Book Cover" style={{ width: '200px', heigh: '200px' }} />

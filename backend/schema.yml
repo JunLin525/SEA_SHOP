@@ -13,8 +13,6 @@ paths:
         schema:
           type: integer
         required: true
-      description: |-
-        Get single Restaurant api through primary key id.
       tags:
       - Restaurant-api
       security:
@@ -284,11 +282,198 @@ paths:
               schema:
                 $ref: '#/components/schemas/PaginatedRestaurantList'
           description: ''
+  /Settlement-api/Detail/{id}/:
+    get:
+      operationId: Settlement_api_Detail_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - Settlement-api
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Settlement'
+          description: ''
+  /Settlement-api/List:
+    get:
+      operationId: Settlement_api_List_list
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      tags:
+      - Settlement-api
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedSettlementList'
+          description: ''
+  /Settlement-api/Reply-Detail/{id}/:
+    get:
+      operationId: Settlement_api_Reply_Detail_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - Settlement-api
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Reply'
+          description: ''
+    put:
+      operationId: Settlement_api_Reply_Detail_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - Settlement-api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Reply'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Reply'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Reply'
+        required: true
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Reply'
+          description: ''
+    patch:
+      operationId: Settlement_api_Reply_Detail_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - Settlement-api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedReply'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedReply'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedReply'
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Reply'
+          description: ''
+    delete:
+      operationId: Settlement_api_Reply_Detail_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - Settlement-api
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      responses:
+        '204':
+          description: No response body
+  /Settlement-api/Reply-List:
+    get:
+      operationId: Settlement_api_Reply_List_list
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      tags:
+      - Settlement-api
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedReplyList'
+          description: ''
   /api-jwt/token/:
     post:
       operationId: api_jwt_token_create
-      parameters:
-
       description: |-
         Takes a set of user credentials and returns an access and refresh JSON web
         token pair to prove the authentication of those credentials.
@@ -339,731 +524,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TokenRefresh'
-          description: ''
-  /api/Restaurant/Comment-Detail/{id}/:
-    get:
-      operationId: api_Restaurant_Comment_Detail_retrieve
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: integer
-        required: true
-      tags:
-      - api
-      security:
-      - jwtAuth: []
-      - basicAuth: []
-      - cookieAuth: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Comment'
-          description: ''
-    put:
-      operationId: api_Restaurant_Comment_Detail_update
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: integer
-        required: true
-      tags:
-      - api
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Comment'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/Comment'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/Comment'
-        required: true
-      security:
-      - jwtAuth: []
-      - basicAuth: []
-      - cookieAuth: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Comment'
-          description: ''
-    patch:
-      operationId: api_Restaurant_Comment_Detail_partial_update
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: integer
-        required: true
-      tags:
-      - api
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PatchedComment'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/PatchedComment'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/PatchedComment'
-      security:
-      - jwtAuth: []
-      - basicAuth: []
-      - cookieAuth: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Comment'
-          description: ''
-    delete:
-      operationId: api_Restaurant_Comment_Detail_destroy
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: integer
-        required: true
-      tags:
-      - api
-      security:
-      - jwtAuth: []
-      - basicAuth: []
-      - cookieAuth: []
-      responses:
-        '204':
-          description: No response body
-  /api/Restaurant/Comment_List:
-    get:
-      operationId: api_Restaurant_Comment_List_list
-      parameters:
-      - name: limit
-        required: false
-        in: query
-        description: Number of results to return per page.
-        schema:
-          type: integer
-      - name: offset
-        required: false
-        in: query
-        description: The initial index from which to return the results.
-        schema:
-          type: integer
-      tags:
-      - api
-      security:
-      - jwtAuth: []
-      - basicAuth: []
-      - cookieAuth: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PaginatedCommentList'
-          description: ''
-  /api/Restaurant/Detail/{id}/:
-    get:
-      operationId: api_Restaurant_Detail_retrieve
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: integer
-        required: true
-      tags:
-      - api
-      security:
-      - jwtAuth: []
-      - basicAuth: []
-      - cookieAuth: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Shop'
-          description: ''
-    put:
-      operationId: api_Restaurant_Detail_update
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: integer
-        required: true
-      tags:
-      - api
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Shop'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/Shop'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/Shop'
-        required: true
-      security:
-      - jwtAuth: []
-      - basicAuth: []
-      - cookieAuth: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Shop'
-          description: ''
-    patch:
-      operationId: api_Restaurant_Detail_partial_update
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: integer
-        required: true
-      tags:
-      - api
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PatchedShop'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/PatchedShop'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/PatchedShop'
-      security:
-      - jwtAuth: []
-      - basicAuth: []
-      - cookieAuth: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Shop'
-          description: ''
-    delete:
-      operationId: api_Restaurant_Detail_destroy
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: integer
-        required: true
-      tags:
-      - api
-      security:
-      - jwtAuth: []
-      - basicAuth: []
-      - cookieAuth: []
-      responses:
-        '204':
-          description: No response body
-  /api/Restaurant/List:
-    get:
-      operationId: api_Restaurant_List_list
-      parameters:
-      - name: limit
-        required: false
-        in: query
-        description: Number of results to return per page.
-        schema:
-          type: integer
-      - in: query
-        name: max_people
-        schema:
-          type: integer
-      - in: query
-        name: max_price
-        schema:
-          type: integer
-      - in: query
-        name: max_rating
-        schema:
-          type: integer
-      - name: offset
-        required: false
-        in: query
-        description: The initial index from which to return the results.
-        schema:
-          type: integer
-      tags:
-      - api
-      security:
-      - jwtAuth: []
-      - basicAuth: []
-      - cookieAuth: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PaginatedShopList'
-          description: ''
-  /api/SouthEastAsia-In-Taiwan/Detail/{id}/:
-    get:
-      operationId: api_SouthEastAsia_In_Taiwan_Detail_retrieve
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: string
-          format: uuid
-        required: true
-      tags:
-      - api
-      security:
-      - jwtAuth: []
-      - basicAuth: []
-      - cookieAuth: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Area'
-          description: ''
-    put:
-      operationId: api_SouthEastAsia_In_Taiwan_Detail_update
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: string
-          format: uuid
-        required: true
-      tags:
-      - api
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Area'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/Area'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/Area'
-        required: true
-      security:
-      - jwtAuth: []
-      - basicAuth: []
-      - cookieAuth: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Area'
-          description: ''
-    patch:
-      operationId: api_SouthEastAsia_In_Taiwan_Detail_partial_update
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: string
-          format: uuid
-        required: true
-      tags:
-      - api
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PatchedArea'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/PatchedArea'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/PatchedArea'
-      security:
-      - jwtAuth: []
-      - basicAuth: []
-      - cookieAuth: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Area'
-          description: ''
-    delete:
-      operationId: api_SouthEastAsia_In_Taiwan_Detail_destroy
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: string
-          format: uuid
-        required: true
-      tags:
-      - api
-      security:
-      - jwtAuth: []
-      - basicAuth: []
-      - cookieAuth: []
-      responses:
-        '204':
-          description: No response body
-  /api/SouthEastAsia-In-Taiwan/List:
-    get:
-      operationId: api_SouthEastAsia_In_Taiwan_List_list
-      parameters:
-      - name: limit
-        required: false
-        in: query
-        description: Number of results to return per page.
-        schema:
-          type: integer
-      - name: offset
-        required: false
-        in: query
-        description: The initial index from which to return the results.
-        schema:
-          type: integer
-      tags:
-      - api
-      security:
-      - jwtAuth: []
-      - basicAuth: []
-      - cookieAuth: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PaginatedAreaList'
-          description: ''
-    post:
-      operationId: api_SouthEastAsia_In_Taiwan_List_create
-      tags:
-      - api
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Area'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/Area'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/Area'
-        required: true
-      security:
-      - jwtAuth: []
-      - basicAuth: []
-      - cookieAuth: []
-      responses:
-        '201':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Area'
-          description: ''
-  /api/SouthEastAsia-In-Taiwan/Reply-Detail/{id}/:
-    get:
-      operationId: api_SouthEastAsia_In_Taiwan_Reply_Detail_retrieve
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: string
-          format: uuid
-        required: true
-      tags:
-      - api
-      security:
-      - jwtAuth: []
-      - basicAuth: []
-      - cookieAuth: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Reply'
-          description: ''
-    put:
-      operationId: api_SouthEastAsia_In_Taiwan_Reply_Detail_update
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: string
-          format: uuid
-        required: true
-      tags:
-      - api
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Reply'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/Reply'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/Reply'
-        required: true
-      security:
-      - jwtAuth: []
-      - basicAuth: []
-      - cookieAuth: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Reply'
-          description: ''
-    patch:
-      operationId: api_SouthEastAsia_In_Taiwan_Reply_Detail_partial_update
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: string
-          format: uuid
-        required: true
-      tags:
-      - api
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PatchedReply'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/PatchedReply'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/PatchedReply'
-      security:
-      - jwtAuth: []
-      - basicAuth: []
-      - cookieAuth: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Reply'
-          description: ''
-    delete:
-      operationId: api_SouthEastAsia_In_Taiwan_Reply_Detail_destroy
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: string
-          format: uuid
-        required: true
-      tags:
-      - api
-      security:
-      - jwtAuth: []
-      - basicAuth: []
-      - cookieAuth: []
-      responses:
-        '204':
-          description: No response body
-  /api/SouthEastAsia-In-Taiwan/Reply-List:
-    get:
-      operationId: api_SouthEastAsia_In_Taiwan_Reply_List_list
-      parameters:
-      - name: limit
-        required: false
-        in: query
-        description: Number of results to return per page.
-        schema:
-          type: integer
-      - name: offset
-        required: false
-        in: query
-        description: The initial index from which to return the results.
-        schema:
-          type: integer
-      tags:
-      - api
-      security:
-      - jwtAuth: []
-      - basicAuth: []
-      - cookieAuth: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PaginatedReplyList'
-          description: ''
-  /api/schema/:
-    get:
-      operationId: api_schema_retrieve
-      description: |-
-        OpenApi3 schema for this API. Format can be selected via content negotiation.
-
-        - YAML: application/vnd.oai.openapi
-        - JSON: application/vnd.oai.openapi+json
-      parameters:
-      - in: query
-        name: format
-        schema:
-          type: string
-          enum:
-          - json
-          - yaml
-      - in: query
-        name: lang
-        schema:
-          type: string
-          enum:
-          - af
-          - ar
-          - ar-dz
-          - ast
-          - az
-          - be
-          - bg
-          - bn
-          - br
-          - bs
-          - ca
-          - ckb
-          - cs
-          - cy
-          - da
-          - de
-          - dsb
-          - el
-          - en
-          - en-au
-          - en-gb
-          - eo
-          - es
-          - es-ar
-          - es-co
-          - es-mx
-          - es-ni
-          - es-ve
-          - et
-          - eu
-          - fa
-          - fi
-          - fr
-          - fy
-          - ga
-          - gd
-          - gl
-          - he
-          - hi
-          - hr
-          - hsb
-          - hu
-          - hy
-          - ia
-          - id
-          - ig
-          - io
-          - is
-          - it
-          - ja
-          - ka
-          - kab
-          - kk
-          - km
-          - kn
-          - ko
-          - ky
-          - lb
-          - lt
-          - lv
-          - mk
-          - ml
-          - mn
-          - mr
-          - ms
-          - my
-          - nb
-          - ne
-          - nl
-          - nn
-          - os
-          - pa
-          - pl
-          - pt
-          - pt-br
-          - ro
-          - ru
-          - sk
-          - sl
-          - sq
-          - sr
-          - sr-latn
-          - sv
-          - sw
-          - ta
-          - te
-          - tg
-          - th
-          - tk
-          - tr
-          - tt
-          - udm
-          - uk
-          - ur
-          - uz
-          - vi
-          - zh-hans
-          - zh-hant
-      tags:
-      - api
-      security:
-      - jwtAuth: []
-      - basicAuth: []
-      - cookieAuth: []
-      - {}
-      responses:
-        '200':
-          content:
-            application/vnd.oai.openapi:
-              schema:
-                type: object
-                additionalProperties: {}
-            application/yaml:
-              schema:
-                type: object
-                additionalProperties: {}
-            application/vnd.oai.openapi+json:
-              schema:
-                type: object
-                additionalProperties: {}
-            application/json:
-              schema:
-                type: object
-                additionalProperties: {}
           description: ''
   /dj-rest-auth/facebook/:
     post:
@@ -1509,56 +969,6 @@ paths:
           description: ''
 components:
   schemas:
-    Area:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-        Name:
-          type: string
-          maxLength: 120
-        Address:
-          type: string
-          maxLength: 120
-        Country:
-          type: string
-          maxLength: 50
-        Introduction:
-          type: string
-        Picture:
-          type: string
-          format: uri
-      required:
-      - Address
-      - Country
-      - Introduction
-      - Name
-      - Picture
-      - id
-    Comment:
-      type: object
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        Title:
-          type: string
-          maxLength: 120
-        Body:
-          type: string
-        Photo:
-          type: string
-          format: uri
-        Store:
-          type: integer
-      required:
-      - Body
-      - Photo
-      - Store
-      - Title
-      - id
     Login:
       type: object
       properties:
@@ -1571,46 +981,6 @@ components:
           type: string
       required:
       - password
-    PaginatedAreaList:
-      type: object
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Area'
-    PaginatedCommentList:
-      type: object
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Comment'
     PaginatedReplyList:
       type: object
       properties:
@@ -1671,7 +1041,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Restaurant'
-    PaginatedShopList:
+    PaginatedSettlementList:
       type: object
       properties:
         count:
@@ -1690,7 +1060,7 @@ components:
         results:
           type: array
           items:
-            $ref: '#/components/schemas/Shop'
+            $ref: '#/components/schemas/Settlement'
     PasswordChange:
       type: object
       properties:
@@ -1731,43 +1101,6 @@ components:
       - new_password2
       - token
       - uid
-    PatchedArea:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-        Name:
-          type: string
-          maxLength: 120
-        Address:
-          type: string
-          maxLength: 120
-        Country:
-          type: string
-          maxLength: 50
-        Introduction:
-          type: string
-        Picture:
-          type: string
-          format: uri
-    PatchedComment:
-      type: object
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        Title:
-          type: string
-          maxLength: 120
-        Body:
-          type: string
-        Photo:
-          type: string
-          format: uri
-        Store:
-          type: integer
     PatchedReply:
       type: object
       properties:
@@ -1839,39 +1172,6 @@ components:
           format: uri
         Restaurant:
           type: integer
-    PatchedShop:
-      type: object
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        Name:
-          type: string
-          maxLength: 120
-        Price:
-          type: integer
-          maximum: 2147483647
-          minimum: -2147483648
-        People:
-          type: integer
-          maximum: 2147483647
-          minimum: -2147483648
-          nullable: true
-        Address:
-          type: string
-          maxLength: 120
-        Country:
-          type: string
-          maxLength: 50
-        Rating:
-          type: integer
-          maximum: 2147483647
-          minimum: -2147483648
-        Introduction:
-          type: string
-        Picture:
-          type: string
-          format: uri
     PatchedUserDetails:
       type: object
       description: User model w/o password
@@ -2024,34 +1324,25 @@ components:
       - Restaurant
       - Title
       - id
-    Shop:
+    Settlement:
       type: object
       properties:
         id:
-          type: integer
+          type: string
+          format: uuid
           readOnly: true
-        Name:
+        AreaName:
           type: string
           maxLength: 120
-        Price:
-          type: integer
-          maximum: 2147483647
-          minimum: -2147483648
-        People:
-          type: integer
-          maximum: 2147483647
-          minimum: -2147483648
-          nullable: true
         Address:
+          type: string
+          maxLength: 120
+        PublicTransportation:
           type: string
           maxLength: 120
         Country:
           type: string
           maxLength: 50
-        Rating:
-          type: integer
-          maximum: 2147483647
-          minimum: -2147483648
         Introduction:
           type: string
         Picture:
@@ -2059,12 +1350,11 @@ components:
           format: uri
       required:
       - Address
+      - AreaName
       - Country
       - Introduction
-      - Name
       - Picture
-      - Price
-      - Rating
+      - PublicTransportation
       - id
     SocialLogin:
       type: object

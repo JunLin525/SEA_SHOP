@@ -9,11 +9,11 @@ from rest_framework.pagination import PageNumberPagination
 
 class RestaurantFilter(filters.FilterSet):
     max_price = filters.NumberFilter(field_name="Price", lookup_expr='lte')
-    max_people = filters.NumberFilter(field_name="People", lookup_expr='lte')
-    max_rating = filters.NumberFilter(field_name="Rating", lookup_expr='lte')
+    max_people = filters.NumberFilter(field_name="People", lookup_expr='gte')
+    max_rating = filters.NumberFilter(field_name="Rating", lookup_expr='gte')
 
 
-class RestaurantList(generics.ListAPIView):
+class RestaurantList(generics.ListCreateAPIView):
     queryset = Restaurants.objects.all()
     serializer_class = RestaurantSerializer
     filterset_class = RestaurantFilter
@@ -24,7 +24,7 @@ class RestaurantDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = RestaurantSerializer
 
 
-class CommentRestaurantList(generics.ListAPIView):
+class CommentRestaurantList(generics.ListCreateAPIView):
     queryset = Comment.objects.all()
     serializer_class = RestaurantCommentSerializer
 
