@@ -57,6 +57,11 @@
 
 }
 
+.comment-type {
+  background-color: #ba581b;
+
+}
+
 .footer-class {
   margin-left: 50px;
 }
@@ -85,6 +90,7 @@ body {
 
 
 }
+
 /*
 .landing-back {
   background-image: url('./assets/background.jpg');

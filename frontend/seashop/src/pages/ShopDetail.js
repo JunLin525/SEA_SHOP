@@ -64,46 +64,40 @@ function ShopDetail() {
             console.log('hanle chcange', book)
         }
     */
-    /*
-        const handleSubmit = async (e) => {
-            e.preventDefault()
-            const authTokens = JSON.parse(localStorage.getItem('authTokens')); // 從 localStorage 中獲取 Access Token
-            const article = book.pk
-            const title = e.target.title.value
-            const author = jwt_decode(authTokens.access).user_id
-            const text = e.target.comment.value
-            const comment = {
-                article,
-                title,
-                author,
-                text,
-            };
-            try {
-                const response = await fetch(`http://170.187.229.248:8000/NewBook/comment`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': 'Bearer ' + String(authTokens.access)
-    
-                    },
-    
-                    body: JSON.stringify(comment)
-                })
-                if (response.ok) {
-                    alert('Suceess submit!')
-                    navigate(`/abstract/`)
-                    // 评论发送成功，执行相应的操作
-                } else {
-                    // 评论发送失败，处理错误情况
-                    alert('Failed to send comment');
-                }
-            } catch (error) {
-                console.error('Error sending comment:', error);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        const authTokens = JSON.parse(localStorage.getItem('authTokens')); // 從 localStorage 中獲取 Access Token
+        const formData = new FormData();
+        formData.append('Rating', e.target.rating.value);
+        formData.append('Title', e.target.title.value);
+        formData.append('Body', e.target.comment.value);
+        formData.append('Photo', e.target.picture.files[0]); // 注意這裡使用了 files[0]
+        formData.append('Restaurant', shop.id);
+        try {
+
+            const response = await fetch('http://170.187.229.248:8000/Restaurant-api/Restaurant-Comment-List', {
+                method: 'POST',
+                headers: {
+                    'Authorization': 'Bearer ' + String(authTokens.access)
+                },
+                body: formData
+            });
+            if (response.ok) {
+                alert('Suceess submit!')
+                navigate(`/Shop-Detail/${shop.id}`)
+                // 评论发送成功，执行相应的操作
+            } else {
+                // 评论发送失败，处理错误情况
+                alert('Failed to send comment');
             }
-    
-        };
-    
-*/
+        } catch (error) {
+            console.error('Error sending comment:', error);
+        }
+
+    };
+
+
 
     return (
         <div className='landing-background'>
@@ -112,19 +106,17 @@ function ShopDetail() {
                 <br />
                 <h1>餐廳心得</h1>
                 <h2>{shop.Name}</h2>
-                <img src={shop.Picture} alt="Book Cover" style={{ width: '400px', heigh: '500px' }} />
-                <h3>代表國家：{shop.Country}</h3>
-                <h3>單人價格:{shop.Price}</h3>
-                <h3>整體評分：{shop.Rating}</h3>
-                <h3>建議用餐人數:{shop.People}</h3>
-                <h3>餐廳地址：{shop.Address}</h3>
-                <h3>餐聽介紹:{shop.Introduction}</h3>
-                <br />
-                <hr />
+                <img src={shop.Picture} alt="Book Cover" style={{ width: '300px', heigh: '300px' }} />
+                <h4>代表國家：{shop.Country}</h4>
+                <h4>單人價格:{shop.Price}</h4>
+                <h4>整體評分：{shop.Rating}</h4>
+                <h4>建議用餐人數:{shop.People}</h4>
+                <h4>餐廳地址：{shop.Address}</h4>
+                <h4 border="red">餐聽介紹:{shop.Introduction}</h4>
                 <h2>留言區</h2>
                 <ul>
                     {comments.map(comment => {
-                        if (shop.pk === comment.Restaurant) {
+                        if (shop.id === comment.Restaurant) {
                             return (
                                 <li key={comment.id}>
                                     <h6>{comment.id}</h6>
@@ -139,25 +131,47 @@ function ShopDetail() {
                         }
                     })}
                 </ul>
-
             </div>
-            <h3>新增留言</h3>
-            <form>
-                <input type="commentTitle"
-                    name="title"
-                    placeholder="新增留言標題" />
-                <input type="CommentRating"
-                    name="Rating"
-                    placeHolder="請評分" />
-                <textarea className='commentBody'
-                    name='comment'
-                    placeHolder='請在此輸入留言內容' />
+
+            <div className="comment-type">
+                <h3>新增留言</h3>
+                <form onSubmit={handleSubmit}>
+                    <label for="title">留言標題：</label><br />
+                    <input
+                        type="text"
+                        id="title"
+                        name="title"
+                        placeholder="新增留言標題"
+                    /><br />
+                    <label for="comment">餐廳評論:</label><br />
+                    <input
+                        type="text"
+                        id="comment"
+                        name="comment"
+                        placeholder="新增餐廳評論"
+                    /><br />
+                    <label for="rating">餐廳評分：</label><br />
+                    <input
+                        type="number"
+                        id="rating"
+                        name="rating"
+                        min="1"
+                        max="10"
+                    /><br />
+                    <lable for="picture">上傳圖片：</lable><br />
+                    <input
+                        type="file"
+                        id="picture"
+                        name="picture"
+                        accept=".png,.jpg,.gif"
+                    /><br />
+                    <button button type="submit">送出</button>
+                </form>
                 <br />
-                <input type="submit" />
-            </form>
-
-
-
+                <br />
+                <br />
+                <br />
+            </div>
             <div className='landing-back' />
             <Footer />
         </div>
