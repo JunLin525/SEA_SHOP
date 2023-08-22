@@ -9,6 +9,11 @@ class RestaurantSerializer(serializers.ModelSerializer):
 
 
 class RestaurantCommentSerializer(serializers.ModelSerializer):
+    Restaurant_Name = serializers.SerializerMethodField()
+
     class Meta:
         model = Comment
         fields = "__all__"
+
+    def get_Restaurant_Name(self, obj):
+        return obj.Restaurant.Name
