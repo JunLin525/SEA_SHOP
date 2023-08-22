@@ -8,7 +8,13 @@ class Restaurants(models.Model):
 
     Name = models.CharField(max_length=120)
     Country = models.CharField(max_length=50)
-    Price = models.IntegerField()
+    Price = models.IntegerField(
+        default=50,
+        validators=[
+            MaxValueValidator(10000),
+            MinValueValidator(1)
+        ]
+    )
     Rating = models.IntegerField(
         default=1,
         validators=[
