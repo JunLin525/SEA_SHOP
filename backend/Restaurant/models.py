@@ -16,9 +16,14 @@ class Restaurants(models.Model):
             MinValueValidator(1)
         ]
     )
-    People = models.IntegerField(null=True, blank=True)
+    People = models.IntegerField(
+        default=1,
+        validators=[
+            MaxValueValidator(50),
+            MinValueValidator(1)
+        ])
     Address = models.CharField(max_length=120)
-    Introduction = models.TextField()
+    Introduction = models.TextField(blank=True, null=True)
     Picture = models.ImageField(upload_to='Restaurant/', blank=True, null=True)
 
     def __str__(self):
