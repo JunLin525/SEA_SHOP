@@ -13,7 +13,7 @@ class RestaurantFilter(filters.FilterSet):
     max_rating = filters.NumberFilter(field_name="Rating", lookup_expr='gte')
 
 
-class RestaurantList(generics.ListAPIView):
+class RestaurantList(generics.ListCreateAPIView):
     queryset = Restaurants.objects.all()
     serializer_class = RestaurantSerializer
     filterset_class = RestaurantFilter
@@ -24,7 +24,7 @@ class RestaurantDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = RestaurantSerializer
 
 
-class CommentRestaurantList(generics.ListAPIView):
+class CommentRestaurantList(generics.ListCreateAPIView):
     queryset = Comment.objects.all()
     serializer_class = RestaurantCommentSerializer
 

@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-*0$*3io2$uga4)z$x5w57&$4xa=!s-(e1^vi_+qbtg!0a3*mu-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['170.187.229.248', '*', 'localhost']
+ALLOWED_HOSTS = ['http://170.187.229.248/', '*',
+                 'localhost', 'http://170.187.229.248:3000']
 
 
 # Application definition
@@ -71,9 +72,9 @@ INSTALLED_APPS = [
 SITE_ID = 1
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',  # Cors headers
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'corsheaders.middleware.CorsMiddleware',  # Cors headers
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -86,10 +87,14 @@ AUTH_USER_MODEL = "Custom_User.CustomUser"
 CORS_ALLOWED_ORIGINS = (
     "http://localhost:3000",
     "http://localhost:8000",
+    "http://170.187.229.248",
+    "http://170.187.229.248:8000",
+    "http://localhost:3001",
+
 )
 
 CSRF_TRUSTED_ORIGINS = ["http://localhost:3000",
-                        "http://192.168.56.1:3000/", "https://sea-shop.vercel.app/login/"]
+                        "http://192.168.56.1:3000/", "https://sea-shop.vercel.app/login/", "http://170.187.229.248/", "http://170.187.229.248:8000", "http://localhost:3001",]
 
 TEMPLATES = [
     {
