@@ -10,6 +10,7 @@ class RestaurantSerializer(serializers.ModelSerializer):
 
 class RestaurantCommentSerializer(serializers.ModelSerializer):
     Restaurant_Name = serializers.SerializerMethodField()
+    User_Name = serializers.SerializerMethodField()
 
     class Meta:
         model = Comment

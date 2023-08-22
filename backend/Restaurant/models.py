@@ -37,8 +37,8 @@ class Restaurants(models.Model):
 
 
 class Comment(models.Model):
-    user = models.ForeignKey(CustomUser,  null=False,
-                             on_delete=models.CASCADE)
+    user_pk = models.ForeignKey(CustomUser,  null=False,
+                                on_delete=models.CASCADE)
     Restaurant = models.ForeignKey(Restaurants, on_delete=models.CASCADE)
     Rating = models.IntegerField()
     Title = models.CharField(max_length=120)
