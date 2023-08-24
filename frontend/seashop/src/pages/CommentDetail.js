@@ -6,18 +6,17 @@ import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import jwt_decode from "jwt-decode";
 
-function ShopDetail() {
+function CommentDetail() {
     const navigate = useNavigate()
-    const { shopID, commentID } = useParams()
-    const [shop, setShop] = useState({})
-    const [comments, setComments] = useState([])
+    const { commentID } = useParams()
+    const [comment, setComment] = useState({})
     const authTokens = JSON.parse(localStorage.getItem('authTokens')); // 從 localStorage 中獲取 Access Token
 
     useEffect(() => {
-        let getShop = async () => {
+        let getComment = async () => {
             const authTokens = JSON.parse(localStorage.getItem('authTokens')); // 從 localStorage 中獲取 Access Token
 
-            const response = await fetch(`http://170.187.229.248:8000/Restaurant-api/Restaurant-Detail/${shopID}/`, {
+            const response = await fetch(`http://170.187.229.248:8000/Restaurant-api/Restaurant-Comment-Detail/${commentID}/`, {
 
                 method: 'GET',
                 headers: {
@@ -29,41 +28,16 @@ function ShopDetail() {
             })
 
             const data = await response.json()
-            setShop(data)
+            setComment(data)
             window.scrollTo(0, 0);
 
         }
 
-        getShop()
-    }, [shopID])
-
-    useEffect(() => {
-        let getComment = async () => {
-            const authTokens = JSON.parse(localStorage.getItem('authTokens')); // 從 localStorage 中獲取 Access Token
-
-            const response = await fetch(`http://170.187.229.248:8000/Restaurant-api/Restaurant-Comment-List`, {
-
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + String(authTokens.access)
-
-                },
-            })
-            const commentData = await response.json();
-            setComments(commentData);
-        };
-
         getComment()
-    }, [])
+    }, [commentID])
 
 
-    /*
-        let handleChange = (value) => {
-            setBook(book => ({ ...book, 'Abstract': value }))
-            console.log('hanle chcange', book)
-        }
-    */
+
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -198,4 +172,4 @@ function ShopDetail() {
     )
 }
 
-export default ShopDetail;
+export default CommentDetail;

@@ -4,13 +4,19 @@ from .models import Restaurants, Comment
 from .serializers import RestaurantSerializer, RestaurantCommentSerializer
 from django_filters import rest_framework as filters
 from rest_framework.pagination import PageNumberPagination
-# Create your views here.
+from drf_spectacular.utils import extend_schema
 
+
+
+
+# Create your views here.
 
 class RestaurantFilter(filters.FilterSet):
     max_price = filters.NumberFilter(field_name="Price", lookup_expr='lte')
     max_people = filters.NumberFilter(field_name="People", lookup_expr='gte')
     max_rating = filters.NumberFilter(field_name="Rating", lookup_expr='gte')
+    Introduction_contains = filters.CharFilter(
+        field_name="Introduction", lookup_expr='icontains')
 
 
 class RestaurantList(generics.ListCreateAPIView):
