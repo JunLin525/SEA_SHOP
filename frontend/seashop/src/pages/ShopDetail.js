@@ -99,25 +99,7 @@ function ShopDetail() {
 
 
     // 刪除功能
-    const handleDeleteComment = async (commentId) => {
-        try {
-            const response = await fetch(`http://170.187.229.248:8000/Restaurant-api/Restaurant-Comment-List/${commentId}`, {
-                method: 'DELETE',
-                headers: {
-                    'Authorization': 'Bearer ' + String(authTokens.access)
-                },
-            });
 
-            if (response.ok) {
-                alert('Comment deleted successfully');
-                // 刷新评论列表或执行其他操作
-            } else {
-                alert('Failed to delete comment');
-            }
-        } catch (error) {
-            console.error('Error deleting comment:', error);
-        }
-    };
 
 
     return (
@@ -146,8 +128,6 @@ function ShopDetail() {
                                         <h4><Link to={`/commentDetail/${comment.id}`}>{comment.Title}</Link></h4>
                                         <h5>{comment.Body}</h5>
                                         <hr />
-                                        <button className='AddComment' >編輯留言</button>
-                                        <button className='DeleteComment' onClick={handleDeleteComment} >刪除留言</button>
 
                                     </li>
                                 )
