@@ -7,8 +7,6 @@ from rest_framework.pagination import PageNumberPagination
 from drf_spectacular.utils import extend_schema
 
 
-
-
 # Create your views here.
 
 class RestaurantFilter(filters.FilterSet):
@@ -19,22 +17,24 @@ class RestaurantFilter(filters.FilterSet):
         field_name="Introduction", lookup_expr='icontains')
 
 
-class RestaurantList(generics.ListCreateAPIView):
+class RestaurantList(generics.ListAPIView):
     queryset = Restaurants.objects.all()
     serializer_class = RestaurantSerializer
     filterset_class = RestaurantFilter
 
 
-class RestaurantDetail(generics.RetrieveUpdateDestroyAPIView):
+class RestaurantDetail(generics.RetrieveUpdateDestroyAPIView,
+                       generics.CreateAPIView):
     queryset = Restaurants.objects.all()
     serializer_class = RestaurantSerializer
 
 
-class CommentRestaurantList(generics.ListCreateAPIView):
+class CommentRestaurantList(generics.ListAPIView):
     queryset = Comment.objects.all()
     serializer_class = RestaurantCommentSerializer
 
 
-class CommentRestaurantDetail(generics.RetrieveUpdateDestroyAPIView):
+class CommentRestaurantDetail(generics.RetrieveUpdateDestroyAPIView,
+                              generics.CreateAPIView):
     queryset = Comment.objects.all()
     serializer_class = RestaurantCommentSerializer
