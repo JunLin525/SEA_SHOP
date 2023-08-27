@@ -13,7 +13,8 @@ class SetlementList(generics.ListAPIView):
     serializer_class = SettlementSerializer
 
 
-class SettlementDetail(generics.RetrieveAPIView):
+class SettlementDetail(generics.RetrieveUpdateDestroyAPIView,
+                       generics.CreateAPIView):
     queryset = Settlement.objects.all()
     serializer_class = SettlementSerializer
 
@@ -30,6 +31,7 @@ class ReplyPostList(generics.ListAPIView):
     serializer_class = ReplySerializer
 
 
-class ReplyPostDetail(generics.RetrieveUpdateDestroyAPIView):
+class ReplyPostDetail(generics.RetrieveUpdateDestroyAPIView,
+                      generics.CreateAPIView):
     queryset = Reply.objects.all()
     serializer_class = ReplySerializer

@@ -8,16 +8,18 @@ function Register() {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        let response = await fetch('http://170.187.229.248:8000/dj-rest-auth/registration', {
+        let response = await fetch('http://170.187.229.248:8000/dj-rest-auth/registration/', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'X-CSRFTOKEN': 'kwrcowqLDOJLHtvd7LP3SYtj5f94EmHDjIMKJTjt4vh4QUoSTp5bVLL11MKsRdSY'
             },
             body: JSON.stringify({
                 'username': e.target.username.value,
                 'email': e.target.email.value,
-                'password1': e.target.pwd1.value,
-                'password2': e.target.pwd2.value
+                'password1': e.target.password1.value,
+                'password2': e.target.password2.value
             })
         })
         if (response.status === 200) {
@@ -25,6 +27,7 @@ function Register() {
             navigate('/')
         } else {
             alert('sometghing went wrong!')
+            console.log(response)
         }
     }
 
@@ -37,13 +40,13 @@ function Register() {
                 請填入您的資料來註冊會員
                 <form onSubmit={handleSubmit}>
                     <label style={{ fontSize: '28px' }} htmlFor="username">Username:  </label>
-                    <input type="text" id="Username" name="username" /><br />
-                    <label style={{ fontSize: '28px' }} htmlFor="Email">E-mail:   </label>
+                    <input type="text" id="username" name="username" /><br />
+                    <label style={{ fontSize: '28px' }} htmlFor="email">E-mail:   </label>
                     <input type="email" id="email" name="email" /><br />
-                    <label style={{ fontSize: '28px' }} htmlFor="pwd1">Password:   </label>
-                    <input type="password" id="pwd1" name="pwd1" /><br />
-                    <label style={{ fontSize: '28px' }} htmlFor="pwd2">Password Again:   </label>
-                    <input type="password" id="pwd2" name="pwd2" /><br />
+                    <label style={{ fontSize: '28px' }} htmlFor="password1">Password:   </label>
+                    <input type="password" id="password1" name="password1" /><br />
+                    <label style={{ fontSize: '28px' }} htmlFor="password2">Password Again:   </label>
+                    <input type="password" id="password2" name="password2" /><br />
                     <button style={{ fontSize: '24px' }} type="submit">送出表單</button>
 
 

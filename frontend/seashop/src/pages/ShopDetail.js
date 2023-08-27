@@ -72,7 +72,7 @@ function ShopDetail() {
         formData.append('Rating', e.target.rating.value);
         formData.append('Title', e.target.title.value);
         formData.append('Body', e.target.comment.value);
-        formData.append('Photo', e.target.picture.files[0]); // 注意這裡使用了 files[0]
+        formData.append('user_pk', '1');
         formData.append('Restaurant', shop.id);
         try {
 
@@ -98,6 +98,9 @@ function ShopDetail() {
     };
 
 
+    // 刪除功能
+
+
 
     return (
         <div className='landing-background'>
@@ -113,44 +116,47 @@ function ShopDetail() {
                 <h4>建議用餐人數:{shop.People}</h4>
                 <h4>餐廳地址：{shop.Address}</h4>
                 <h4 border="red">餐聽介紹:{shop.Introduction}</h4>
-                <h2>留言區</h2>
-                <ul>
-                    {comments.map(comment => {
-                        if (shop.id === comment.Restaurant) {
-                            return (
-                                <li key={comment.id}>
-                                    <h6>{comment.id}</h6>
-                                    <h4><Link to={`/commentDetail/${comment.id}`}>{comment.Title}</Link></h4>
-                                    <h5>{comment.Body}</h5>
-                                    <hr />
+                <div className='comment-color'>
+                    <h2>留言區</h2>
+                    <ul>
+                        {comments.map((comment, index) => {
+                            if (shop.id === comment.Restaurant) {
+                                return (
+                                    <li key={comment.id}>
+                                        <h4>第{index + 1}則</h4>
+                                        <h4>{comment.RestaurantName}</h4>
+                                        <h4><Link to={`/commentDetail/${comment.id}`}>{comment.Title}</Link></h4>
+                                        <h5>{comment.Body}</h5>
+                                        <hr />
 
-                                </li>
-                            )
-                        } else {
-                            return null
-                        }
-                    })}
-                </ul>
+                                    </li>
+                                )
+                            } else {
+                                return null
+                            }
+                        })}
+                    </ul>
+                </div>
             </div>
 
             <div className="comment-type">
                 <h3>新增留言</h3>
                 <form onSubmit={handleSubmit}>
-                    <label for="title">留言標題：</label><br />
+                    <label htmlFor="title">留言標題：</label><br />
                     <input
                         type="text"
                         id="title"
                         name="title"
                         placeholder="新增留言標題"
                     /><br />
-                    <label for="comment">餐廳評論:</label><br />
+                    <label htmlFor="comment">餐廳評論:</label><br />
                     <input
                         type="text"
                         id="comment"
                         name="comment"
                         placeholder="新增餐廳評論"
                     /><br />
-                    <label for="rating">餐廳評分：</label><br />
+                    <label htmlFor="rating">餐廳評分：</label><br />
                     <input
                         type="number"
                         id="rating"
@@ -158,14 +164,7 @@ function ShopDetail() {
                         min="1"
                         max="10"
                     /><br />
-                    <lable for="picture">上傳圖片：</lable><br />
-                    <input
-                        type="file"
-                        id="picture"
-                        name="picture"
-                        accept=".png,.jpg,.gif"
-                    /><br />
-                    <button button type="submit">送出</button>
+                    <button type="submit">送出</button>
                 </form>
                 <br />
                 <br />

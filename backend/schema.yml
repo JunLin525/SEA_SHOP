@@ -1165,6 +1165,7 @@ components:
         Title:
           type: string
           maxLength: 120
+          example: 'This restaurant is really awesome.'
         Body:
           type: string
         Photo:
@@ -1438,6 +1439,10 @@ components:
       type: object
       properties:
         key:
+
+
+
+        
           type: string
           writeOnly: true
       required:

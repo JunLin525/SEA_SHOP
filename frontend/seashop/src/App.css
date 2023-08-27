@@ -56,7 +56,9 @@
 
 
 }
-
+.comment-color{
+  background-color: grey;
+}
 .comment-type {
   background-color: #ba581b;
 
@@ -131,4 +133,12 @@ body {
 .commentButton {
   width: 120px;
   height: 30px;
+}
+
+.DeleteComment{
+  background-color: Red;
+}
+
+.AddComment{
+  background-color: #A6CDE7;
 }
