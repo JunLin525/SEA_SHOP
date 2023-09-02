@@ -71,12 +71,12 @@ function ShopDetail() {
         const formData = new FormData();
         formData.append('Rating', e.target.rating.value);
         formData.append('Title', e.target.title.value);
-        formData.append('Body', e.target.comment.value);
+        formData.append('Body', e.target.comments.value);
         formData.append('user_pk', '1');
         formData.append('Restaurant', shop.id);
+        console.log(formData)
         try {
-
-            const response = await fetch('http://170.187.229.248:8000/Restaurant-api/Restaurant-Comment-List', {
+            const response = await fetch('http://170.187.229.248:8000/Restaurant-api/Restaurant-Comment-Detail/9/', {
                 method: 'POST',
                 headers: {
                     'Authorization': 'Bearer ' + String(authTokens.access)
@@ -94,9 +94,7 @@ function ShopDetail() {
         } catch (error) {
             console.error('Error sending comment:', error);
         }
-
     };
-
 
     // 刪除功能
 
@@ -149,11 +147,11 @@ function ShopDetail() {
                         name="title"
                         placeholder="新增留言標題"
                     /><br />
-                    <label htmlFor="comment">餐廳評論:</label><br />
+                    <label htmlFor="comments">餐廳評論:</label><br />
                     <input
                         type="text"
-                        id="comment"
-                        name="comment"
+                        id="comments"
+                        name="comments"
                         placeholder="新增餐廳評論"
                     /><br />
                     <label htmlFor="rating">餐廳評分：</label><br />

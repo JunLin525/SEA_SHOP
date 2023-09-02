@@ -4,11 +4,10 @@ from .models import Restaurants, Comment
 from .serializers import RestaurantSerializer, RestaurantCommentSerializer
 from django_filters import rest_framework as filters
 from rest_framework.pagination import PageNumberPagination
-from drf_spectacular.utils import extend_schema
-from drf_spectacular.utils import extend_schema
 from rest_framework.views import APIView
 from rest_framework.response import Response
-
+from drf_spectacular.utils import extend_schema, OpenApiExample
+from drf_spectacular.types import OpenApiTypes
 
 # Create your views here.
 
@@ -30,8 +29,31 @@ class RestaurantList(generics.ListAPIView):
         You can use this API to get whole restaurant data inside database/
         你將可以使用此API來獲取資料庫中的全部餐廳列表。
         """,
-        responses={200: RestaurantSerializer(many=True)}
-
+        responses={200: RestaurantSerializer(many=True)},
+       examples=[
+        OpenApiExample(
+            name="Successful Response",
+            description="Sample response for the restaurants list endpoint.",
+            value={
+                "count": 123,
+                "next": "http://api.example.org/accounts/?offset=400&limit=100",
+                "previous": "http://api.example.org/accounts/?offset=200&limit=100",
+                "results": [
+                    {
+                        "id": 0,
+                        "Name": "Sample",
+                        "Country": "Sample Country",
+                        "Price": 10000,
+                        "Rating": 10,
+                        "People": 50,
+                        "Address": "Sample Address",
+                        "Introduction": "Sample Introduction",
+                        "Picture": "http://sample.com/image.jpg"
+                    }
+                ]
+            }
+        )
+    ]
     )
     def get(self, request, *args, **kwargs):
         return super().get(request, *args, **kwargs)

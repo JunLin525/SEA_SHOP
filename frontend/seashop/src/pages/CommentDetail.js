@@ -38,7 +38,7 @@ function CommentDetail() {
 
     const handleDeleteComment = async (commentId) => {
         try {
-            const response = await fetch(`http://170.187.229.248:8000/Restaurant-api/Restaurant-Comment-Detail/${commentId}`, {
+            const response = await fetch(`http://170.187.229.248:8000/Restaurant-api/Restaurant-Comment-Detail/${commentID}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': 'Bearer ' + String(authTokens.access)
@@ -59,24 +59,37 @@ function CommentDetail() {
 
 
 
-    const handlePutComment = async (commentId) => {
+    const handlePutComment = async (e) => {
+        e.preventDefault();
+        const authTokens = JSON.parse(localStorage.getItem('authTokens')); // 從 localStorage 中獲取 Access Token
+        const formData = new FormData();
+        formData.append('Rating', e.target.rating.value);
+        formData.append('Title', e.target.title.value);
+        formData.append('Body', e.target.comments.value);
+        formData.append('user_pk', '1');
+        console.log(formData)
+
+
         try {
-            const response = await fetch(`http://170.187.229.248:8000/Restaurant-api/Restaurant-Comment-Detail/${commentId}`, {
-                method: 'PUT',
+            const authTokens = JSON.parse(localStorage.getItem('authTokens'));
+            console.log(authTokens)
+            const response = await fetch(`http://170.187.229.248:8000/Restaurant-api/Restaurant-Comment-Detail/${commentID}/`, {
+                method: 'PATCH',
                 headers: {
                     'Authorization': 'Bearer ' + String(authTokens.access)
                 },
+                body: formData
             });
 
             if (response.ok) {
-                alert('Comment deleted successfully');
+                alert('Comment Edit successfully');
                 Navigate('/')
                 // 刷新评论列表或执行其他操作
             } else {
-                alert('Failed to delete comment');
+                alert('Failed to Edit comment');
             }
         } catch (error) {
-            console.error('Error deleting comment:', error);
+            console.error('Error Edit comment:', error);
         }
     };
     return (
@@ -94,23 +107,9 @@ function CommentDetail() {
                 <button className='DeleteComment' onClick={() => handleDeleteComment(commentID)}>刪除留言</button>
 
                 <div className="comment-type">
-                    <h3>編輯留言</h3>
+                    <h3>更改留言</h3>
                     <form onSubmit={handlePutComment}>
-                        <label htmlFor="title">留言標題：</label><br />
-                        <input
-                            type="text"
-                            id="title"
-                            name="title"
-                            placeholder="新增留言標題"
-                        /><br />
-                        <label htmlFor="comment">餐廳評論:</label><br />
-                        <input
-                            type="text"
-                            id="comment"
-                            name="comment"
-                            placeholder="新增餐廳評論"
-                        /><br />
-                        <label htmlFor="rating">餐廳評分：</label><br />
+                        <label htmlFor="rating">整體評分：</label><br />
                         <input
                             type="number"
                             id="rating"
@@ -118,6 +117,21 @@ function CommentDetail() {
                             min="1"
                             max="10"
                         /><br />
+                        <label htmlFor="title">留言主旨：</label><br />
+                        <input
+                            type="text"
+                            id="title"
+                            name="title"
+                            placeholder="新增留言標題"
+                        /><br />
+                        <label htmlFor="comments">留言內容:</label><br />
+                        <input
+                            type="text"
+                            id="comments"
+                            name="comments"
+                            placeholder="新增餐廳評論"
+                        /><br />
+
                         <button className='AddComment' >編輯留言</button>
                     </form>
                     <br />

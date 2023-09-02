@@ -25,8 +25,11 @@ function Register() {
         if (response.status === 200) {
             alert('Submit success.')
             navigate('/')
-        } else {
+        }
+
+        else {
             alert('sometghing went wrong!')
+            console.log(response.status)
             console.log(response)
         }
     }
