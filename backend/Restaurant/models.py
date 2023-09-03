@@ -51,4 +51,4 @@ class Comment(models.Model):
     Body = models.TextField()
 
     def __str__(self):
-        return f"<{self.user}>-❰{self.Restaurant}❱- ❰{self.Title}❱"
+        return f"<{self.user_pk}>-❰{self.Restaurant}❱- ❰{self.Title}❱"

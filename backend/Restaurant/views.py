@@ -8,6 +8,9 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from drf_spectacular.utils import extend_schema, OpenApiExample
 from drf_spectacular.types import OpenApiTypes
+from rest_framework import status
+from rest_framework.exceptions import PermissionDenied
+from .permissions import IsAuthorOrReadOnly  # new
 
 # Create your views here.
 
@@ -43,7 +46,7 @@ class RestaurantList(generics.ListAPIView):
                         "id": 0,
                         "Name": "Sample",
                         "Country": "Sample Country",
-                        "Price": 10000,
+                        "Price": 1000,
                         "Rating": 10,
                         "People": 50,
                         "Address": "Sample Address",
@@ -139,8 +142,12 @@ class CommentRestaurantList(generics.ListAPIView):
 
 class CommentRestaurantDetail(generics.RetrieveUpdateDestroyAPIView,
                               generics.CreateAPIView):
+    permission_classes = (IsAuthorOrReadOnly,)  # new
     queryset = Comment.objects.all()
     serializer_class = RestaurantCommentSerializer
+
+ 
+
 
 
 ### post ###
