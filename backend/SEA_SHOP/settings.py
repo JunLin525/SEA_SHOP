@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django_filters',
     'dj_rest_auth',
     'drf_spectacular',
+    "django_extensions",
 
     # 'rest_auth',
 
