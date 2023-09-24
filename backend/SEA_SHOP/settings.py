@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-*0$*3io2$uga4)z$x5w57&$4xa=!s-(e1^vi_+qbtg!0a3*mu-
 DEBUG = True
 
 ALLOWED_HOSTS = ['http://170.187.229.248/', '*',
-                 'localhost', 'http://170.187.229.248:3000']
+                 'localhost', 'http://170.187.229.248:3000','junlin5525.dev']
 
 
 # Application definition
@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django_filters',
     'dj_rest_auth',
     'drf_spectacular',
+    'drf_spectacular_sidecar',
     "django_extensions",
 
     # 'rest_auth',
@@ -242,10 +243,14 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 SPECTACULAR_SETTINGS = {
+    # 'SWAGGER_UI_DIST': 'SIDECAR',  # shorthand to use the sidecar instead
+    # 'SWAGGER_UI_FAVICON_HREF': 'SIDECAR',
+    # 'REDOC_DIST': 'SIDECAR',
+    "VERSION" : "3.0",
     "TITLE": "Website API View",
     "DESCRIPTION": "A Simple website to learn about DRF",
-    "VERSION": "1.0.0",
-    'SERVE_INCLUDE_SCHEMA': False,
 
+    "SERVE_INCLUDE_SCHEMA": False,
+    
     # OTHER SETTINGS
 }

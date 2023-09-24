@@ -1,12 +1,14 @@
 openapi: 3.0.3
 info:
   title: Website API View
-  version: 1.0.0
+  version: 0.0.0
   description: A Simple website to learn about DRF
 paths:
   /Restaurant-api/Restaurant-Comment-Detail/{id}/:
     get:
       operationId: Restaurant_api_Restaurant_Comment_Detail_retrieve
+      description: "\n        You can use this to get specific restaurant comment\
+        \ data\n        可以透過這個API獲得特定一則的餐廳評論\n        "
       parameters:
       - in: path
         name: id
@@ -25,9 +27,92 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RestaurantComment'
+              examples:
+                SuccessfulResponse:
+                  value:
+                    id: 4
+                    RestaurantName: 阿鸞手工法國麵包
+                    Rating: 2
+                    Title: 超讚好吃手工麵包
+                    Body: 超讚，根本這一生中沒吃過這樣好吃的東西，彷彿要神蹟降臨。
+                    user_pk: 6
+                    Restaurant: 12
+                  summary: Successful Response
+                  description: "\n                        Sample response for the\
+                    \ restaurant comment get verb  .\n                        一個可以簡單用這個restaurant\
+                    \ comment API做get行為的格式，藉此取得特定餐廳留言的評分跟評論。\n                   \
+                    \     "
+          description: ''
+    post:
+      operationId: Restaurant_api_Restaurant_Comment_Detail_create
+      description: "\n        You can use this to post comment of any restaurant \n\
+        \        可以透過這個API去張貼對任何一間的餐廳評論\n        "
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - Restaurant-api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RestaurantComment'
+            examples:
+              SuccessfulResponse:
+                value:
+                  id: 4
+                  RestaurantName: 阿鸞手工法國麵包
+                  Rating: 2
+                  Title: 超讚好吃手工麵包
+                  Body: 超讚，根本這一生中沒吃過這樣好吃的東西，彷彿要神蹟降臨。
+                  user_pk: 6
+                  Restaurant: 12
+                summary: Successful Response
+                description: "\n                        Sample response for the restaurant\
+                  \ comment post verb .\n                        一個可以簡單用這個restaurant\
+                  \ comment API做 post 行為的格式，藉此對特定餐廳提出評分跟評論。\n                    \
+                  \    "
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/RestaurantComment'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/RestaurantComment'
+        required: true
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestaurantComment'
+              examples:
+                SuccessfulResponse:
+                  value:
+                    id: 4
+                    RestaurantName: 阿鸞手工法國麵包
+                    Rating: 2
+                    Title: 超讚好吃手工麵包
+                    Body: 超讚，根本這一生中沒吃過這樣好吃的東西，彷彿要神蹟降臨。
+                    user_pk: 6
+                    Restaurant: 12
+                  summary: Successful Response
+                  description: "\n                        Sample response for the\
+                    \ restaurant comment post verb .\n                        一個可以簡單用這個restaurant\
+                    \ comment API做 post 行為的格式，藉此對特定餐廳提出評分跟評論。\n                  \
+                    \      "
           description: ''
     put:
       operationId: Restaurant_api_Restaurant_Comment_Detail_update
+      description: "\n        You can use this to edit specific restaurant comment\
+        \ data, but need to update whole data in the same time/\n        可以透過這個API變更特定一的餐廳評論描述，但每次變更資料時都要上傳全部的欄位，不能擇一上傳。\n\
+        \        "
       parameters:
       - in: path
         name: id
@@ -41,6 +126,21 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/RestaurantComment'
+            examples:
+              SuccessfulResponse:
+                value:
+                  id: 4
+                  RestaurantName: 阿鸞手工法國麵包
+                  Rating: 8
+                  Title: 超讚的啦好吃手工麵包
+                  Body: 根本超讚(打完再打一次) 超讚，根本這一生中沒吃過這樣好吃的東西，彷彿要神蹟降臨。
+                  user_pk: 6
+                  Restaurant: 12
+                summary: Successful Response
+                description: "\n                        Sample response for the restaurant\
+                  \ comment Put verb  .\n                        一個可以簡單用這個restaurant\
+                  \ comment API做put行為的格式，藉此更新修正特定餐廳留言的評分跟評論，但記得要填寫所有欄位才能順利更新。\n  \
+                  \                      "
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/RestaurantComment'
@@ -58,9 +158,27 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RestaurantComment'
+              examples:
+                SuccessfulResponse:
+                  value:
+                    id: 4
+                    RestaurantName: 阿鸞手工法國麵包
+                    Rating: 8
+                    Title: 超讚的啦好吃手工麵包
+                    Body: 根本超讚(打完再打一次) 超讚，根本這一生中沒吃過這樣好吃的東西，彷彿要神蹟降臨。
+                    user_pk: 6
+                    Restaurant: 12
+                  summary: Successful Response
+                  description: "\n                        Sample response for the\
+                    \ restaurant comment Put verb  .\n                        一個可以簡單用這個restaurant\
+                    \ comment API做put行為的格式，藉此更新修正特定餐廳留言的評分跟評論，但記得要填寫所有欄位才能順利更新。\n\
+                    \                        "
           description: ''
     patch:
       operationId: Restaurant_api_Restaurant_Comment_Detail_partial_update
+      description: "\n        You can use this to edit specific restaurant comment\
+        \ data, can submit any single data each time/\n        可以透過這個API變更特定一則的餐廳評論描述，每次上傳只要傳送一個欄位即可。\n\
+        \        "
       parameters:
       - in: path
         name: id
@@ -74,6 +192,19 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PatchedRestaurantComment'
+            examples:
+              SuccessfulResponse:
+                value:
+                  id: 4
+                  RestaurantName: 阿鸞手工法國麵包
+                  Body: 超讚的啦，根本這一生中沒吃過這樣好吃的東西，彷彿要神蹟降臨。 就算要更新貼文還是要留言
+                  user_pk: 6
+                  Restaurant: 12
+                summary: Successful Response
+                description: "\n                        Sample response for the restaurant\
+                  \ comment Patch verb  .\n                        一個可以簡單用這個restaurant\
+                  \ comment API做Patch行為的格式，藉此更新特定餐廳留言的評分跟評論。可以填入任意的一個欄位就送出，就可以更新。\n\
+                  \                        "
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/PatchedRestaurantComment'
@@ -90,9 +221,26 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RestaurantComment'
+              examples:
+                SuccessfulResponse:
+                  value:
+                    id: 4
+                    RestaurantName: 阿鸞手工法國麵包
+                    Body: 超讚的啦，根本這一生中沒吃過這樣好吃的東西，彷彿要神蹟降臨。 就算要更新貼文還是要留言
+                    user_pk: 6
+                    Restaurant: 12
+                  summary: Successful Response
+                  description: "\n                        Sample response for the\
+                    \ restaurant comment Patch verb  .\n                        一個可以簡單用這個restaurant\
+                    \ comment API做Patch行為的格式，藉此更新特定餐廳留言的評分跟評論。可以填入任意的一個欄位就送出，就可以更新。\n\
+                    \                        "
           description: ''
     delete:
       operationId: Restaurant_api_Restaurant_Comment_Detail_destroy
+      description: "\n        You can use this to delete specific restaurant comment\
+        \ data,be careful and make sure the data you want to delete before you call\
+        \ this api./\n        可以透過這個API刪除一則餐廳評論的資料，因為是刪除請確認好你要刪除這筆資料再來使用這個刪除功能。\n\
+        \        "
       parameters:
       - in: path
         name: id
@@ -106,11 +254,33 @@ paths:
       - basicAuth: []
       - cookieAuth: []
       responses:
-        '204':
-          description: No response body
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestaurantComment'
+              examples:
+                SuccessfulResponse:
+                  value:
+                    id: 4
+                    RestaurantName: 阿鸞手工法國麵包
+                    Rating: 2
+                    Title: 超讚好吃手工麵包
+                    Body: 超讚，根本這一生中沒吃過這樣好吃的東西，彷彿要神蹟降臨。
+                    user_pk: 6
+                    Restaurant: 12
+                  summary: Successful Response
+                  description: "\n                        Sample response for the\
+                    \ restaurant comment Delete verb  . Make sure you want to delete\
+                    \ the data before you use this verb\n                        一個可以簡單用這個restaurant\
+                    \ comment API做delete行為的格式，請確定你真的要刪除檔案再進行動作。\n                \
+                    \        "
+          description: ''
   /Restaurant-api/Restaurant-Comment-List:
     get:
       operationId: Restaurant_api_Restaurant_Comment_List_list
+      description: "\n        You can use this API to get whole restaurant comment\
+        \ data inside database/\n        你將可以使用此API來獲取資料庫中的全部的餐廳評論列表。\n        "
       parameters:
       - name: limit
         required: false
@@ -136,10 +306,42 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PaginatedRestaurantCommentList'
+              examples:
+                SuccessfulResponse:
+                  value:
+                    count: 123
+                    next: http://api.example.org/accounts/?offset=400&limit=100
+                    previous: http://api.example.org/accounts/?offset=200&limit=100
+                    results:
+                    - - id: 1
+                        RestaurantName: Sanji Teahouse 三季
+                        Rating: 8
+                        Title: 超好吃的啦!
+                        Body: 第一次嘗試就覺得快瘋掉了~
+                        user_pk: 5
+                        Restaurant: 2
+                      - id: 6
+                        RestaurantName: Chandu 讚都
+                        Rating: 10
+                        Title: 讚都好好吃啊
+                        Body: 台北必吃的印尼小吃
+                        user_pk: 2
+                        Restaurant: 6
+                      - id: 4
+                        RestaurantName: 阿鸞手工法國麵包
+                        Rating: 2
+                        Title: 超讚
+                        Body: 超讚
+                        user_pk: 6
+                        Restaurant: 12
+                  summary: Successful Response
+                  description: Sample response for the restaurants list endpoint.
           description: ''
   /Restaurant-api/Restaurant-Detail/{id}/:
     get:
       operationId: Restaurant_api_Restaurant_Detail_retrieve
+      description: "\n        You can use this to get specific restaurant data\n \
+        \       可以透過這個API獲得特定一間的餐廳描述\n        "
       parameters:
       - in: path
         name: id
@@ -158,9 +360,92 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Restaurant'
+              examples:
+                SucessfulResponse:
+                  value:
+                    id: 2
+                    Name: Sanji Teahouse 三季
+                    Country: 緬甸
+                    Price: 250
+                    Rating: 8
+                    People: 4
+                    Address: 235新北市中和區興南路二段22-1號
+                    Introduction: 烤餅甜點都超級讚，一個瘋狂讓人想吃東西的店面，裝飾擺設都很明亮，值得再訪。
+                    Picture: http://127.0.0.1:8000/media/Restaurant/%E4%B8%8B%E8%BC%89.jpg
+                  summary: Sucessful Response
+                  description: get verb in Restaurant-detail api, use this to get
+                    specific restaurant data.
+          description: ''
+    post:
+      operationId: Restaurant_api_Restaurant_Detail_create
+      description: "\n        You can use this to post specific restaurant data\n\
+        \        可以透過這個API去張貼一間的餐廳描述\n        "
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - Restaurant-api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Restaurant'
+            examples:
+              SuccessfulResponse:
+                value:
+                  Name: 三季Sanji
+                  Country: 緬甸/Myanmar
+                  Price: 580
+                  Rating: 8
+                  People: 8
+                  Address: 235新北市中和區興南路二段22-1號
+                  Introduction: 一個夭壽讚的餐廳啦~
+                  Picture: https://lh3.googleusercontent.com/p/AF1QipMEb5DjVHsSfO7OHNEn_WozwL_QwEiD_PZ40E28=s680-w680-h510
+                summary: Successful Response
+                description: "\n                Sample response for the restaurant\
+                  \ post .\n                一個可以簡單用這個restaurant API做 post 行為的格式\n\
+                  \                "
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Restaurant'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Restaurant'
+        required: true
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Restaurant'
+              examples:
+                SuccessfulResponse:
+                  value:
+                    Name: 三季Sanji
+                    Country: 緬甸/Myanmar
+                    Price: 580
+                    Rating: 8
+                    People: 8
+                    Address: 235新北市中和區興南路二段22-1號
+                    Introduction: 一個夭壽讚的餐廳啦~
+                    Picture: https://lh3.googleusercontent.com/p/AF1QipMEb5DjVHsSfO7OHNEn_WozwL_QwEiD_PZ40E28=s680-w680-h510
+                  summary: Successful Response
+                  description: "\n                Sample response for the restaurant\
+                    \ post .\n                一個可以簡單用這個restaurant API做 post 行為的格式\n\
+                    \                "
           description: ''
     put:
       operationId: Restaurant_api_Restaurant_Detail_update
+      description: "\n        You can use this to edit specific restaurant data, but\
+        \ need to update whole data in the same time/\n        可以透過這個API變更特定一間的餐廳描述，但每次變更資料時都要上傳全部的欄位。\n\
+        \        "
       parameters:
       - in: path
         name: id
@@ -174,6 +459,22 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Restaurant'
+            examples:
+              SuccessfulResponse:
+                value:
+                  id: 2
+                  Name: Sanji Teahouse 三季
+                  Country: 緬甸
+                  Price: 5000
+                  Rating: 1
+                  People: 50
+                  Address: 235新北市中和區興南路二段22-1號
+                  Introduction: 烤餅甜點都超~~~~~超~~~~超~~~~級讚，一個瘋狂讓人想吃東西的店面，裝飾擺設都很明亮，值得再訪。
+                  Picture: http://127.0.0.1:8000/media/Restaurant/%E4%B8%8B%E8%BC%89.jpg
+                summary: Successful Response
+                description: Put verb in Restaurant-detail api,u se this to edit the
+                  data.Don't forget to fill in all the form don't miss anything or
+                  this verb will be fail.
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/Restaurant'
@@ -191,9 +492,28 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Restaurant'
+              examples:
+                SuccessfulResponse:
+                  value:
+                    id: 2
+                    Name: Sanji Teahouse 三季
+                    Country: 緬甸
+                    Price: 5000
+                    Rating: 1
+                    People: 50
+                    Address: 235新北市中和區興南路二段22-1號
+                    Introduction: 烤餅甜點都超~~~~~超~~~~超~~~~級讚，一個瘋狂讓人想吃東西的店面，裝飾擺設都很明亮，值得再訪。
+                    Picture: http://127.0.0.1:8000/media/Restaurant/%E4%B8%8B%E8%BC%89.jpg
+                  summary: Successful Response
+                  description: Put verb in Restaurant-detail api,u se this to edit
+                    the data.Don't forget to fill in all the form don't miss anything
+                    or this verb will be fail.
           description: ''
     patch:
       operationId: Restaurant_api_Restaurant_Detail_partial_update
+      description: "\n        You can use this to edit specific restaurant data, can\
+        \ submit any single data each time/\n        可以透過這個API變更特定一間的餐廳描述，每次上傳只要傳送一個欄位即可。\n\
+        \        "
       parameters:
       - in: path
         name: id
@@ -207,6 +527,16 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PatchedRestaurant'
+            examples:
+              SuccessfulResponse:
+                value:
+                  id: 2
+                  Name: Sanji Teahouse 三季
+                  Country: 緬甸
+                  Price: 5000
+                summary: Successful Response
+                description: Patch verb in Restaurant-detail api, use this to edit
+                  specific restaurant detail data.
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/PatchedRestaurant'
@@ -223,9 +553,22 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Restaurant'
+              examples:
+                SuccessfulResponse:
+                  value:
+                    id: 2
+                    Name: Sanji Teahouse 三季
+                    Country: 緬甸
+                    Price: 5000
+                  summary: Successful Response
+                  description: Patch verb in Restaurant-detail api, use this to edit
+                    specific restaurant detail data.
           description: ''
     delete:
       operationId: Restaurant_api_Restaurant_Detail_destroy
+      description: "\n        You can use this to delete specific restaurant data,be\
+        \ careful and make sure the data you want to delete before you call this api./\n\
+        \        可以透過這個API刪除一間餐廳的資料，因為是刪除請確認好你要刪除這筆資料再來使用這個刪除功能。\n        "
       parameters:
       - in: path
         name: id
@@ -239,12 +582,37 @@ paths:
       - basicAuth: []
       - cookieAuth: []
       responses:
-        '204':
-          description: No response body
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Restaurant'
+              examples:
+                SuccessfulResponse:
+                  value:
+                    id: 2
+                    Name: Sanji Teahouse 三季
+                    Country: 緬甸
+                    Price: 5000
+                    Rating: 8
+                    People: 4
+                    Address: 235新北市中和區興南路二段22-1號
+                    Introduction: 烤餅甜點都超級讚，一個瘋狂讓人想吃東西的店面，裝飾擺設都很明亮，值得再訪。
+                    Picture: http://127.0.0.1:8000/media/Restaurant/%E4%B8%8B%E8%BC%89.jpg
+                  summary: Successful Response
+                  description: Delete verb in Restaurant-detail api. make sure you
+                    want delete the data before you use this verb.
+          description: ''
   /Restaurant-api/Restaurant-List:
     get:
       operationId: Restaurant_api_Restaurant_List_list
+      description: "\n        You can use this API to get whole restaurant data inside\
+        \ database/\n        你將可以使用此API來獲取資料庫中的全部餐廳列表。\n        "
       parameters:
+      - in: query
+        name: Introduction_contains
+        schema:
+          type: string
       - name: limit
         required: false
         in: query
@@ -281,6 +649,33 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PaginatedRestaurantList'
+              examples:
+                SuccessfulResponse:
+                  value:
+                    count: 123
+                    next: http://api.example.org/accounts/?offset=400&limit=100
+                    previous: http://api.example.org/accounts/?offset=200&limit=100
+                    results:
+                    - - id: 5
+                        Name: 池先生Kopitiam | 士林店
+                        Country: 馬來西亞
+                        Price: 250
+                        Rating: 8
+                        People: 3
+                        Address: 111031台北市士林區福華路150號
+                        Introduction: "離捷運站很近，總是有滿滿的香味傳出，麵包咖哩或是椰香飯都讓人喜悅。\r\n超開心的一間聚餐餐廳。"
+                        Picture: http://127.0.0.1:8000/media/Restaurant/Kopitam.jpg
+                      - id: 6
+                        Name: Chandu 讚都
+                        Country: 印尼
+                        Price: 200
+                        Rating: 9
+                        People: 2
+                        Address: 106台北市大安區市民大道三段128巷6號1樓
+                        Introduction: 風味跟特色極佳的印尼餐廳，位於光華商場後方，逛累了就來這邊吃，特色小吃讚到不行
+                        Picture: http://127.0.0.1:8000/media/Restaurant/Chandu.jpg
+                  summary: Successful Response
+                  description: Sample response for the restaurants list endpoint.
           description: ''
   /Settlement-api/Detail/{id}/:
     get:
@@ -305,6 +700,125 @@ paths:
               schema:
                 $ref: '#/components/schemas/Settlement'
           description: ''
+    post:
+      operationId: Settlement_api_Detail_create
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - Settlement-api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Settlement'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Settlement'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Settlement'
+        required: true
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Settlement'
+          description: ''
+    put:
+      operationId: Settlement_api_Detail_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - Settlement-api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Settlement'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Settlement'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Settlement'
+        required: true
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Settlement'
+          description: ''
+    patch:
+      operationId: Settlement_api_Detail_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - Settlement-api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedSettlement'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedSettlement'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedSettlement'
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Settlement'
+          description: ''
+    delete:
+      operationId: Settlement_api_Detail_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - Settlement-api
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      responses:
+        '204':
+          description: No response body
   /Settlement-api/List:
     get:
       operationId: Settlement_api_List_list
@@ -352,6 +866,40 @@ paths:
       - cookieAuth: []
       responses:
         '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Reply'
+          description: ''
+    post:
+      operationId: Settlement_api_Reply_Detail_create
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - Settlement-api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Reply'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Reply'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Reply'
+        required: true
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      responses:
+        '201':
           content:
             application/json:
               schema:
@@ -1133,46 +1681,72 @@ components:
           maxLength: 50
         Price:
           type: integer
-          maximum: 2147483647
-          minimum: -2147483648
+          maximum: 10000
+          minimum: 1
         Rating:
           type: integer
-          maximum: 2147483647
-          minimum: -2147483648
+          maximum: 10
+          minimum: 1
         People:
           type: integer
-          maximum: 2147483647
-          minimum: -2147483648
-          nullable: true
+          maximum: 50
+          minimum: 1
         Address:
           type: string
           maxLength: 120
         Introduction:
           type: string
+          nullable: true
         Picture:
           type: string
           format: uri
+          nullable: true
     PatchedRestaurantComment:
       type: object
       properties:
         id:
           type: integer
           readOnly: true
+        RestaurantName:
+          type: string
+          readOnly: true
         Rating:
           type: integer
-          maximum: 2147483647
-          minimum: -2147483648
+          maximum: 10
+          minimum: 1
         Title:
           type: string
           maxLength: 120
-          example: 'This restaurant is really awesome.'
         Body:
           type: string
-        Photo:
-          type: string
-          format: uri
+        user_pk:
+          type: integer
         Restaurant:
           type: integer
+    PatchedSettlement:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        AreaName:
+          type: string
+          maxLength: 120
+        Address:
+          type: string
+          maxLength: 120
+        PublicTransportation:
+          type: string
+          maxLength: 120
+        Country:
+          type: string
+          maxLength: 50
+        Introduction:
+          type: string
+        Picture:
+          type: string
+          format: uri
     PatchedUserDetails:
       type: object
       description: User model w/o password
@@ -1270,33 +1844,30 @@ components:
           maxLength: 50
         Price:
           type: integer
-          maximum: 2147483647
-          minimum: -2147483648
+          maximum: 10000
+          minimum: 1
         Rating:
           type: integer
-          maximum: 2147483647
-          minimum: -2147483648
+          maximum: 10
+          minimum: 1
         People:
           type: integer
-          maximum: 2147483647
-          minimum: -2147483648
-          nullable: true
+          maximum: 50
+          minimum: 1
         Address:
           type: string
           maxLength: 120
         Introduction:
           type: string
+          nullable: true
         Picture:
           type: string
           format: uri
+          nullable: true
       required:
       - Address
       - Country
-      - Introduction
       - Name
-      - Picture
-      - Price
-      - Rating
       - id
     RestaurantComment:
       type: object
@@ -1304,27 +1875,29 @@ components:
         id:
           type: integer
           readOnly: true
+        RestaurantName:
+          type: string
+          readOnly: true
         Rating:
           type: integer
-          maximum: 2147483647
-          minimum: -2147483648
+          maximum: 10
+          minimum: 1
         Title:
           type: string
           maxLength: 120
         Body:
           type: string
-        Photo:
-          type: string
-          format: uri
+        user_pk:
+          type: integer
         Restaurant:
           type: integer
       required:
       - Body
-      - Photo
-      - Rating
       - Restaurant
+      - RestaurantName
       - Title
       - id
+      - user_pk
     Settlement:
       type: object
       properties:
@@ -1439,10 +2012,6 @@ components:
       type: object
       properties:
         key:
-
-
-
-        
           type: string
           writeOnly: true
       required:
