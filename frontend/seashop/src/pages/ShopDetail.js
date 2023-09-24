@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import jwt_decode from "jwt-decode";
 
 function ShopDetail() {
+    const BASE_URL = "https://junlin5525.dev/"
     const navigate = useNavigate()
     const { shopID, commentID } = useParams()
     const [shop, setShop] = useState({})
@@ -17,7 +18,7 @@ function ShopDetail() {
         let getShop = async () => {
             const authTokens = JSON.parse(localStorage.getItem('authTokens')); // 從 localStorage 中獲取 Access Token
 
-            const response = await fetch(`http://170.187.229.248:8000/Restaurant-api/Restaurant-Detail/${shopID}/`, {
+            const response = await fetch(`${BASE_URL}/Restaurant-api/Restaurant-Detail/${shopID}/`, {
 
                 method: 'GET',
                 headers: {
@@ -41,7 +42,7 @@ function ShopDetail() {
         let getComment = async () => {
             const authTokens = JSON.parse(localStorage.getItem('authTokens')); // 從 localStorage 中獲取 Access Token
 
-            const response = await fetch(`http://170.187.229.248:8000/Restaurant-api/Restaurant-Comment-List`, {
+            const response = await fetch(`${BASE_URL}/Restaurant-api/Restaurant-Comment-List`, {
 
                 method: 'GET',
                 headers: {
@@ -76,7 +77,7 @@ function ShopDetail() {
         formData.append('Restaurant', shop.id);
         console.log(formData)
         try {
-            const response = await fetch('http://170.187.229.248:8000/Restaurant-api/Restaurant-Comment-Detail/9/', {
+            const response = await fetch(`${BASE_URL}/Restaurant-api/Restaurant-Comment-Detail/9/`, {
                 method: 'POST',
                 headers: {
                     'Authorization': 'Bearer ' + String(authTokens.access)

@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 function Food() {
+    const BASE_URL = "https://junlin5525.dev/"
     const [food, setFood] = useState([])
     useEffect(() => {
         fetchData();
@@ -12,7 +13,7 @@ function Food() {
     const fetchData = async () => {
         try {
             const authTokens = JSON.parse(localStorage.getItem('authTokens')); // 從 localStorage 中獲取 Access Token
-            const response = await fetch('http://170.187.229.248:8000/Settlement-api/List', {
+            const response = await fetch(`${BASE_URL}/Settlement-api/List`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -43,7 +44,7 @@ function Food() {
                         <li className='book_item' key={item.pk}>
                             <div className='book_back'>
                                 <div className='book_info'>
-                                    <Link to={`http://170.187.229.248:8000/api/foodie-Area/Area-Detail/${item.pk}`} > {item.AreaName}</Link>
+                                    <Link to={`${BASE_URL} / api / foodie - Area / Area - Detail / ${item.pk}`} > {item.AreaName}</Link>
                                     <div className='author'>地址：{item.Address}</div>
                                     <div classNmae='publisher'>交通方式:{item.PublicTransportation}</div>
                                     <div className='publisher'>國家：{item.Country}</div>

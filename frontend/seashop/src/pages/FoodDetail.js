@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import jwt_decode from "jwt-decode";
 
 function FoodList() {
+    const BASE_URL = "https://junlin5525.dev/"
     const navigate = useNavigate()
     const { foodID } = useParams()
     const [food, setFood] = useState([])
@@ -16,7 +17,7 @@ function FoodList() {
     useEffect(() => {
         let getFood = async () => {
 
-            const response = await fetch(`http://170.187.229.248:8000/api/foodie-Area/Area-Detail/${foodID}`, {
+            const response = await fetch(`${BASE_URL}/api/foodie-Area/Area-Detail/${foodID}`, {
 
                 method: 'GET',
                 headers: {

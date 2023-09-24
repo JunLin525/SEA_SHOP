@@ -5,6 +5,7 @@ import { Link, useParams, useNavigate } from 'react-router-dom';
 
 
 function ShopSearch() {
+    const BASE_URL = "https://junlin5525.dev/"
     const navigate = useNavigate();
     const [shop, setShop] = useState([])
     const { PeopleNum, PriceNum, RatingNum } = useParams()
@@ -20,7 +21,7 @@ function ShopSearch() {
     const fetchData = async () => {
         try {
             const authTokens = JSON.parse(localStorage.getItem('authTokens')); // 從 localStorage 中獲取 Access Token
-            const response = await fetch(`http://170.187.229.248:8000/Restaurant-api/Restaurant-List?
+            const response = await fetch(`${BASE_URL}/Restaurant-api/Restaurant-List?
                                             &max_price=${PriceNum}&max_people=${PeopleNum}&max_rating=${RatingNum}`, {
                 method: 'GET',
                 headers: {
@@ -113,7 +114,7 @@ function ShopSearch() {
                         <li className='book_item' key={item.id}>
                             <div className='book_back'>
                                 <div className='book_info'>
-                                    <Link to={`http://170.187.229.248:8000/api/Locate/Shop-Detail/${item.id}`} > {item.Name}</Link>
+                                    <Link to={`${BASE_URL}/api/Locate/Shop-Detail/${item.id}`} > {item.Name}</Link>
                                     <div className='author'>平均價位：{item.Price}</div>
                                     <div className='publisher'>地址：{item.Address}</div>
                                     <div className='publisher'>建議人數：{item.People}</div>
