@@ -38,10 +38,10 @@ class specialView(SpectacularAPIView, SpectacularSwaggerView):
 
 urlpatterns = [
     # path('', Home.as_view(), name='home'),
-    path("api/schema/", SpectacularAPIView.as_view(), name="schema"),
-    path("api/schema/redoc/", SpectacularRedocView.as_view(
+    path("schema/", SpectacularAPIView.as_view(), name="schema"),
+    path("schema/redoc/", SpectacularRedocView.as_view(
         url_name="schema"), name="redoc",),
-    path("apis/", SpectacularSwaggerView.as_view(
+    path("api/", SpectacularSwaggerView.as_view(
         url_name="schema"), name="swagger-ui"),
     path('admin/', admin.site.urls),
     path('dj-rest-auth/', include('dj_rest_auth.urls')),

@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 
 function Shop() {
+    const BASE_URL = "https://junlin5525.dev/"
     const [shop, setShop] = useState([])
     const navigate = useNavigate();
 
@@ -18,7 +19,7 @@ function Shop() {
     const fetchData = async () => {
         try {
             const authTokens = JSON.parse(localStorage.getItem('authTokens')); // 從 localStorage 中獲取 Access Token
-            const response = await fetch('http://170.187.229.248:8000/Restaurant-api/Restaurant-List', {
+            const response = await fetch(`${BASE_URL}/Restaurant-api/Restaurant-List`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

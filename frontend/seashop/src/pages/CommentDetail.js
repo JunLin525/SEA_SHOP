@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import jwt_decode from "jwt-decode";
 
 function CommentDetail() {
+    const BASE_URL = "https://junlin5525.dev/"
     const navigate = useNavigate()
     const { commentID } = useParams()
     const [comment, setComment] = useState({})
@@ -16,7 +17,7 @@ function CommentDetail() {
         let getComment = async () => {
             const authTokens = JSON.parse(localStorage.getItem('authTokens')); // 從 localStorage 中獲取 Access Token
 
-            const response = await fetch(`http://170.187.229.248:8000/Restaurant-api/Restaurant-Comment-Detail/${commentID}/`, {
+            const response = await fetch(`${BASE_URL}/Restaurant-api/Restaurant-Comment-Detail/${commentID}/`, {
 
                 method: 'GET',
                 headers: {
@@ -38,7 +39,7 @@ function CommentDetail() {
 
     const handleDeleteComment = async (commentId) => {
         try {
-            const response = await fetch(`http://170.187.229.248:8000/Restaurant-api/Restaurant-Comment-Detail/${commentID}`, {
+            const response = await fetch(`${BASE_URL}/Restaurant-api/Restaurant-Comment-Detail/${commentID}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': 'Bearer ' + String(authTokens.access)
@@ -73,7 +74,7 @@ function CommentDetail() {
         try {
             const authTokens = JSON.parse(localStorage.getItem('authTokens'));
             console.log(authTokens)
-            const response = await fetch(`http://170.187.229.248:8000/Restaurant-api/Restaurant-Comment-Detail/${commentID}/`, {
+            const response = await fetch(`${BASE_URL}/Restaurant-api/Restaurant-Comment-Detail/${commentID}/`, {
                 method: 'PATCH',
                 headers: {
                     'Authorization': 'Bearer ' + String(authTokens.access)

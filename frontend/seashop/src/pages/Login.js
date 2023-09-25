@@ -42,44 +42,26 @@ const Login = () => {
 
 
     return (
-        <div className='landisng-background'>
+        <div className='landing-background'>
 
             <Header />
 
-            <div>
+            <div className='login-page'>
                 <br />
                 <br />
-                <h3>請在這裡登入</h3>
-                <form onSubmit={loginUser}>
+                <form className='form' onSubmit={loginUser}>
                     <input type="text" name="username" placeholder="Enter Username" />
                     <br />
                     <input type="password" name="password" placeholder="Enter Password" />
-                    <input type="submit" />
+                    <button type="submit" className="login-button" >Login</button>
+                    <p className='message'>沒有帳號?<a href='/Register/'> 註冊會員</a></p>
+                    <br />
+
                 </form>
-                <div className='landing-back' />
+
+                <div />
 
             </div>
-            <br />
-            <br />
-            <p>沒有帳號?</p>
-            <button className='register' onClick={handleRegister}>註冊會員</button>
-            <br />
-            <br />
-            <br />
-
-            <button className='title' onClick={handleControl} >第三方登入使用</button>
-
-            {buttonCtrl && (
-                <ClerkProvider publishableKey={clerkPubKey}>
-                    <SignedIn>
-                        <UserButton />
-                    </SignedIn>
-                    <SignedOut>
-                        <RedirectToSignIn />
-                    </SignedOut>
-                </ClerkProvider>
-            )}
-
             <Footer />
         </div>
     )

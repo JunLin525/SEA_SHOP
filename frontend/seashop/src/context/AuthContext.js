@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 const AuthContext = createContext()
 export default AuthContext;
 
+const BASE_URL = "https://junlin5525.dev/"
 
 export const AuthProvider = ({ children }) => {
     let [authTokens, setAuthTokens] = useState(() => localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')) : null)
@@ -15,7 +16,7 @@ export const AuthProvider = ({ children }) => {
 
     let loginUser = async (e) => {
         e.preventDefault()
-        let response = await fetch('http://170.187.229.248:8000/api-jwt/token/', {
+        let response = await fetch(`${BASE_URL}/api-jwt/token/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -47,7 +48,7 @@ export const AuthProvider = ({ children }) => {
 
     let updateToken = async () => {
         console.log('update token called')
-        let response = await fetch('http://170.187.229.248:8000/api-jwt/token/refresh/', {
+        let response = await fetch(`${BASE_URL}/api-jwt/token/refresh/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
