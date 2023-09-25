@@ -3,10 +3,13 @@
 }
 
 .landing-background {
+  /*
   background: -moz-linear-gradient(-45deg, rgba(109, 179, 242, 1) 50%, rgba(30, 105, 222, 1) 50%);
   background: -webkit-linear-gradient(-45deg, rgba(109, 179, 242, 1) 50%, rgba(30, 105, 222, 1) 50%);
   background: linear-gradient(135deg, rgba(109, 179, 242, 1) 50%, rgba(30, 105, 222, 1) 50%);
-
+*/
+  background: url("https://cdn2.ettoday.net/images/1158/d1158149.jpg");
+  z-index: 0;
 }
 
 
@@ -102,6 +105,22 @@ body {
   border: 1px solid black;
 
 
+}
+
+.body-content {
+  background-color: rgba(252, 250, 250, 0.949);
+  border-radius: .50em;
+  box-shadow: 0 0 .25em rgba(0, 0, 0, .5);
+  box-sizing: border-box;
+  left: 50%;
+  padding: 10vmin;
+  position: fixed;
+  text-align: center;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  width: 100em;
+  height: 20em;
 }
 
 /*
@@ -206,4 +225,36 @@ body {
 .form .message {
   color: #4CAF50;
   text-decoration: none;
+}
+
+.page {
+  width: 400px;
+  height: 400px;
+  padding: 10%;
+  margin: auto;
+}
+
+
+
+/* food style*/
+.header {
+  padding: 30px 30px 0;
+  text-align: center;
+
+  &__title {
+    margin: 0;
+    text-transform: uppercase;
+    font-size: 2.5em;
+    font-weight: 500;
+    line-height: 1.1;
+  }
+
+  &__subtitle {
+    margin: 0;
+    font-size: 1.5em;
+    color: $gray;
+    font-family: 'Yesteryear', cursive;
+    font-weight: 500;
+    line-height: 1.1;
+  }
 }

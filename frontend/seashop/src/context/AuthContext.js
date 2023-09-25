@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 const AuthContext = createContext()
 export default AuthContext;
 
-const BASE_URL = "https://junlin5525.dev/"
+const BASE_URL = "http://127.0.0.1:8001/"
 
 export const AuthProvider = ({ children }) => {
     let [authTokens, setAuthTokens] = useState(() => localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')) : null)
