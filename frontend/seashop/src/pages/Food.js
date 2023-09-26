@@ -33,32 +33,38 @@ function Food() {
 
 
     return (
-        <div className="home-background">
+        <div className="landing-background">
             <Header />
-            <div className="body-content">
-                <div className='food'>
+            <div className="page">
+                <div className='food-content'>
                     <h1 className='food__title'>東南亞美食介紹</h1>
                     <p calssName='food__subtitle'>這是一個分享東南亞聚落地景的頁面，歡迎分享你所知所了解的區域，讓更多喜愛嘗鮮的人們前往。</p>
                 </div>
+                <div className="cards">
                     <ul>
                         {food.map(item => (
-                            <li className='book_item' key={item.pk}>
-                                <div className='book_back'>
-                                    <div className='book_info'>
-                                        <Link to={`${BASE_URL} / api / foodie - Area / Area - Detail / ${item.pk}`} > {item.AreaName}</Link>
-                                        <div className='author'>地址：{item.Address}</div>
-                                        <div classNmae='publisher'>交通方式:{item.PublicTransportation}</div>
-                                        <div className='publisher'>國家：{item.Country}</div>
-                                        <div className='ISBN'>介紹:{item.Introduction}</div>
-                                        <img src={item.Picture} alt="Book Cover" style={{ width: '200px', heigh: '200px' }} />
-                                        <hr />
-
-                                    </div>
-                                </div>
-                            </li>
+                            <div >
+                                <li className='book_item' key={item.pk}>
+                                    <article class="cardd">
+                                        <div className='book_back'>
+                                            <div className='book_info'>
+                                                <img className="card__img" src={item.Picture} alt="Book Cover" style={{ width: '200px', heigh: '200px' }} />
+                                                <Link to={`${BASE_URL} / api / foodie - Area / Area - Detail / ${item.pk}`} className="card_link"> {item.AreaName}</Link>
+                                                <div classNmae="card__info">
+                                                    <div className='author'>地址：{item.Address}</div>
+                                                    <div classNmae='publisher'>交通方式:{item.PublicTransportation}</div>
+                                                    <div className='publisher'>國家：{item.Country}</div>
+                                                    <div className='ISBN'>介紹:{item.Introduction}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </li>
+                            </div>
                         ))}
                     </ul>
                 </div>
+            </div>
 
 
             <Footer />

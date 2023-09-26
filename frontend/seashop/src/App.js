@@ -20,9 +20,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/Food" element={<Food />} />
           <Route path="/About" element={<About />} />
-          <Route element={<PrivateRoute isLogged={true} />}>
-            <Route path="/Shop" element={<Shop />} />
-          </Route>
+          <Route path="/Shop" element={<Shop />} />
           <Route element={<PrivateRoute isLogged={true} />}>
             <Route path="/ShopSearch/Price/:PriceNum/People/:PeopleNum/Rating/:RatingNum" element={<ShopSearch />} />
           </Route>
