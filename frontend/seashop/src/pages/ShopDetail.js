@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import jwt_decode from "jwt-decode";
 
 function ShopDetail() {
-    const BASE_URL = "https://junlin5525.dev/"
+    const BASE_URL = "http://127.0.0.1:8001/"
     const navigate = useNavigate()
     const { shopID, commentID } = useParams()
     const [shop, setShop] = useState({})
@@ -104,71 +104,85 @@ function ShopDetail() {
     return (
         <div className='landing-background'>
             <Header />
-            <div className='content'>
-                <br />
-                <h1>餐廳心得</h1>
-                <h2>{shop.Name}</h2>
-                <img src={shop.Picture} alt="Book Cover" style={{ width: '300px', heigh: '300px' }} />
-                <h4>代表國家：{shop.Country}</h4>
-                <h4>單人價格:{shop.Price}</h4>
-                <h4>整體評分：{shop.Rating}</h4>
-                <h4>建議用餐人數:{shop.People}</h4>
-                <h4>餐廳地址：{shop.Address}</h4>
-                <h4 border="red">餐聽介紹:{shop.Introduction}</h4>
-                <div className='comment-color'>
-                    <h2>留言區</h2>
-                    <ul>
-                        {comments.map((comment, index) => {
-                            if (shop.id === comment.Restaurant) {
-                                return (
-                                    <li key={comment.id}>
-                                        <h4>第{index + 1}則</h4>
-                                        <h4>{comment.RestaurantName}</h4>
-                                        <h4><Link to={`/commentDetail/${comment.id}`}>{comment.Title}</Link></h4>
-                                        <h5>{comment.Body}</h5>
-                                        <hr />
+            <div className='white-mock'>
+                <div className='food-page'>
+                    <div className="cards">
+                        <br />
+                        <br />
+                        <div classNmae='food-content'>
+                            <div className='cards'>
+                                <div className='shop__like'>
+                                    <h1>餐廳評論</h1>
+                                    <h2>{shop.Name}</h2>
+                                    <img src={shop.Picture} alt="Book Cover" style={{ width: '300px', heigh: '300px' }} />
+                                    <h4>代表國家：{shop.Country}</h4>
+                                    <h4>單人價格:{shop.Price}</h4>
+                                    <h4>整體評分：{shop.Rating}</h4>
+                                    <h4>建議用餐人數:{shop.People}</h4>
+                                    <h4>餐廳地址：{shop.Address}</h4>
+                                    <h4 border="red">餐聽介紹:{shop.Introduction}</h4>
+                                </div>
+                            </div>
 
-                                    </li>
-                                )
-                            } else {
-                                return null
-                            }
-                        })}
-                    </ul>
+                            <div className='comment-color'>
+                                <h2>留言區</h2>
+
+                                <ul>
+                                    {comments.map((comment, index) => {
+                                        if (shop.id === comment.Restaurant) {
+                                            return (
+                                                <li key={comment.id}>
+                                                    <h4>第{index + 1}則</h4>
+                                                    <h4>{comment.RestaurantName}</h4>
+                                                    <h4><Link to={`/commentDetail/${comment.id}`}>{comment.Title}</Link></h4>
+                                                    <h5>{comment.Body}</h5>
+                                                    <hr />
+
+                                                </li>
+                                            )
+                                        } else {
+                                            return null
+                                        }
+                                    })}
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="add-comment__like">
+                        <h3>新增留言</h3>
+                        <form onSubmit={handleSubmit}>
+                            <label htmlFor="title">留言標題：</label><br />
+                            <input
+                                type="text"
+                                id="title"
+                                name="title"
+                                placeholder="新增留言標題"
+                            /><br />
+                            <label htmlFor="comments">餐廳評論:</label><br />
+                            <input
+                                type="text"
+                                id="comments"
+                                name="comments"
+                                placeholder="新增餐廳評論"
+                            /><br />
+                            <label htmlFor="rating">餐廳評分：</label><br />
+                            <input
+                                type="number"
+                                id="rating"
+                                name="rating"
+                                min="1"
+                                max="10"
+                            /><br />
+                            <button type="submit">送出</button>
+                        </form>
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                    </div>
                 </div>
-            </div>
-
-            <div className="comment-type">
-                <h3>新增留言</h3>
-                <form onSubmit={handleSubmit}>
-                    <label htmlFor="title">留言標題：</label><br />
-                    <input
-                        type="text"
-                        id="title"
-                        name="title"
-                        placeholder="新增留言標題"
-                    /><br />
-                    <label htmlFor="comments">餐廳評論:</label><br />
-                    <input
-                        type="text"
-                        id="comments"
-                        name="comments"
-                        placeholder="新增餐廳評論"
-                    /><br />
-                    <label htmlFor="rating">餐廳評分：</label><br />
-                    <input
-                        type="number"
-                        id="rating"
-                        name="rating"
-                        min="1"
-                        max="10"
-                    /><br />
-                    <button type="submit">送出</button>
-                </form>
-                <br />
-                <br />
-                <br />
-                <br />
             </div>
             <div className='landing-back' />
             <Footer />

@@ -45,24 +45,25 @@ const Login = () => {
         <div className='landing-background'>
 
             <Header />
-
-            <div className='login-page'>
-                <br />
-                <br />
-                <form className='form' onSubmit={loginUser}>
-                    <input type="text" name="username" placeholder="Enter Username" />
+            <div className='white-mock'>
+                <div className='login-page'>
                     <br />
-                    <input type="password" name="password" placeholder="Enter Password" />
-                    <button type="submit" className="login-button" >Login</button>
-                    <p className='message'>沒有帳號?<a href='/Register/'> 註冊會員</a></p>
                     <br />
+                    <form className='form' onSubmit={loginUser}>
+                        <input type="text" name="username" placeholder="Enter Username" />
+                        <br />
+                        <input type="password" name="password" placeholder="Enter Password" />
+                        <button type="submit" className="login-button" >Login</button>
+                        <p className='message'>沒有帳號?<a href='/Register/'> 註冊會員</a></p>
+                        <br />
 
-                </form>
+                    </form>
 
-                <div />
+                    <div />
 
+                </div>
+                <Footer />
             </div>
-            <Footer />
         </div>
     )
 }

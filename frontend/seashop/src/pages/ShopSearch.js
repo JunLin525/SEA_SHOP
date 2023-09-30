@@ -88,55 +88,59 @@ function ShopSearch() {
 
 
     return (
-        <div className="home-background">
+        <div className="landing-background">
             <Header />
-            <div className="body-content">
-                <h1>東南亞美食商家清單</h1>
-                <p>介紹在台的一些東南亞店家，並介紹特色菜色以利大家交流分享。</p>
-                <h5>用餐人數-
-                    <button onClick={handlePeopletTwo}>兩人(含)</button>
-                    <button onClick={handlePeopleFive}> 五人以下</button>
-                    <button onClick={handlePeopleTen}> 十人以上</button>
-                </h5>
-                <h5>用餐價格-
-                    <button onClick={handlePriceTwoFifty}>250以下</button>
-                    <button onClick={handlePriceFiveHundred}> 500以下</button>
-                    <button onClick={handlePriceOneThousand}> 1000以下</button>
-                </h5>
-                <h5>餐廳評價-
-                    <button onClick={handleRatingThree}>三分以下</button>
-                    <button onClick={handleRatingFive}> 五分以下</button>
-                    <button onClick={handleRatingEight}> 八分以下</button>
-                    <button onClick={handleRatingTen}> 十分以下</button>
-                </h5>
-                <ul>
-                    {shop.map(item => (
-                        <li className='book_item' key={item.id}>
-                            <div className='book_back'>
-                                <div className='book_info'>
-                                    <Link to={`${BASE_URL}/api/Locate/Shop-Detail/${item.id}`} > {item.Name}</Link>
-                                    <div className='author'>平均價位：{item.Price}</div>
-                                    <div className='publisher'>地址：{item.Address}</div>
-                                    <div className='publisher'>建議人數：{item.People}</div>
-                                    <div className='publisher'>代表國家：{item.Country}</div>
-                                    <div className='publisher'>評分：{item.Rating}</div>
-                                    <div className='ISBN'>介紹:{item.Introduction}</div>
-                                    <img src={item.Picture} alt="Book Cover" style={{ width: '200px', heigh: '200px' }} />
-                                    <hr />
+            <div className='white-mock'>
+                <div className='food-page'>
+                    <div className="food-content">
+                        <h1>東南亞美食商家清單</h1>
+                        <p>介紹在台的一些東南亞店家，並介紹特色菜色以利大家交流分享。</p>
+                        <h5>用餐人數-
+                            <button onClick={handlePeopletTwo}>兩人(含)</button>
+                            <button onClick={handlePeopleFive}> 五人以下</button>
+                            <button onClick={handlePeopleTen}> 十人以上</button>
+                        </h5>
+                        <h5>用餐價格-
+                            <button onClick={handlePriceTwoFifty}>250以下</button>
+                            <button onClick={handlePriceFiveHundred}> 500以下</button>
+                            <button onClick={handlePriceOneThousand}> 1000以下</button>
+                        </h5>
+                        <h5>餐廳評價-
+                            <button onClick={handleRatingThree}>三分以下</button>
+                            <button onClick={handleRatingFive}> 五分以下</button>
+                            <button onClick={handleRatingEight}> 八分以下</button>
+                            <button onClick={handleRatingTen}> 十分以下</button>
+                        </h5>
+                        <ul>
+                            {shop.map(item => (
+                                <li className='book_item' key={item.id}>
+                                    <div className='book_back'>
+                                        <div className='book_info'>
+                                            <Link to={`${BASE_URL}/api/Locate/Shop-Detail/${item.id}`} > {item.Name}</Link>
+                                            <div className='author'>平均價位：{item.Price}</div>
+                                            <div className='publisher'>地址：{item.Address}</div>
+                                            <div className='publisher'>建議人數：{item.People}</div>
+                                            <div className='publisher'>代表國家：{item.Country}</div>
+                                            <div className='publisher'>評分：{item.Rating}</div>
+                                            <div className='ISBN'>介紹:{item.Introduction}</div>
+                                            <img src={item.Picture} alt="Book Cover" style={{ width: '200px', heigh: '200px' }} />
+                                            <hr />
 
-                                </div>
-                            </div>
-                        </li>
-                    ))}
-                </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                </div>
+                <div className='landing-back'>
+
+
+
+
+                </div>
+                <Footer />
             </div>
-            <div className='landing-back'>
-
-
-
-
-            </div>
-            <Footer />
         </div>
     )
 }
