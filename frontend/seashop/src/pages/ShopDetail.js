@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import jwt_decode from "jwt-decode";
 
 function ShopDetail() {
-    const BASE_URL = "http://127.0.0.1:8001/"
+    const BASE_URL = "https://junlin5525.dev/api"
     const navigate = useNavigate()
     const { shopID, commentID } = useParams()
     const [shop, setShop] = useState({})
@@ -132,7 +132,6 @@ function ShopDetail() {
                                         if (shop.id === comment.Restaurant) {
                                             return (
                                                 <li key={comment.id}>
-                                                    <h4>第{index + 1}則</h4>
                                                     <h4>{comment.RestaurantName}</h4>
                                                     <h4><Link to={`/commentDetail/${comment.id}`}>{comment.Title}</Link></h4>
                                                     <h5>{comment.Body}</h5>
@@ -177,9 +176,6 @@ function ShopDetail() {
                             /><br />
                             <button type="submit">送出</button>
                         </form>
-                        <br />
-                        <br />
-                        <br />
                         <br />
                     </div>
                 </div>

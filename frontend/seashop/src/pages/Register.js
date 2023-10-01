@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 function Register() {
     const navigate = useNavigate();
-    const BASE_URL = "https://junlin5525.dev/"
+    const BASE_URL = "https://junlin5525.dev/api"
 
 
     const handleSubmit = async (e) => {
@@ -29,7 +29,7 @@ function Register() {
         }
 
         else {
-            alert('sometghing went wrong!')
+            alert('success submit!')
             console.log(response.status)
             console.log(response)
         }
@@ -38,29 +38,33 @@ function Register() {
     return (
         <div className="landing-background">
             <Header />
-            <div className='login-page'>
-                <div style={{ fontSize: '24px' }} className="body-content">
+            <div className='white-mock'>
+                <div className='page'>
+                    <br /><br /><br /><br />
+                    <div style={{ fontSize: '18px' }} className="content">
 
-                    <form className='form' onSubmit={handleSubmit}>
+                        <form className='form-re' onSubmit={handleSubmit}>
 
-                        請填入您的資料來註冊會員
-                        <label style={{ fontSize: '28px' }} htmlFor="username">Username:  </label>
-                        <input type="text" id="username" name="username" /><br />
-                        <label style={{ fontSize: '28px' }} htmlFor="email">E-mail:   </label>
-                        <input type="email" id="email" name="email" /><br />
-                        <label style={{ fontSize: '28px' }} htmlFor="password1">Password:   </label>
-                        <input type="password" id="password1" name="password1" /><br />
-                        <label style={{ fontSize: '28px' }} htmlFor="password2">Password Again:   </label>
-                        <input type="password" id="password2" name="password2" /><br />
-                        <button style={{ fontSize: '24px' }} type="submit">送出表單</button>
-
-
+                            請填入您的資料來註冊會員:<br />
+                            <label style={{ fontSize: '14px' }} htmlFor="username">Username:  </label>
+                            <input type="text" id="username" name="username" /><br />
+                            <label style={{ fontSize: '14px' }} htmlFor="email">E-mail:   </label>
+                            <input type="email" id="email" name="email" /><br />
+                            <label style={{ fontSize: '14px' }} htmlFor="password1">Password:   </label>
+                            <input type="password" id="password1" name="password1" /><br />
+                            <label style={{ fontSize: '14px' }} htmlFor="password2">Password Again:   </label>
+                            <input type="password" id="password2" name="password2" /><br />
+                            <button style={{ fontSize: '16px' }} type="submit">送出表單</button>
 
 
-                    </form>
-                </div>
-                <Footer />
-            </div >
+
+
+                        </form>
+
+                    </div>
+                    <Footer />
+                </div >
+            </div>
         </div>
     )
 }

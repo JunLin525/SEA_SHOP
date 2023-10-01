@@ -46,7 +46,7 @@ const Login = () => {
 
             <Header />
             <div className='white-mock'>
-                <div className='login-page'>
+                <div className='page'>
                     <br />
                     <br />
                     <form className='form' onSubmit={loginUser}>
@@ -54,7 +54,7 @@ const Login = () => {
                         <br />
                         <input type="password" name="password" placeholder="Enter Password" />
                         <button type="submit" className="login-button" >Login</button>
-                        <p className='message'>沒有帳號?<a href='/Register/'> 註冊會員</a></p>
+                        <p className='message'>沒有帳號?<a className='footer-text' href='/Register/'>  註冊會員</a></p>
                         <br />
 
                     </form>

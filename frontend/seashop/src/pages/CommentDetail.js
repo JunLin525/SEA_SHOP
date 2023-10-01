@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import jwt_decode from "jwt-decode";
 
 function CommentDetail() {
-    const BASE_URL = "https://junlin5525.dev/"
+    const BASE_URL = "https://junlin5525.dev/api"
     const navigate = useNavigate()
     const { commentID } = useParams()
     const [comment, setComment] = useState({})
@@ -39,7 +39,7 @@ function CommentDetail() {
 
     const handleDeleteComment = async (commentId) => {
         try {
-            const response = await fetch(`${BASE_URL}/Restaurant-api/Restaurant-Comment-Detail/${commentID}`, {
+            const response = await fetch(`${BASE_URL}/Restaurant-api/Restaurant-Comment-Detail/${commentID}/`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': 'Bearer ' + String(authTokens.access)
@@ -96,53 +96,58 @@ function CommentDetail() {
     return (
         <div className='landing-background'>
             <Header />
-            <div className='content'>
-                <br />
-                <h1>留言</h1>
-                <h2>{comment.RestaurantName}</h2>
-                <h4>留言者：{comment.user_pk}</h4>
-                <h4>整體評分：{comment.Rating}</h4>
-                <h4>留言主旨：{comment.Title}</h4>
-                <h4>留言內容：{comment.Body}</h4>
+            <div className='white-mock'>
+                <div className='message-page'>
+                    <div className='cards'>
+                        <div className='message-content'>
+                            <br />
+                            <h1>留言</h1>
+                            <h2>{comment.RestaurantName}</h2>
+                            <h4>留言者：{comment.user_pk}</h4>
+                            <h4>整體評分：{comment.Rating}</h4>
+                            <h4>留言主旨：{comment.Title}</h4>
+                            <h4>留言內容：{comment.Body}</h4>
 
-                <button className='DeleteComment' onClick={() => handleDeleteComment(commentID)}>刪除留言</button>
+                            <button className='DeleteComment' onClick={() => handleDeleteComment(commentID)}>刪除留言</button>
 
-                <div className="comment-type">
-                    <h3>更改留言</h3>
-                    <form onSubmit={handlePutComment}>
-                        <label htmlFor="rating">整體評分：</label><br />
-                        <input
-                            type="number"
-                            id="rating"
-                            name="rating"
-                            min="1"
-                            max="10"
-                        /><br />
-                        <label htmlFor="title">留言主旨：</label><br />
-                        <input
-                            type="text"
-                            id="title"
-                            name="title"
-                            placeholder="新增留言標題"
-                        /><br />
-                        <label htmlFor="comments">留言內容:</label><br />
-                        <input
-                            type="text"
-                            id="comments"
-                            name="comments"
-                            placeholder="新增餐廳評論"
-                        /><br />
+                            <div className="cads">
+                                <h3>更改留言</h3>
+                                <form onSubmit={handlePutComment}>
 
-                        <button className='AddComment' >編輯留言</button>
-                    </form>
-                    <br />
-                    <br />
-                    <br />
-                    <br />
+                                    <label htmlFor="rating">整體評分：</label><br />
+                                    <input
+                                        type="number"
+                                        id="rating"
+                                        name="rating"
+                                        min="1"
+                                        max="10"
+                                    /><br />
+                                    <label htmlFor="title">留言主旨：</label><br />
+                                    <input
+                                        type="text"
+                                        id="title"
+                                        name="title"
+                                        placeholder="新增留言標題"
+                                    /><br />
+                                    <label htmlFor="comments">留言內容:</label><br />
+                                    <input
+                                        type="text"
+                                        id="comments"
+                                        name="comments"
+                                        placeholder="新增餐廳評論"
+                                    /><br />
+
+                                    <button className='AddComment' >編輯留言</button>
+                                </form>
+
+                            </div>
+
+
+                        </div>
+                    </div>
                 </div>
-
-
             </div>
+            <Footer />
         </div>
 
     )

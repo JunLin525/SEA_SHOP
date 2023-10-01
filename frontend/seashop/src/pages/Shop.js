@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 
 function Shop() {
-    const BASE_URL = "http://127.0.0.1:8001/"
+    const BASE_URL = "https://junlin5525.dev/api"
     const [shop, setShop] = useState([])
     const navigate = useNavigate();
 
@@ -51,6 +51,7 @@ function Shop() {
                         <h4 calssName='food__subtitle'><button onClick={handleSearch}>進階搜索</button></h4>
                         <p>介紹在台的一些東南亞店家，並介紹特色菜色以利大家交流分享。</p>
                     </div>
+
                     <div className="cards">
                         <ul>
                             {shop.map(item => (
@@ -69,15 +70,21 @@ function Shop() {
                                                     <div className='publisher'>評分：{item.Rating}</div>
                                                     <div className='publisher'>介紹:{item.Introduction}</div>
                                                 </div>
-                                                <hr />
+
 
                                             </div>
                                         </div>
                                     </article>
+                                    <div className='card-space'>
+
+                                    </div>
                                 </li>
                             ))}
                         </ul>
+
                     </div>
+                    <button >新增貼文</button>
+
                 </div>
                 <div className='landing-back'>
 

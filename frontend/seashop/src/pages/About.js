@@ -2,13 +2,14 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 function About() {
     return (
+
         <div className="landing-background">
             <Header />
             <div className='white-mock'>
                 <div className="page">
                     <div className="body-content">
                         <h1>東南亞美食搜查</h1>
-                        <p>網站簡述:
+                        <p>網站簡述:<br />
                             主要使想建立一個可以讓使用者
                             找尋一些東南亞的據點跟店家，並作為<br />
                             一個小的分享平台讓使用者可以相互交流據點資訊跟特色店家資料。<br />
@@ -22,6 +23,7 @@ function About() {
                 <Footer />
             </div>
         </div >
+
     )
 }
 

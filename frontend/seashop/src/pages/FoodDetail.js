@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import jwt_decode from "jwt-decode";
 
 function FoodList() {
-    const BASE_URL = "http://127.0.0.1:8001/"
+    const BASE_URL = "https://junlin5525.dev/api"
     const navigate = useNavigate()
     const { foodID } = useParams()
     const [food, setFood] = useState([])

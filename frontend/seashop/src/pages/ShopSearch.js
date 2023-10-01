@@ -5,7 +5,7 @@ import { Link, useParams, useNavigate } from 'react-router-dom';
 
 
 function ShopSearch() {
-    const BASE_URL = "https://junlin5525.dev/"
+    const BASE_URL = "https://junlin5525.dev/api"
     const navigate = useNavigate();
     const [shop, setShop] = useState([])
     const { PeopleNum, PriceNum, RatingNum } = useParams()
@@ -21,8 +21,7 @@ function ShopSearch() {
     const fetchData = async () => {
         try {
             const authTokens = JSON.parse(localStorage.getItem('authTokens')); // 從 localStorage 中獲取 Access Token
-            const response = await fetch(`${BASE_URL}/Restaurant-api/Restaurant-List?
-                                            &max_price=${PriceNum}&max_people=${PeopleNum}&max_rating=${RatingNum}`, {
+            const response = await fetch(`${BASE_URL}/Restaurant-api/Restaurant-List?&max_price=${PriceNum}&max_people=${PeopleNum}&max_rating=${RatingNum}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

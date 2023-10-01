@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 function Food() {
-    const BASE_URL = "http://127.0.0.1:8001/"
+    const BASE_URL = "https://junlin5525.dev/api"
     const [food, setFood] = useState([])
     useEffect(() => {
         fetchData();
@@ -59,12 +59,15 @@ function Food() {
                                                         <div className='author'>地址：{item.Address}</div>
                                                         <div classNmae='publisher'>交通方式:{item.PublicTransportation}</div>
                                                         <div className='publisher'>國家：{item.Country}</div>
-                                                        <div className='ISBN'>介紹:{item.Introduction}</div>
+                                                        <div className='ISBN'>介紹：{item.Introduction}</div>
                                                         <br />
                                                     </div>
                                                 </div>
                                             </div>
                                         </article>
+                                        <div className='card-space'>
+
+                                        </div>
                                     </li>
                                 </div>
                             ))}
