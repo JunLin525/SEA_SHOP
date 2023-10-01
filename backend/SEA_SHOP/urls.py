@@ -44,14 +44,14 @@ urlpatterns = [
     path("api/", SpectacularSwaggerView.as_view(
         url_name="schema"), name="swagger-ui"),
     path('admin/', admin.site.urls),
-    path('dj-rest-auth/', include('dj_rest_auth.urls')),
-    path('dj-rest-auth/registration/', include('dj_rest_auth.registration.urls')),
-    path('dj-rest-auth/facebook/', FacebookLogin.as_view(), name='fb_login'),
+    path('api/dj-rest-auth/', include('dj_rest_auth.urls')),
+    path('api/dj-rest-auth/registration/', include('dj_rest_auth.registration.urls')),
+    path('api/dj-rest-auth/facebook/', FacebookLogin.as_view(), name='fb_login'),
     path('dj-rest-auth/google/', GoogleLogin.as_view(), name='google_login'),
-    path('api-jwt/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api-jwt/token/refresh/', TokenRefreshView.as_view()),
-    path('Restaurant-api/', include('Restaurant.urls')),
-    path('Settlement-api/', include('SouthEastAsiaCommunityAtTaiwan.urls')),
+    path('api/api-jwt/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/api-jwt/token/refresh/', TokenRefreshView.as_view()),
+    path('api/Restaurant-api/', include('Restaurant.urls')),
+    path('api/Settlement-api/', include('SouthEastAsiaCommunityAtTaiwan.urls')),
 ] + static(
     settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
 )
