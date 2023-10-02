@@ -2,21 +2,26 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import React, { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 
 function ShopSearch() {
     const BASE_URL = "https://junlin5525.dev/api"
     const navigate = useNavigate();
     const [shop, setShop] = useState([])
-    const { PeopleNum, PriceNum, RatingNum } = useParams()
-
+    /*const { PeopleNum, PriceNum, RatingNum } = useParams()*/
+    const location = useLocation();
+    const searchParams = new URLSearchParams(location.search);
+    const PriceNum = searchParams.get('Price');
+    const PeopleNum = searchParams.get('People');
+    const RatingNum = searchParams.get('Rating');
 
 
 
 
     useEffect(() => {
         fetchData();
-    }, [])
+    }, [PriceNum, PeopleNum, RatingNum])
 
     const fetchData = async () => {
         try {

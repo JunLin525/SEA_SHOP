@@ -46,7 +46,7 @@ const Login = () => {
 
             <Header />
             <div className='white-mock'>
-                <div className='page'>
+                <div className='login-page'>
                     <br />
                     <br />
                     <form className='form' onSubmit={loginUser}>

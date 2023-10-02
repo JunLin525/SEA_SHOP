@@ -25,7 +25,7 @@ function App() {
             <Route path="/ShopSearch/Price/:PriceNum/People/:PeopleNum/Rating/:RatingNum" element={<ShopSearch />} />
           </Route>
           <Route element={<PrivateRoute isLogged={true} />}>
-            <Route path="/ShopSearch_?filter_Price=:PriceNum&filter_People=:PeopleNum&filterRating=:RatingNum" element={<ShopSearch />} />
+            <Route path="/filter" element={<ShopSearch />} />
           </Route>
           <Route element={<PrivateRoute isLogged={true} />}>
             <Route path="/ShopSearch?filter_People=:PeopleNum" element={<ShopSearch />} />

@@ -58,9 +58,9 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'allauth.socialaccount.providers.facebook',
-    'allauth.socialaccount.providers.twitter',
-    'allauth.socialaccount.providers.google',
+    # 'allauth.socialaccount.providers.facebook',
+    # 'allauth.socialaccount.providers.twitter',
+    # 'allauth.socialaccount.providers.google',
 
 
     # django auth
@@ -92,11 +92,18 @@ CORS_ALLOWED_ORIGINS = (
     "http://170.187.229.248",
     "http://170.187.229.248:8000",
     "http://localhost:3001",
+    "https://sea-shop.vercel.app",
+    "https://junlin5525.dev",
+    "http://junlin5525.dev"
 
 )
 
 CSRF_TRUSTED_ORIGINS = ["http://localhost:3000",
-                        "http://192.168.56.1:3000/", "https://sea-shop.vercel.app/login/", "http://170.187.229.248/", "http://170.187.229.248:8000", "http://localhost:3001",]
+                        "http://192.168.56.1:3000/", 
+                        "https://sea-shop.vercel.app/", "http://170.187.229.248/", 
+                        "https://junlin5525.dev/","https://junlin5525.dev"
+                        "http://junlin5525.dev","http://junlin5525.dev/"
+ ]
 
 TEMPLATES = [
     {
@@ -116,6 +123,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'SEA_SHOP.wsgi.application'
 
+### Email backend
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
@@ -175,7 +185,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-MEDIA_URL = "/api/"
+MEDIA_URL = "https://junlin5525.dev/api/"
 MEDIA_ROOT = BASE_DIR / "media"
 
 
@@ -246,7 +256,8 @@ SPECTACULAR_SETTINGS = {
     # 'SWAGGER_UI_DIST': 'SIDECAR',  # shorthand to use the sidecar instead
     # 'SWAGGER_UI_FAVICON_HREF': 'SIDECAR',
     # 'REDOC_DIST': 'SIDECAR',
-    "VERSION" : "3.0",
+    # "VERSION" : "3.0",
+    'swagger': '2.0',
     "TITLE": "Website API View",
     "DESCRIPTION": "A Simple website to learn about DRF",
 
@@ -254,3 +265,7 @@ SPECTACULAR_SETTINGS = {
     
     # OTHER SETTINGS
 }
+
+
+USE_X_FORWARDED_HOST = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')

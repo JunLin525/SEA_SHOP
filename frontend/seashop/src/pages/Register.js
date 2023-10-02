@@ -1,14 +1,20 @@
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 function Register() {
     const navigate = useNavigate();
     const BASE_URL = "https://junlin5525.dev/api"
-
+    const [isSubmitting, setIsSubmitting] = useState(false)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        if (isSubmitting) {
+            return;
+        }
+        setIsSubmitting(true)
+
         let response = await fetch(`${BASE_URL}/dj-rest-auth/registration/`, {
             method: 'POST',
             headers: {
@@ -23,23 +29,43 @@ function Register() {
                 'password2': e.target.password2.value
             })
         })
-        if (response.status === 200) {
-            alert('Submit success.')
-            navigate('/')
-        }
 
-        else {
-            alert('success submit!')
-            console.log(response.status)
-            console.log(response)
-        }
+        try {
+                if (response.status === 200) {
+                    alert('Submit success.')
+                    navigate('/login')
+                }
+
+                else if (response.status === 204) {
+                    alert('帳號創立成功，請進行登入。')
+                    navigate('/login')
+                }
+
+                else if (response.status === 400) {
+                    const jsonData = await response.json();
+                    alert(JSON.stringify(jsonData));
+                    window.location.reload();
+                }
+
+                else {
+                    alert('不明錯誤，請告知管理員')
+                    window.location.reload();
+
+                }
+            }catch (error) {
+                // JSON解析錯誤
+                console.error('Error parsing JSON:', error);
+            }
+
     }
+
+
 
     return (
         <div className="landing-background">
             <Header />
             <div className='white-mock'>
-                <div className='page'>
+                <div className='login-page'>
                     <br /><br /><br /><br />
                     <div style={{ fontSize: '18px' }} className="content">
 
@@ -54,7 +80,7 @@ function Register() {
                             <input type="password" id="password1" name="password1" /><br />
                             <label style={{ fontSize: '14px' }} htmlFor="password2">Password Again:   </label>
                             <input type="password" id="password2" name="password2" /><br />
-                            <button style={{ fontSize: '16px' }} type="submit">送出表單</button>
+                            <button style={{ fontSize: '16px' }} type="submit" disabled={isSubmitting}>送出表單</button>
 
 
 
