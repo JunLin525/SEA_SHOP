@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'whitenoise',
+    "whitenoise.runserver_nostatic",
     'django.contrib.staticfiles',
     # Third Party
     'rest_framework',
@@ -77,6 +79,7 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',  # Cors headers
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -179,14 +182,16 @@ SESSION_COOKIE_SECURE = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
 
+STATIC_URL = "/static/"
+STATICFILES_DIRS = [BASE_DIR / "static"] 
+STATIC_ROOT = BASE_DIR / "staticfiles"  
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-MEDIA_URL = "https://junlin5525.dev/api/"
-MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_URL = 'media/'  
+MEDIA_ROOT = BASE_DIR /'media'
 
 
 # RESTFUL FRAMEWORK
@@ -203,6 +208,11 @@ REST_FRAMEWORK = {
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
 
+    # #version
+    # 'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.AcceptHeaderVersioning',
+    # 'DEFAULT_VERSION': '3.1.0',
+    # 'ALLOWED_VERSIONS': None,
+    # 'VERSION_PARAM': 'version',
 
 }
 
@@ -235,7 +245,7 @@ SIMPLE_JWT = {
     "JTI_CLAIM": "jti",
 
     "SLIDING_TOKEN_REFRESH_EXP_CLAIM": "refresh_exp",
-    "SLIDING_TOKEN_LIFETIME": timedelta(minutes=5),
+    "SLIDING_TOKEN_LIFETIME": timedelta(minutes=10),
     "SLIDING_TOKEN_REFRESH_LIFETIME": timedelta(days=1),
 
     "TOKEN_OBTAIN_SERIALIZER": "rest_framework_simplejwt.serializers.TokenObtainPairSerializer",
@@ -257,7 +267,7 @@ SPECTACULAR_SETTINGS = {
     # 'SWAGGER_UI_FAVICON_HREF': 'SIDECAR',
     # 'REDOC_DIST': 'SIDECAR',
     # "VERSION" : "3.0",
-    'swagger': '2.0',
+    'openapi': '3.1.0',
     "TITLE": "Website API View",
     "DESCRIPTION": "A Simple website to learn about DRF",
 
@@ -267,5 +277,5 @@ SPECTACULAR_SETTINGS = {
 }
 
 
-USE_X_FORWARDED_HOST = True
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+# USE_X_FORWARDED_HOST = True
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
