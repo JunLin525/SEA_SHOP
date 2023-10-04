@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import '../App.css';
 import { useNavigate } from 'react-router-dom';
 import Authcontext from '../context/AuthContext';
@@ -7,6 +7,32 @@ import Authcontext from '../context/AuthContext';
 function Header() {
     let { user, logoutUser } = useContext(Authcontext)
     const navigate = useNavigate();
+    const [userData, setUserData] = useState([])
+
+    const BASE_URL = "https://junlin5525.dev/api"
+
+    useEffect(() => {
+        fetchUserName();
+    }, [])
+
+    const fetchUserName = async () => {
+        const authTokens = JSON.parse(localStorage.getItem('authTokens')); // 從 localStorage 中獲取 Access Token
+        const response = await fetch(`${BASE_URL}/dj-rest-auth/user/`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                //'Authorization': 'Bearer' + String(accessToken)
+                'Authorization': 'Bearer ' + String(authTokens.access)
+
+            },
+        })
+        const jsonData = await response.json()
+        console.log(jsonData);
+        setUserData(jsonData)
+    }
+
+
+
     const handleClickHome = () => {
         navigate('/');
     };
@@ -26,6 +52,7 @@ function Header() {
         navigate('/login')
     }
 
+
     return (
         <div className='header'>
             <button className='title' onClick={handleClickHome}>首頁在這</button>
@@ -36,8 +63,7 @@ function Header() {
                 <button className='title' onClick={logoutUser}>登出再見</button>
             ) : (<button className='title' onClick={handleClickLogin}>登入頁面</button>
             )}
-
-            {user && <p>Hello {user.username}</p>}
+            {user && <p>Hello {userData.username}</p>}
 
 
 
