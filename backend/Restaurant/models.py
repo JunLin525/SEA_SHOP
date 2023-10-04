@@ -5,7 +5,8 @@ from Custom_User.models import CustomUser
 
 
 class Restaurants(models.Model):
-
+    user_pk = models.ForeignKey(CustomUser,  null=True, blank=True,
+                                on_delete=models.CASCADE)
     Name = models.CharField(max_length=120)
     Country = models.CharField(max_length=50)
     Price = models.IntegerField(
