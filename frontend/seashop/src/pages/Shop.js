@@ -9,7 +9,11 @@ function Shop() {
     const navigate = useNavigate();
 
     const handleSearch = () => {
-        navigate('/ShopSearch/Price/5000/People/5000/Rating/5000');
+        navigate('/Shop/filter?Price=&People=&Rating=&Contain=');
+    }
+
+    const handleaddpost = () => {
+        navigate('/Shop/add')
     }
 
     useEffect(() => {
@@ -51,8 +55,11 @@ function Shop() {
                         <h4 calssName='food__subtitle'><button onClick={handleSearch}>進階搜索</button></h4>
                         <p>介紹在台的一些東南亞店家，並介紹特色菜色以利大家交流分享。</p>
                     </div>
-
-                    <div className="cards">
+                    <button className='addpost' onClick={handleaddpost}>新增貼文</button>
+                    <br />
+                    <br />
+                    <br />
+                    <div className="cards-food">
                         <ul>
                             {shop.map(item => (
                                 <li className='book_item' key={item.id}>
@@ -63,6 +70,7 @@ function Shop() {
                                                 <br />
                                                 <Link to={`/Shop-Detail/${item.id}`} > {item.Name}</Link>
                                                 <div className="card__info">
+                                                    <div className='publisher'>貼文者：{item.userName}</div>
                                                     <div className='publisher'>平均價位：{item.Price}</div>
                                                     <div className='publisher'>建議人數：{item.People}</div>
                                                     <div className='publisher'>地址：{item.Address}</div>
@@ -83,7 +91,7 @@ function Shop() {
                         </ul>
 
                     </div>
-                    <button >新增貼文</button>
+
 
                 </div>
                 <div className='landing-back'>

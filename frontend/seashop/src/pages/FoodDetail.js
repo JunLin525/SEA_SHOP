@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import jwt_decode from "jwt-decode";
 
-function FoodList() {
+function FoodDetail() {
     const BASE_URL = "https://junlin5525.dev/api"
     const navigate = useNavigate()
     const { foodID } = useParams()
@@ -62,4 +62,4 @@ function FoodList() {
     )
 }
 
-export default FoodList;
+export default FoodDetail;

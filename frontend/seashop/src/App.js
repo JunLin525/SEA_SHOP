@@ -11,7 +11,9 @@ import Login from './pages/Login';
 import ShopDetail from './pages/ShopDetail';
 import Register from './pages/Register';
 import CommentDetail from './pages/CommentDetail';
-
+import ShopUpdate from './pages/ShopUpdate'
+import ShopEdit from './pages/ShopEdit';
+import FoodDetail from './pages/FoodDetail';
 function App() {
   return (
     <Router>
@@ -21,17 +23,15 @@ function App() {
           <Route path="/Food" element={<Food />} />
           <Route path="/About" element={<About />} />
           <Route path="/Shop" element={<Shop />} />
+          <Route path="/Food-Detail/:foodID" element={<FoodDetail />} />
           <Route element={<PrivateRoute isLogged={true} />}>
-            <Route path="/ShopSearch/Price/:PriceNum/People/:PeopleNum/Rating/:RatingNum" element={<ShopSearch />} />
+            <Route path="/Shop/add" element={<ShopUpdate />} />
           </Route>
           <Route element={<PrivateRoute isLogged={true} />}>
-            <Route path="/filter" element={<ShopSearch />} />
+            <Route path="/Shop/edit/:shopID" element={<ShopEdit />} />
           </Route>
           <Route element={<PrivateRoute isLogged={true} />}>
-            <Route path="/ShopSearch?filter_People=:PeopleNum" element={<ShopSearch />} />
-          </Route>
-          <Route element={<PrivateRoute isLogged={true} />}>
-            <Route path="/ShopSearch?filterRating=:RatingNum" element={<ShopSearch />} />
+            <Route path="Shop/filter" element={<ShopSearch />} />
           </Route>
           <Route element={<PrivateRoute isLogged={true} />}>
             <Route path="/Shop-Detail/:shopID" element={<ShopDetail />} />

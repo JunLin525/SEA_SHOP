@@ -54,7 +54,7 @@ function Food() {
                                                 <div className='book_info'>
                                                     <img className="card__img" src={item.Picture} alt="Book Cover" style={{ width: '200px', heigh: '200px' }} />
                                                     <br />
-                                                    <Link to={`/api/foodie-Area/Area-Detail/${item.pk}`} className="card_link"> {item.AreaName}</Link>
+                                                    <Link to={`/Food-detail/${item.pk}`} className="card_link"> {item.AreaName}</Link>
                                                     <div className="card__info">
                                                         <div className='author'>地址：{item.Address}</div>
                                                         <div classNmae='publisher'>交通方式:{item.PublicTransportation}</div>

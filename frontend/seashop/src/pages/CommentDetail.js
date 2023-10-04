@@ -51,7 +51,7 @@ function CommentDetail() {
                 Navigate('/')
                 // 刷新评论列表或执行其他操作
             } else {
-                alert('Failed to delete comment');
+                alert('若不是Po文者或管理員是不能刪除留言貼文的歐');
             }
         } catch (error) {
             console.error('Error deleting comment:', error);
@@ -84,10 +84,11 @@ function CommentDetail() {
 
             if (response.ok) {
                 alert('Comment Edit successfully');
-                Navigate('/')
+                window.location.reload();
+
                 // 刷新评论列表或执行其他操作
             } else {
-                alert('Failed to Edit comment');
+                alert('若不是PO文者或是管理員是不能變更貼文的歐');
             }
         } catch (error) {
             console.error('Error Edit comment:', error);

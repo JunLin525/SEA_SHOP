@@ -65,7 +65,7 @@ function ShopDetail() {
             console.log('hanle chcange', book)
         }
     */
-
+    /*新增留言的function*/
     const handleSubmit = async (e) => {
         e.preventDefault()
         const authTokens = JSON.parse(localStorage.getItem('authTokens')); // 從 localStorage 中獲取 Access Token
@@ -96,9 +96,31 @@ function ShopDetail() {
             console.error('Error sending comment:', error);
         }
     };
-
+    //跳轉edit
+    const handleEdit = () => {
+        navigate(`/Shop/edit/${shopID}/`)
+    }
     // 刪除功能
+    const handleDelete = async (e) => {
+        try {
+            const response = await fetch(`${BASE_URL}/Restaurant-api/Restaurant-Detail/${shopID}/`, {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': 'Bearer ' + String(authTokens.access)
+                },
+            });
 
+            if (response.ok) {
+                alert('Comment deleted successfully');
+                navigate('/Shop/')
+                // 刷新评论列表或执行其他操作
+            } else {
+                alert('若不是Po文者或管理員是不能刪除留言貼文的歐');
+            }
+        } catch (error) {
+            console.error('Error deleting comment:', error);
+        }
+    }
 
 
     return (
@@ -121,7 +143,11 @@ function ShopDetail() {
                                     <h4>建議用餐人數:{shop.People}</h4>
                                     <h4>餐廳地址：{shop.Address}</h4>
                                     <h4 border="red">餐聽介紹:{shop.Introduction}</h4>
+                                    <button onClick={handleEdit} className='edit-button'>編輯</button>
+                                    <button onClick={handleDelete} className='delete-button'>刪除</button>
                                 </div>
+
+
                             </div>
 
                             <div className='comment-color'>
@@ -173,8 +199,8 @@ function ShopDetail() {
                                 name="rating"
                                 min="1"
                                 max="10"
-                            /><br />
-                            <button type="submit">送出</button>
+                            /><br /><br />
+                            <button className='submit' type="submit">送出</button>
                         </form>
                         <br />
                     </div>
