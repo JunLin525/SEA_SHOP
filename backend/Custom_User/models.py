@@ -5,6 +5,7 @@ from django.contrib.auth.models import AbstractUser
 class CustomUser(AbstractUser):
     natioality = models.CharField(max_length=255, null=True, blank=True)
     User_name = models.CharField(max_length=255, null=True, blank=True)
+    username= models.CharField(max_length=255, unique=True,null=True, blank=True)
     cell_phone = models.CharField(max_length=255, null=True, blank=True)
     gender = models.CharField(max_length=255, null=True, blank=True)
     company = models.CharField(max_length=255, null=True, blank=True)
