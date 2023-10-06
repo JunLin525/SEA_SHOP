@@ -151,15 +151,18 @@ function ShopSearch() {
                                 <li className='ㄑbook_item' key={item.id}>
                                     <div className='cardd'>
                                         <div className='card__like'>
-                                            <img src={item.Picture} alt="Book Cover" style={{ width: '200px', heigh: '200px' }} />
+                                            <img className='card__img' src={item.Picture} alt="Book Cover" style={{ width: '200px', heigh: '200px' }} />
                                             <br />
-                                            <Link to={`${BASE_URL}/api/Locate/Shop-Detail/${item.id}`} > {item.Name}</Link>
-                                            <div className='author'>平均價位：{item.Price}</div>
-                                            <div className='publisher'>地址：{item.Address}</div>
-                                            <div className='publisher'>建議人數：{item.People}</div>
-                                            <div className='publisher'>代表國家：{item.Country}</div>
-                                            <div className='publisher'>評分：{item.Rating}</div>
-                                            <div className='ISBN'>介紹:{item.Introduction}</div>
+                                            <Link to={`/Shop-Detail/${item.id}`} > {item.Name}</Link>
+                                            <div className="card__info">
+                                                <div className='publisher'>貼文者：{item.userName}</div>
+                                                <div className='author'>平均價位：{item.Price}</div>
+                                                <div className='publisher'>地址：{item.Address}</div>
+                                                <div className='publisher'>建議人數：{item.People}</div>
+                                                <div className='publisher'>代表國家：{item.Country}</div>
+                                                <div className='publisher'>評分：{item.Rating}</div>
+                                                <div className='publisher'>介紹：{item.Introduction.substring(0, 40)}...</div>
+                                            </div>
                                             <hr />
 
                                         </div>
