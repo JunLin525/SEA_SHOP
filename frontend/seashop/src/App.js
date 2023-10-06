@@ -14,6 +14,7 @@ import CommentDetail from './pages/CommentDetail';
 import ShopUpdate from './pages/ShopUpdate'
 import ShopEdit from './pages/ShopEdit';
 import FoodDetail from './pages/FoodDetail';
+import FoodCommentDetail from './pages/FoodCommentDetail';
 function App() {
   return (
     <Router>
@@ -38,6 +39,9 @@ function App() {
           </Route>
           <Route element={<PrivateRoute isLogged={true} />}>
             <Route path="/CommentDetail/:commentID" element={<CommentDetail />} />
+          </Route>
+          <Route element={<PrivateRoute isLogged={true} />}>
+            <Route path="/FoodCommentDetail/:commentID" element={<FoodCommentDetail />} />
           </Route>
           <Route path="/Register" element={<Register />} />
           <Route path="/Login" element={<Login />} />
