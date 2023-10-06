@@ -70,8 +70,8 @@ class RestaurantList(generics.ListAPIView):
 
 class RestaurantDetail(generics.RetrieveUpdateDestroyAPIView,
                        generics.CreateAPIView):
+    permission_classes = (IsAuthorOrReadOnly,) 
     queryset = Restaurants.objects.all()
-
     serializer_class = RestaurantSerializer
 
     ### post ###
@@ -274,7 +274,7 @@ class CommentRestaurantList(generics.ListAPIView):
 
 class CommentRestaurantDetail(generics.RetrieveUpdateDestroyAPIView,
                               generics.CreateAPIView):
-    permission_classes = (IsAuthorOrReadOnly,)  # new
+    permission_classes = (IsAuthorOrReadOnly,) 
     queryset = Comment.objects.all()
     serializer_class = RestaurantCommentSerializer
 
