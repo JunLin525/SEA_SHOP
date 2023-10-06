@@ -5,6 +5,8 @@ from rest_framework import viewsets, filters
 from rest_framework import generics
 from .models import Settlement, Reply
 from .serializers import SettlementSerializer, ReplySerializer
+from .permissions import IsAuthorOrReadOnly  # new
+
 # Create your views here.
 
 
@@ -33,5 +35,6 @@ class ReplyPostList(generics.ListAPIView):
 
 class ReplyPostDetail(generics.RetrieveUpdateDestroyAPIView,
                       generics.CreateAPIView):
+    permission_classes = (IsAuthorOrReadOnly,) 
     queryset = Reply.objects.all()
     serializer_class = ReplySerializer

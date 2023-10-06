@@ -1,5 +1,7 @@
 from django.db import models
 import uuid
+from Custom_User.models import CustomUser
+
 # Create your models here.
 
 
@@ -20,6 +22,8 @@ class Settlement(models.Model):
 
 
 class Reply(models.Model):
+    user_pk = models.ForeignKey(CustomUser,  null=True, blank=True,
+                            on_delete=models.CASCADE)
     id = models.UUIDField(
         primary_key=True,
         default=uuid.uuid4,
@@ -27,7 +31,6 @@ class Reply(models.Model):
     Area = models.ForeignKey(Settlement, on_delete=models.CASCADE)
     Title = models.CharField(max_length=80)
     Body = models.TextField()
-    Picture = models.ImageField(upload_to='Settlement/Comment/')
 
     def __str__(self):
         return self.Title
