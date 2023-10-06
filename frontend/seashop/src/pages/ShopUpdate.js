@@ -2,9 +2,12 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom'
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import jwt_decode from "jwt-decode";
+import Authcontext from '../context/AuthContext';
 
 
 function ShopUpdate() {
+    let { user } = useContext(Authcontext)
     const BASE_URL = "https://junlin5525.dev/api"
     const navigate = useNavigate()
 
@@ -21,6 +24,8 @@ function ShopUpdate() {
         formData.append('Address', e.target.Address.value);
         formData.append('Introduction', e.target.Introduction.value);
         formData.append('Picture', e.target.Picture.files[0]);
+        formData.append('user_pk', user.user_id);
+
         console.log(formData)
         try {
             const response = await fetch(`${BASE_URL}/Restaurant-api/Restaurant-Detail/9/`, {
@@ -31,7 +36,7 @@ function ShopUpdate() {
                 body: formData
             });
             if (response.ok) {
-                alert('Suceess submit!')
+                alert('貼文完成，將跳回列表頁面')
                 navigate('/Shop/')
                 // 评论发送成功，执行相应的操作
             } else {

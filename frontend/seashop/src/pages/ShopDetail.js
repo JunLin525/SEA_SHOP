@@ -5,8 +5,11 @@ import Footer from '../components/Footer'
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import jwt_decode from "jwt-decode";
+import Authcontext from '../context/AuthContext';
+
 
 function ShopDetail() {
+    let { user } = useContext(Authcontext)
     const BASE_URL = "https://junlin5525.dev/api"
     const navigate = useNavigate()
     const { shopID, commentID } = useParams()
@@ -73,7 +76,7 @@ function ShopDetail() {
         formData.append('Rating', e.target.rating.value);
         formData.append('Title', e.target.title.value);
         formData.append('Body', e.target.comments.value);
-        formData.append('user_pk', '1');
+        formData.append('user_pk', user.user_id);
         formData.append('Restaurant', shop.id);
         console.log(formData)
         try {
@@ -86,7 +89,7 @@ function ShopDetail() {
             });
             if (response.ok) {
                 alert('Suceess submit!')
-                navigate(`/Shop-Detail/${shop.id}`)
+                window.location.reload();
                 // 评论发送成功，执行相应的操作
             } else {
                 // 评论发送失败，处理错误情况
@@ -137,12 +140,13 @@ function ShopDetail() {
                                     <h1>餐廳評論</h1>
                                     <h2>{shop.Name}</h2>
                                     <img src={shop.Picture} alt="Book Cover" style={{ width: '300px', heigh: '300px' }} />
+                                    <h4>貼文帳號：{shop.userName}</h4>
                                     <h4>代表國家：{shop.Country}</h4>
-                                    <h4>單人價格:{shop.Price}</h4>
+                                    <h4>單人價格：{shop.Price}</h4>
                                     <h4>整體評分：{shop.Rating}</h4>
-                                    <h4>建議用餐人數:{shop.People}</h4>
+                                    <h4>建議用餐人數：{shop.People}</h4>
                                     <h4>餐廳地址：{shop.Address}</h4>
-                                    <h4 border="red">餐聽介紹:{shop.Introduction}</h4>
+                                    <h4 border="red">餐聽介紹：{shop.Introduction}</h4>
                                     <button onClick={handleEdit} className='edit-button'>編輯</button>
                                     <button onClick={handleDelete} className='delete-button'>刪除</button>
                                 </div>
@@ -159,6 +163,7 @@ function ShopDetail() {
                                             return (
                                                 <li key={comment.id}>
                                                     <h4>{comment.RestaurantName}</h4>
+                                                    <h4>留言者：{comment.userName}</h4>
                                                     <h4><Link to={`/commentDetail/${comment.id}`}>{comment.Title}</Link></h4>
                                                     <h5>{comment.Body}</h5>
                                                     <hr />

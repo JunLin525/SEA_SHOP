@@ -5,8 +5,10 @@ import Footer from '../components/Footer';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import jwt_decode from "jwt-decode";
+import Authcontext from '../context/AuthContext';
 
 function ShopEdit() {
+    let { user } = useContext(Authcontext)
     const BASE_URL = "https://junlin5525.dev/api"
     const navigate = useNavigate()
     const { shopID } = useParams()
@@ -24,6 +26,7 @@ function ShopEdit() {
         formData.append('Address', e.target.Address.value);
         formData.append('Introduction', e.target.Introduction.value);
         formData.append('Picture', e.target.Picture.files[0]);
+        formData.append('user_pk', user.user_id);
         console.log(formData)
 
 

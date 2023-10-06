@@ -59,6 +59,9 @@ function Shop() {
                     <br />
                     <br />
                     <br />
+                    <br />
+                    <br />
+                    <br />
                     <div className="cards-food">
                         <ul>
                             {shop.map(item => (
@@ -76,7 +79,7 @@ function Shop() {
                                                     <div className='publisher'>地址：{item.Address}</div>
                                                     <div className='publisher'>代表國家：{item.Country}</div>
                                                     <div className='publisher'>評分：{item.Rating}</div>
-                                                    <div className='publisher'>介紹:{item.Introduction}</div>
+                                                    <div className='publisher'>介紹：{item.Introduction.substring(0, 40)}...</div>
                                                 </div>
 
 
