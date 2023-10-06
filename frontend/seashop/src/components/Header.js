@@ -11,25 +11,32 @@ function Header() {
 
     const BASE_URL = "https://junlin5525.dev/api"
 
-    useEffect(() => {
-        fetchUserName();
-    }, [])
+
 
     const fetchUserName = async () => {
-        const authTokens = JSON.parse(localStorage.getItem('authTokens')); // 從 localStorage 中獲取 Access Token
-        const response = await fetch(`${BASE_URL}/dj-rest-auth/user/`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                //'Authorization': 'Bearer' + String(accessToken)
-                'Authorization': 'Bearer ' + String(authTokens.access)
+        const authTokens = JSON.parse(localStorage.getItem('authTokens'));
 
-            },
-        })
-        const jsonData = await response.json()
-        console.log(jsonData);
-        setUserData(jsonData)
-    }
+        // 检查 authTokens 是否存在
+        if (authTokens && authTokens.access) {
+            const response = await fetch(`${BASE_URL}/dj-rest-auth/user/`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + String(authTokens.access)
+                },
+            });
+            const jsonData = await response.json();
+            console.log(jsonData);
+            setUserData(jsonData);
+        } else {
+            // 如果 authTokens 不存在，可以显示一个提示或者重定向用户到登录页面
+            console.log('User not logged in'); // 或者显示一个提示给用户
+        }
+    };
+
+    useEffect(() => {
+        fetchUserName();
+    }, []);
 
 
 
