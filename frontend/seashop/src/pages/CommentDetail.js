@@ -5,8 +5,10 @@ import Footer from '../components/Footer'
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import jwt_decode from "jwt-decode";
+import Authcontext from '../context/AuthContext';
 
 function CommentDetail() {
+    let { user } = useContext(Authcontext)
     const BASE_URL = "https://junlin5525.dev/api"
     const navigate = useNavigate()
     const { commentID } = useParams()
@@ -67,7 +69,7 @@ function CommentDetail() {
         formData.append('Rating', e.target.rating.value);
         formData.append('Title', e.target.title.value);
         formData.append('Body', e.target.comments.value);
-        formData.append('user_pk', '1');
+        formData.append('user_pk', user.user_id);
         console.log(formData)
 
 
@@ -104,7 +106,7 @@ function CommentDetail() {
                             <br />
                             <h1>留言</h1>
                             <h2>{comment.RestaurantName}</h2>
-                            <h4>留言者：{comment.user_pk}</h4>
+                            <h4>留言者：{comment.userName}</h4>
                             <h4>整體評分：{comment.Rating}</h4>
                             <h4>留言主旨：{comment.Title}</h4>
                             <h4>留言內容：{comment.Body}</h4>
