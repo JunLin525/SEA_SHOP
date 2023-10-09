@@ -368,7 +368,6 @@ body {
 }
 
 .food-content {
-
   background-color: rgba(252, 250, 250, 0.949);
   border-radius: .50em;
   box-shadow: 0 0 .25em rgba(0, 0, 0, .5);
@@ -377,12 +376,13 @@ body {
   padding: 10vmin;
   position: static;
   text-align: center;
-  padding-left: 310px;
+  padding-left: 60px;
   top: 50%;
-  transform: translate(-33%, -30%);
   z-index: 1;
-  width: 100em;
+  width: 100vw;
+  transform: translate(-20%, -40%);
   border: black;
+
 }
 
 .food-page {
