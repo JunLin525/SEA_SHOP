@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 from datetime import timedelta
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -78,8 +79,8 @@ SITE_ID = 1
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',  # Cors headers
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -183,15 +184,37 @@ SESSION_COOKIE_SECURE = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 
-STATIC_URL = "/static/"
-STATICFILES_DIRS = [BASE_DIR / "static"] 
-STATIC_ROOT = BASE_DIR / "staticfiles"  
+STATIC_URL = "/api/static/"
+STATICFILES_DIRS = [BASE_DIR / "staticfiles"] 
+STATIC_ROOT = BASE_DIR / "static"  
+
+##whitenoise
+STORAGES = {
+    # ...
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",  # 替換為您的實際存儲後端
+        "OPTIONS": {
+            "location": '/var/www/media',
+            # 存儲配置選項
+        },
+    }
+}
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-MEDIA_URL = 'media/'  
-MEDIA_ROOT = BASE_DIR /'media'
+####
+MEDIA_URL = 'https://junlin5525.dev/mda/'  
+MEDIA_ROOT = '/var/www/media'
+#####
+
+# MEDIA_URL = 'https://junlin5525.dev/media/'  
+# MEDIA_ROOT = os.path.join('/home/SEA_SHOP/SEA_SHOP/backend', 'media')
 
 
 # RESTFUL FRAMEWORK
@@ -267,7 +290,9 @@ SPECTACULAR_SETTINGS = {
     # 'SWAGGER_UI_FAVICON_HREF': 'SIDECAR',
     # 'REDOC_DIST': 'SIDECAR',
     # "VERSION" : "3.0",
-    'openapi': '3.1.0',
+    'openapi': '3.0.3',
+    'version': '0.0.0',
+
     "TITLE": "Website API View",
     "DESCRIPTION": "A Simple website to learn about DRF",
 
