@@ -17,6 +17,7 @@ class SetlementList(generics.ListAPIView):
 
 class SettlementDetail(generics.RetrieveUpdateDestroyAPIView,
                        generics.CreateAPIView):
+    permission_classes = (IsAuthorOrReadOnly,) 
     queryset = Settlement.objects.all()
     serializer_class = SettlementSerializer
 
