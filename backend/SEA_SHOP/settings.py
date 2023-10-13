@@ -104,9 +104,12 @@ CORS_ALLOWED_ORIGINS = (
 
 CSRF_TRUSTED_ORIGINS = ["http://localhost:3000",
                         "http://192.168.56.1:3000/", 
-                        "https://sea-shop.vercel.app/", "http://170.187.229.248/", 
-                        "https://junlin5525.dev/","https://junlin5525.dev"
-                        "http://junlin5525.dev","http://junlin5525.dev/"
+                        "https://sea-shop.vercel.app/", 
+                        "http://170.187.229.248/", 
+                        "https://junlin5525.dev/",
+                        "https://junlin5525.dev",
+                        "http://junlin5525.dev",
+                        "http://junlin5525.dev/"
  ]
 
 TEMPLATES = [
@@ -290,8 +293,9 @@ SPECTACULAR_SETTINGS = {
     # 'SWAGGER_UI_FAVICON_HREF': 'SIDECAR',
     # 'REDOC_DIST': 'SIDECAR',
     # "VERSION" : "3.0",
-    'openapi': '3.0.3',
-    'version': '0.0.0',
+    # 'openapi': '3.0.3',
+    'SCHEMA_PATH_FUNC': 'path.to.schema_view',
+    'VERSION': 'openapi|3.0.3',  # 此处指定OpenAPI版本号
 
     "TITLE": "Website API View",
     "DESCRIPTION": "A Simple website to learn about DRF",
