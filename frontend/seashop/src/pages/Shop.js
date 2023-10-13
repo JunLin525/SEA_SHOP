@@ -51,11 +51,15 @@ function Shop() {
                     <br />
                     <br />
                     <div className='food-content'>
-                        <h1 className='food__title'>東南亞美食商家清單</h1>
-                        <h4 calssName='food__subtitle'><button onClick={handleSearch}>進階搜索</button></h4>
-                        <p>介紹在台的一些東南亞店家，並介紹特色菜色以利大家交流分享。</p>
+                        <div>
+                            <h1 className='food_title'>東南亞美食商家清單</h1>
+                            <h4 calssName='food__subtitle'><button onClick={handleSearch}>進階搜索</button></h4>
+                            <p>介紹在台的一些東南亞店家，並介紹特色菜色以利大家交流分享。</p>
+                        </div>
+                        <div>
+                            <button calssName='food__subtitle' onClick={handleaddpost}>新增貼文</button>
+                        </div>
                     </div>
-                    <button className='addpost' onClick={handleaddpost}>新增貼文</button>
                     <br />
                     <br />
                     <br />
