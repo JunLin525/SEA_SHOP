@@ -72,7 +72,7 @@ function FoodDetail() {
         formData.append('Area', food.id);
         console.log(formData)
         try {
-            const response = await fetch(`${BASE_URL}/Settlement-api/Reply-Detail/68466b4d-7f6f-4e77-b879-4a186cebaa45/`, {
+            const response = await fetch(`${BASE_URL}/Settlement-api/Reply-List/`, {
                 method: 'POST',
                 headers: {
                     'Authorization': 'Bearer ' + String(authTokens.access)

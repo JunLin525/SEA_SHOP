@@ -80,7 +80,7 @@ function ShopDetail() {
         formData.append('Restaurant', shop.id);
         console.log(formData)
         try {
-            const response = await fetch(`${BASE_URL}/Restaurant-api/Restaurant-Comment-Detail/9/`, {
+            const response = await fetch(`${BASE_URL}/Restaurant-api/Restaurant-Comment-List`, {
                 method: 'POST',
                 headers: {
                     'Authorization': 'Bearer ' + String(authTokens.access)

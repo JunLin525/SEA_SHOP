@@ -10,13 +10,12 @@ from .permissions import IsAuthorOrReadOnly  # new
 # Create your views here.
 
 
-class SetlementList(generics.ListAPIView):
+class SetlementList(generics.ListCreateAPIView):
     queryset = Settlement.objects.all()
     serializer_class = SettlementSerializer
 
 
-class SettlementDetail(generics.RetrieveUpdateDestroyAPIView,
-                       generics.CreateAPIView):
+class SettlementDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (IsAuthorOrReadOnly,) 
     queryset = Settlement.objects.all()
     serializer_class = SettlementSerializer
@@ -29,13 +28,12 @@ class SettlementDetail(generics.RetrieveUpdateDestroyAPIView,
 # filterset_fields = ["Name", "Address", "Country", "Introduction"]
 
 
-class ReplyPostList(generics.ListAPIView):
+class ReplyPostList(generics.ListCreateAPIView):
     queryset = Reply.objects.all()
     serializer_class = ReplySerializer
 
 
-class ReplyPostDetail(generics.RetrieveUpdateDestroyAPIView,
-                      generics.CreateAPIView):
+class ReplyPostDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (IsAuthorOrReadOnly,) 
     queryset = Reply.objects.all()
     serializer_class = ReplySerializer

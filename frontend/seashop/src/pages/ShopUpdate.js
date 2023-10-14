@@ -28,7 +28,7 @@ function ShopUpdate() {
 
         console.log(formData)
         try {
-            const response = await fetch(`${BASE_URL}/Restaurant-api/Restaurant-Detail/9/`, {
+            const response = await fetch(`${BASE_URL}/Restaurant-api/Restaurant-List`, {
                 method: 'POST',
                 headers: {
                     'Authorization': 'Bearer ' + String(authTokens.access)

@@ -22,7 +22,7 @@ class RestaurantFilter(filters.FilterSet):
         field_name="Introduction", lookup_expr='icontains')
 
 
-class RestaurantList(generics.ListAPIView):
+class RestaurantList(generics.ListCreateAPIView):
     queryset = Restaurants.objects.all()
     serializer_class = RestaurantSerializer
     filterset_class = RestaurantFilter
@@ -68,8 +68,7 @@ class RestaurantList(generics.ListAPIView):
         return super().get(request, *args, **kwargs)
 
 
-class RestaurantDetail(generics.RetrieveUpdateDestroyAPIView,
-                       generics.CreateAPIView):
+class RestaurantDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (IsAuthorOrReadOnly,) 
     queryset = Restaurants.objects.all()
     serializer_class = RestaurantSerializer
@@ -222,7 +221,7 @@ class RestaurantDetail(generics.RetrieveUpdateDestroyAPIView,
         return super().delete(request, *args, **kwargs)
 
 
-class CommentRestaurantList(generics.ListAPIView):
+class CommentRestaurantList(generics.ListCreateAPIView):
     queryset = Comment.objects.all()
     serializer_class = RestaurantCommentSerializer
 
@@ -272,8 +271,7 @@ class CommentRestaurantList(generics.ListAPIView):
         return super().get(request, *args, **kwargs)
 
 
-class CommentRestaurantDetail(generics.RetrieveUpdateDestroyAPIView,
-                              generics.CreateAPIView):
+class CommentRestaurantDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (IsAuthorOrReadOnly,) 
     queryset = Comment.objects.all()
     serializer_class = RestaurantCommentSerializer
