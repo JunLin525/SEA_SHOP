@@ -41,9 +41,13 @@ function Food() {
                     <br />
                     <div className='food-content'>
                         <div>
-                            <h1 className='food_title'>東南亞美食介紹</h1>
-                            <p calssName='food_subtitle'>這是一個分享東南亞聚落地景的頁面，
-                                <br />歡迎登入並留言分享你對下面區域認識，讓更多喜愛嘗鮮的人們前往。</p>
+                            <h1 className='food_title'>東南亞美食聚落介紹</h1>
+                            <p calssName='food_subtitle'>這是一個分享東南亞聚落地景的頁面，<br />
+                                台灣各地都常有一些不同國家族裔聚集的巷弄，<br />
+                                此處貼文特別蒐集了一些台灣妳不曾接觸過的族裔聚落<br />
+                                鼓勵假日或閒暇之餘去這些地方走走嘗鮮美食<br />
+                                此頁面目前僅能對個別貼文留言<br />
+                                並不開放個別使用者新增聚落相關貼文。</p>
                         </div>
                     </div>
                     <div className="cards-locate">

@@ -54,11 +54,15 @@ function Shop() {
                             <h1 className='food_title'>東南亞美食商家清單</h1>
                             <button className='food-buttonn' onClick={handleSearch}>進階搜索</button>
                             <p>介紹在台的一些東南亞店家，並介紹特色菜色以利大家交流分享。</p>
+                            <p>歡迎使用者們新增任何自己喜愛的餐廳，</p>
+                            <p>或是在任何已經有的餐廳貼文中留言表達你對餐廳的想法。</p>
                             <button className='food-button' onClick={handleaddpost}>新增貼文</button>
                         </div>
                     </div>
                     <br />
-
+                    <br />
+                    <br />
+                    <br />
                     <div className="cards-food">
                         <ul>
                             {shop.map(item => (

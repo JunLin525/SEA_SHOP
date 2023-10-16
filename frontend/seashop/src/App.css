@@ -13,6 +13,23 @@
   background-size: cover;
 }
 
+.landing-backgrounds {
+  /*
+  background: -moz-linear-gradient(-45deg, rgba(109, 179, 242, 1) 50%, rgba(30, 105, 222, 1) 50%);
+  background: -webkit-linear-gradient(-45deg, rgba(109, 179, 242, 1) 50%, rgba(30, 105, 222, 1) 50%);
+  background: linear-gradient(135deg, rgba(109, 179, 242, 1) 50%, rgba(30, 105, 222, 1) 50%);
+*/
+  background: url("https://cdn2.ettoday.net/images/1158/d1158149.jpg");
+  z-index: 5;
+  background-size: cover;
+  height: 50vw;
+}
+
+.white-mocks {
+  background-color: rgba(255, 255, 255, 0.7);
+  height: 46vw;
+}
+
 
 .App-header {
   background-color: #282c34;
@@ -537,6 +554,16 @@ body {
     */
 }
 
+.about-page {
+  height: 100%;
+  width: 100vw;
+  padding-top: 3.5%;
+
+  /*  width: 800px;
+      margin: auto;
+    */
+}
+
 .food-content {
   z-index: 6;
   background-color: rgba(252, 250, 250, 0.949);
@@ -580,7 +607,7 @@ body {
 
 .cards-food {
   z-index: -1;
-  padding: 20%;
+  padding: 22%;
   width: 100%;
   display: flex;
   display: -webkit-flex;

@@ -112,7 +112,7 @@ function ShopSearch() {
                     <div className="food-content">
                         <div>
                             <h1 className='food__title'>東南亞美食商家清單</h1>
-                            <p>介紹在台的一些東南亞店家，並介紹特色菜色以利大家交流分享。</p>
+                            <p>歡迎點擊下方的條件來找尋你心目中的理想餐廳</p>
                             <h5>用餐人數-
                                 <button onClick={handlePeopletTwo}>兩人(含)</button>
                                 <button onClick={handlePeopleFive}> 五人以上</button>
@@ -130,7 +130,7 @@ function ShopSearch() {
                                 <button onClick={handleRatingTen}> 十分</button>
                             </h5>
                             <form>
-                                <label htmlFor="Contain">名稱查詢：</label><br />
+                                <label htmlFor="Contain">介紹查詢：</label><br />
                                 <input
                                     type="text"
                                     id="Contain"
