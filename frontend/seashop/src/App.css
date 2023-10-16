@@ -87,6 +87,13 @@
 .comment-color {
   background-color: grey;
   font-size: 18px;
+  display: flex;
+}
+
+.comments-color {
+  background-color: grey;
+  font-size: 18px;
+  margin-top: 20px;
 }
 
 .comment-type {
@@ -367,30 +374,8 @@ body {
 
 }
 
-.food-content {
-  background-color: rgba(252, 250, 250, 0.949);
-  border-radius: .50em;
-  box-shadow: 0 0 .25em rgba(0, 0, 0, .5);
-  box-sizing: border-box;
-  left: 50%;
-  padding: 10vmin;
-  position: static;
-  text-align: center;
-  padding-left: 60px;
-  top: 50%;
-  z-index: 1;
-  width: 100vw;
-  transform: translate(-20%, -40%);
-  border: black;
 
-}
 
-.food-page {
-  width: 800px;
-  height: 100%;
-  padding: 10%;
-  margin: auto;
-}
 
 
 /*shop-detail*/
@@ -402,9 +387,9 @@ body {
 
 
 .add-comment__like {
-  background-color: rgba(130, 127, 127);
+  background-color: rgb(34, 33, 33);
+  color: white;
   font-size: 18px;
-  width: 800px;
   padding-left: 15px;
 }
 
@@ -514,7 +499,7 @@ body {
 
 
 .addpost {
-  font-size: 18px;
+  font-size: 50px;
   background-color: blue;
   color: white;
   height: 60px;
@@ -523,13 +508,97 @@ body {
 
 }
 
-.cards-food {
+.food-buttonn {
+  z-index: 5;
+  font-size: 1.5em;
+  background-color: rgb(98, 98, 117);
+  color: white;
+  font-family: 'Yesteryear', cursive;
+  line-height: 1.1;
+}
+
+.food-button {
+  z-index: 5;
+  font-size: 1.5em;
+  background-color: blue;
+  color: white;
+  font-family: 'Yesteryear', cursive;
+  line-height: 1.1;
+}
+
+
+.food-page {
+  height: 100%;
+  width: 100vw;
+  padding-top: 1%;
+
+  /*  width: 800px;
+      margin: auto;
+    */
+}
+
+.food-content {
+  z-index: 6;
+  background-color: rgba(252, 250, 250, 0.949);
+  border-radius: 5em;
+  box-sizing: border-box;
+  font-size: 1.2em;
+  display: flex;
+  padding: 10vmin;
+  text-align: center;
+  position: sticky;
+  justify-content: center;
+  -webkit-justify-content: center;
+  /*left: 50%;
+  box-shadow: 0 0 .25em rgba(0, 0, 0, .5);
+  padding-left: 60px;
+  width: 100vw;
+
+  top: 50%;
+  z-index: 1;
+  position: static;
+  transform: translate(-20%, -40%);*/
+  border: black;
+
+}
+
+.cards-locate {
+  padding: 10%;
   width: 100%;
   display: flex;
   display: -webkit-flex;
   justify-content: center;
   -webkit-justify-content: center;
-  max-width: 820px;
+  box-sizing: border-box;
+  font-size: 1.5em;
+  transform: translate(0%, -3%);
+
+}
+
+
+
+
+.cards-food {
+  z-index: -1;
+  padding: 20%;
+  width: 100%;
+  display: flex;
+  display: -webkit-flex;
+  justify-content: center;
+  -webkit-justify-content: center;
+  box-sizing: border-box;
+  font-size: 1.5em;
+  transform: translate(0%, -3%);
+
+}
+
+.cardss-food {
+  padding: 25%;
+  width: 100%;
+  display: flex;
+  display: -webkit-flex;
+  justify-content: center;
+  -webkit-justify-content: center;
   box-sizing: border-box;
   font-size: 1.5em;
   transform: translate(0%, -3%);
@@ -614,5 +683,20 @@ ul {
   border: black;
   font-size: 1.5em;
   transform: translate(10%, 1%);
+
+}
+
+
+
+.locate-detail {
+  padding: 5%;
+  width: 100%;
+  display: flex;
+  display: -webkit-flex;
+  justify-content: center;
+  -webkit-justify-content: center;
+  box-sizing: border-box;
+  font-size: 1.5em;
+  transform: translate(0%, -3%);
 
 }

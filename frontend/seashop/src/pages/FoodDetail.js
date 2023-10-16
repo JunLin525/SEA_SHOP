@@ -98,7 +98,7 @@ function FoodDetail() {
             <Header />
             <div className='white-mock'>
                 <div className='food-page'>
-                    <div className="cards">
+                    <div className="locate-detail">
 
                         <div className='shop__like'>
                             <h1>美食聚落</h1>
@@ -108,68 +108,70 @@ function FoodDetail() {
                             <h4>所在地址：{food.Address}</h4>
                             <h4>代表國家：{food.Country}</h4>
                             <h4>聚落介紹：{food.Introduction}</h4>
-                            <br />
 
-                            <div className='comment-color'>
-
+                            <div className='comments-color'>
+                                <br />
                                 <h2>留言區</h2>
-                                <hr />
+
                                 <ul>
                                     {comments.map((comment, index) => {
                                         if (food.id === comment.Area) {
                                             return (
                                                 <li key={comment.id}>
+                                                    <hr />
                                                     <h4>貼文者：{comment.UserName}</h4>
                                                     <h4><Link to={`/FoodCommentDetail/${comment.id}`}>{comment.AreaName}</Link></h4>
                                                     <h4>{comment.Title}</h4>
                                                     <h5>{comment.Body}</h5>
-                                                    <hr />
+
 
                                                 </li>
                                             )
                                         } else {
-                                            return "此處尚沒有留言，您可以新增留言成為第一則。"
+                                            return null
                                         }
                                     })}
                                 </ul>
+                                <br />
+                            </div>
 
 
 
-
-                                <div className="add-comment__like">
-                                    <h3>新增留言</h3>
-                                    <form onSubmit={handleSubmit} >
-                                        <label htmlFor="title">留言標題：</label><br />
-                                        <input
-                                            type="text"
-                                            id="title"
-                                            name="title"
-                                            placeholder="新增留言標題"
-                                        /><br />
-                                        <label htmlFor="comments">留言評論:</label><br />
-                                        <input
-                                            type="text"
-                                            id="comments"
-                                            name="comments"
-                                            placeholder="新增留言評論"
-                                        /><br />
-                                        <br />
-                                        <button className='submit' type="submit">送出</button>
-                                    </form>
+                            <div className="add-comment__like">
+                                <h3>新增留言</h3>
+                                <form onSubmit={handleSubmit} >
+                                    <label htmlFor="title">留言標題：</label><br />
+                                    <input
+                                        type="text"
+                                        id="title"
+                                        name="title"
+                                        placeholder="新增留言標題"
+                                    /><br />
+                                    <label htmlFor="comments">留言評論:</label><br />
+                                    <input
+                                        type="text"
+                                        id="comments"
+                                        name="comments"
+                                        placeholder="新增留言評論"
+                                    /><br />
                                     <br />
-                                </div>
+                                    <button className='submit' type="submit">送出</button>
+                                </form>
+                                <br />
                             </div>
 
                         </div>
+
                     </div>
-
-
-
-                    <div className='landing-back' />
-                    <Footer />
                 </div>
+
+
+
+                <div className='landing-back' />
+                <Footer />
             </div>
         </div>
+
 
     )
 }

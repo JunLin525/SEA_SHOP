@@ -40,11 +40,13 @@ function Food() {
                     <br />
                     <br />
                     <div className='food-content'>
-                        <h1 className='food__title'>東南亞美食介紹</h1>
-                        <p calssName='food__subtitle'>這是一個分享東南亞聚落地景的頁面，
-                            <br />歡迎登入並留言分享你對下面區域認識，讓更多喜愛嘗鮮的人們前往。</p>
+                        <div>
+                            <h1 className='food_title'>東南亞美食介紹</h1>
+                            <p calssName='food_subtitle'>這是一個分享東南亞聚落地景的頁面，
+                                <br />歡迎登入並留言分享你對下面區域認識，讓更多喜愛嘗鮮的人們前往。</p>
+                        </div>
                     </div>
-                    <div className="cards">
+                    <div className="cards-locate">
                         <ul>
                             {food.map(item => (
                                 <div >

@@ -109,42 +109,44 @@ function ShopSearch() {
                 <div className='food-page'>
                     <br />
                     <br />
-                    <div className="search-content">
-                        <h1 className='food__title'>東南亞美食商家清單</h1>
-                        <p>介紹在台的一些東南亞店家，並介紹特色菜色以利大家交流分享。</p>
-                        <h5>用餐人數-
-                            <button onClick={handlePeopletTwo}>兩人(含)</button>
-                            <button onClick={handlePeopleFive}> 五人以上</button>
-                            <button onClick={handlePeopleTen}> 十人(含)以上</button>
-                        </h5>
-                        <h5>用餐價格-
-                            <button onClick={handlePriceTwoFifty}>250以下</button>
-                            <button onClick={handlePriceFiveHundred}> 500以下</button>
-                            <button onClick={handlePriceOneThousand}> 1000以下</button>
-                        </h5>
-                        <h5>餐廳評價-
-                            <button onClick={handleRatingThree}>三分以上</button>
-                            <button onClick={handleRatingFive}> 五分以上</button>
-                            <button onClick={handleRatingEight}> 八分以上</button>
-                            <button onClick={handleRatingTen}> 十分</button>
-                        </h5>
-                        <form>
-                            <label htmlFor="Contain">名稱查詢：</label><br />
-                            <input
-                                type="text"
-                                id="Contain"
-                                name="Contain"
-                                placeholder="請輸入介紹關鍵字來查詢"
-                                value={containValue}
-                                onChange={(e) => setContainValue(e.target.value)}
+                    <div className="food-content">
+                        <div>
+                            <h1 className='food__title'>東南亞美食商家清單</h1>
+                            <p>介紹在台的一些東南亞店家，並介紹特色菜色以利大家交流分享。</p>
+                            <h5>用餐人數-
+                                <button onClick={handlePeopletTwo}>兩人(含)</button>
+                                <button onClick={handlePeopleFive}> 五人以上</button>
+                                <button onClick={handlePeopleTen}> 十人(含)以上</button>
+                            </h5>
+                            <h5>用餐價格-
+                                <button onClick={handlePriceTwoFifty}>250以下</button>
+                                <button onClick={handlePriceFiveHundred}> 500以下</button>
+                                <button onClick={handlePriceOneThousand}> 1000以下</button>
+                            </h5>
+                            <h5>餐廳評價-
+                                <button onClick={handleRatingThree}>三分以上</button>
+                                <button onClick={handleRatingFive}> 五分以上</button>
+                                <button onClick={handleRatingEight}> 八分以上</button>
+                                <button onClick={handleRatingTen}> 十分</button>
+                            </h5>
+                            <form>
+                                <label htmlFor="Contain">名稱查詢：</label><br />
+                                <input
+                                    type="text"
+                                    id="Contain"
+                                    name="Contain"
+                                    placeholder="請輸入介紹關鍵字來查詢"
+                                    value={containValue}
+                                    onChange={(e) => setContainValue(e.target.value)}
 
-                            /><br />
-                            <button onClick={handleContain} className='submit' type="submit">送出</button>
+                                /><br />
+                                <button onClick={handleContain} className='submit' type="submit">送出</button>
 
-                        </form>
+                            </form>
+                        </div>
                     </div>
 
-                    <div className="search-food">
+                    <div className="cardss-food">
 
                         <ul>
                             {shop.map(item => (

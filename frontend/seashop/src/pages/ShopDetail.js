@@ -131,32 +131,25 @@ function ShopDetail() {
             <Header />
             <div className='white-mock'>
                 <div className='food-page'>
-                    <div className="cards">
-                        <br />
-                        <br />
-                        <div classNmae='food-content'>
-                            <div className='cards'>
-                                <div className='shop__like'>
-                                    <h1>餐廳評論</h1>
-                                    <h2>{shop.Name}</h2>
-                                    <img src={shop.Picture} alt="Book Cover" style={{ width: '300px', heigh: '300px' }} />
-                                    <h4>貼文帳號：{shop.userName}</h4>
-                                    <h4>代表國家：{shop.Country}</h4>
-                                    <h4>單人價格：{shop.Price}</h4>
-                                    <h4>整體評分：{shop.Rating}</h4>
-                                    <h4>建議用餐人數：{shop.People}</h4>
-                                    <h4>餐廳地址：{shop.Address}</h4>
-                                    <h4 border="red">餐聽介紹：{shop.Introduction}</h4>
-                                    <button onClick={handleEdit} className='edit-button'>編輯</button>
-                                    <button onClick={handleDelete} className='delete-button'>刪除</button>
-                                </div>
+                    <div className="locate-detail">
+                        <div className='shop__like'>
+                            <h1>餐廳評論</h1>
+                            <h2>{shop.Name}</h2>
+                            <img src={shop.Picture} alt="Book Cover" style={{ width: '300px', heigh: '500px' }} />
+                            <h4>貼文帳號：{shop.userName}</h4>
+                            <h4>代表國家：{shop.Country}</h4>
+                            <h4>單人價格：{shop.Price}</h4>
+                            <h4>整體評分：{shop.Rating}</h4>
+                            <h4>建議用餐人數：{shop.People}</h4>
+                            <h4>餐廳地址：{shop.Address}</h4>
+                            <h4 border="red">餐聽介紹：{shop.Introduction}</h4>
+                            <button onClick={handleEdit} className='edit-button'>編輯</button>
+                            <button onClick={handleDelete} className='delete-button'>刪除</button>
 
 
-                            </div>
-
-                            <div className='comment-color'>
+                            <div className='comments-color'>
+                                <br />
                                 <h2>留言區</h2>
-
                                 <ul>
                                     {comments.map((comment, index) => {
                                         if (shop.id === comment.Restaurant) {
@@ -177,38 +170,43 @@ function ShopDetail() {
                                 </ul>
 
                             </div>
+                            <div className="add-comment__like">
+                                <h3>新增留言</h3>
+                                <form onSubmit={handleSubmit}>
+                                    <label htmlFor="title">留言標題：</label><br />
+                                    <input
+                                        type="text"
+                                        id="title"
+                                        name="title"
+                                        placeholder="新增留言標題"
+                                    /><br />
+                                    <label htmlFor="comments">餐廳評論:</label><br />
+                                    <input
+                                        type="text"
+                                        id="comments"
+                                        name="comments"
+                                        placeholder="新增餐廳評論"
+                                    /><br />
+                                    <label htmlFor="rating">餐廳評分：</label><br />
+                                    <input
+                                        type="number"
+                                        id="rating"
+                                        name="rating"
+                                        min="1"
+                                        max="10"
+                                    /><br /><br />
+                                    <button className='submit' type="submit">送出</button>
+                                </form>
+                                <br />
+                            </div>
                         </div>
+
+
+
+
                     </div>
 
-                    <div className="add-comment__like">
-                        <h3>新增留言</h3>
-                        <form onSubmit={handleSubmit}>
-                            <label htmlFor="title">留言標題：</label><br />
-                            <input
-                                type="text"
-                                id="title"
-                                name="title"
-                                placeholder="新增留言標題"
-                            /><br />
-                            <label htmlFor="comments">餐廳評論:</label><br />
-                            <input
-                                type="text"
-                                id="comments"
-                                name="comments"
-                                placeholder="新增餐廳評論"
-                            /><br />
-                            <label htmlFor="rating">餐廳評分：</label><br />
-                            <input
-                                type="number"
-                                id="rating"
-                                name="rating"
-                                min="1"
-                                max="10"
-                            /><br /><br />
-                            <button className='submit' type="submit">送出</button>
-                        </form>
-                        <br />
-                    </div>
+
                 </div>
             </div>
             <div className='landing-back' />
