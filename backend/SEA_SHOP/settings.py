@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
+# SECURITY WARNING: keep the segcret key used in production secret!
 SECRET_KEY = 'django-insecure-*0$*3io2$uga4)z$x5w57&$4xa=!s-(e1^vi_+qbtg!0a3*mu-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -98,7 +98,11 @@ CORS_ALLOWED_ORIGINS = (
     "http://localhost:3001",
     "https://sea-shop.vercel.app",
     "https://junlin5525.dev",
-    "http://junlin5525.dev"
+    "http://junlin5525.dev",
+    "https://universal-equinox-281118.postman.co",##postman
+    "https://www.postman.com",
+    
+
 
 )
 
@@ -109,7 +113,10 @@ CSRF_TRUSTED_ORIGINS = ["http://localhost:3000",
                         "https://junlin5525.dev/",
                         "https://junlin5525.dev",
                         "http://junlin5525.dev",
-                        "http://junlin5525.dev/"
+                        "http://junlin5525.dev/",
+                        "https://universal-equinox-281118.postman.co",##postman
+                        "https://www.postman.com",
+                        
  ]
 
 TEMPLATES = [
@@ -230,6 +237,7 @@ REST_FRAMEWORK = {
         "rest_framework_simplejwt.authentication.JWTAuthentication",
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
     ],
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',

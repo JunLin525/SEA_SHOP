@@ -5,8 +5,11 @@ import Footer from '../components/Footer';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import jwt_decode from "jwt-decode";
+import Authcontext from '../context/AuthContext';
+
 
 function FoodDetail() {
+    let { user } = useContext(Authcontext)
     const BASE_URL = "https://junlin5525.dev/api"
     const navigate = useNavigate()
     const { foodID } = useParams()
@@ -70,9 +73,10 @@ function FoodDetail() {
         formData.append('Title', e.target.title.value);
         formData.append('Body', e.target.comments.value);
         formData.append('Area', food.id);
+        formData.append('user_pk', user.user_id);
         console.log(formData)
         try {
-            const response = await fetch(`${BASE_URL}/Settlement-api/Reply-List/`, {
+            const response = await fetch(`${BASE_URL}/Settlement-api/Reply-List`, {
                 method: 'POST',
                 headers: {
                     'Authorization': 'Bearer ' + String(authTokens.access)

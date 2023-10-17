@@ -31,31 +31,37 @@ function Register() {
         })
 
         try {
-                if (response.status === 200) {
-                    alert('Submit success.')
-                    navigate('/login')
-                }
-
-                else if (response.status === 204) {
-                    alert('帳號創立成功，請進行登入。')
-                    navigate('/login')
-                }
-
-                else if (response.status === 400) {
-                    const jsonData = await response.json();
-                    alert(JSON.stringify(jsonData));
-                    window.location.reload();
-                }
-
-                else {
-                    alert('不明錯誤，請告知管理員')
-                    window.location.reload();
-
-                }
-            }catch (error) {
-                // JSON解析錯誤
-                console.error('Error parsing JSON:', error);
+            if (response.status === 200) {
+                alert('Submit success.')
+                navigate('/login')
             }
+
+            else if (response.status === 204) {
+                alert('帳號創立成功，請進行登入。')
+                navigate('/login')
+            }
+
+            else if (response.status === 400) {
+                const jsonData = await response.json();
+                alert(JSON.stringify(jsonData));
+                window.location.reload();
+            }
+
+            else if (response.status === 403) {
+                const jsonData = await response.json();
+                alert(JSON.stringify(jsonData));
+                window.location.reload();
+            }
+
+            else {
+                alert('不明錯誤，請告知管理員')
+                window.location.reload();
+
+            }
+        } catch (error) {
+            // JSON解析錯誤
+            console.error('Error parsing JSON:', error);
+        }
 
     }
 

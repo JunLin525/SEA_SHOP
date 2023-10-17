@@ -50,7 +50,7 @@ function CommentDetail() {
 
             if (response.ok) {
                 alert('Comment deleted successfully');
-                Navigate('/')
+                navigate('/Shop')
                 // 刷新评论列表或执行其他操作
             } else {
                 alert('若不是Po文者或管理員是不能刪除留言貼文的歐');
