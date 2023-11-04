@@ -1,4 +1,4 @@
-import React from 'react';
+/*import React from 'react';
 import '../App.css';
 function Footer() {
     return (
@@ -9,4 +9,22 @@ function Footer() {
         </div>
     )
 }
+export default Footer;
+
+*/
+
+import React from 'react';
+import { Container, Box, Typography } from '@mui/material';
+
+function Footer() {
+  return (
+    <Box sx={{backgroundColor:'grey'}} component="footer" bgcolor="primary.main" color="white" py={3}>
+      <Container>
+        <Typography variant="h7">東南亞美食搜查</Typography>
+        <Typography variant="body">    版權沒有，翻印不究 © {new Date().getFullYear()}</Typography>
+      </Container>
+    </Box>
+  );
+}
+
 export default Footer;
