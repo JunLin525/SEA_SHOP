@@ -303,13 +303,15 @@ SPECTACULAR_SETTINGS = {
     # "VERSION" : "3.0",
     # 'openapi': '3.0.3',
     'SCHEMA_PATH_FUNC': 'path.to.schema_view',
-    'VERSION': 'openapi|3.0.3',  # 此处指定OpenAPI版本号
+    ##'VERSION': 'openapi|3.0.3',  
 
-    "TITLE": "Website API View",
-    "DESCRIPTION": "A Simple website to learn about DRF",
+    'TITLE': 'Website API View',
+    'DESCRIPTION': 'A Simple website to learn about DRF',
 
-    "SERVE_INCLUDE_SCHEMA": False,
-    
+    'SERVE_INCLUDE_SCHEMA': False,
+    'SWAGGER_UI_SETTINGS':{
+        'deepLinking':True,
+    },
     # OTHER SETTINGS
 }
 

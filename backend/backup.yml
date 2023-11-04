@@ -1,12 +1,13 @@
 openapi: 3.0.3
+
 info:
   title: Website API View
   version: 0.0.0
   description: A Simple website to learn about DRF
 paths:
-  /api/Restaurant-api/Restaurant-Comment-Detail/{id}/:
+  /Restaurant-api/Restaurant-Comment-Detail/{id}/:
     get:
-      operationId: api_Restaurant_api_Restaurant_Comment_Detail_retrieve
+      operationId: Restaurant_api_Restaurant_Comment_Detail_retrieve
       description: "\n        You can use this to get specific restaurant comment\
         \ data\n        可以透過這個API獲得特定一則的餐廳評論\n        "
       parameters:
@@ -16,12 +17,11 @@ paths:
           type: integer
         required: true
       tags:
-      - api
+      - Restaurant-api
       security:
       - jwtAuth: []
       - basicAuth: []
       - cookieAuth: []
-      - tokenAuth: []
       responses:
         '200':
           content:
@@ -45,7 +45,7 @@ paths:
                     \     "
           description: ''
     post:
-      operationId: api_Restaurant_api_Restaurant_Comment_Detail_create
+      operationId: Restaurant_api_Restaurant_Comment_Detail_create
       description: "\n        You can use this to post comment of any restaurant \n\
         \        可以透過這個API去張貼對任何一間的餐廳評論\n        "
       parameters:
@@ -55,7 +55,7 @@ paths:
           type: integer
         required: true
       tags:
-      - api
+      - Restaurant-api
       requestBody:
         content:
           application/json:
@@ -87,7 +87,6 @@ paths:
       - jwtAuth: []
       - basicAuth: []
       - cookieAuth: []
-      - tokenAuth: []
       responses:
         '200':
           content:
@@ -111,7 +110,7 @@ paths:
                     \      "
           description: ''
     put:
-      operationId: api_Restaurant_api_Restaurant_Comment_Detail_update
+      operationId: Restaurant_api_Restaurant_Comment_Detail_update
       description: "\n        You can use this to edit specific restaurant comment\
         \ data, but need to update whole data in the same time/\n        可以透過這個API變更特定一的餐廳評論描述，但每次變更資料時都要上傳全部的欄位，不能擇一上傳。\n\
         \        "
@@ -122,7 +121,7 @@ paths:
           type: integer
         required: true
       tags:
-      - api
+      - Restaurant-api
       requestBody:
         content:
           application/json:
@@ -154,7 +153,6 @@ paths:
       - jwtAuth: []
       - basicAuth: []
       - cookieAuth: []
-      - tokenAuth: []
       responses:
         '200':
           content:
@@ -178,7 +176,7 @@ paths:
                     \                        "
           description: ''
     patch:
-      operationId: api_Restaurant_api_Restaurant_Comment_Detail_partial_update
+      operationId: Restaurant_api_Restaurant_Comment_Detail_partial_update
       description: "\n        You can use this to edit specific restaurant comment\
         \ data, can submit any single data each time/\n        可以透過這個API變更特定一則的餐廳評論描述，每次上傳只要傳送一個欄位即可。\n\
         \        "
@@ -189,7 +187,7 @@ paths:
           type: integer
         required: true
       tags:
-      - api
+      - Restaurant-api
       requestBody:
         content:
           application/json:
@@ -218,7 +216,6 @@ paths:
       - jwtAuth: []
       - basicAuth: []
       - cookieAuth: []
-      - tokenAuth: []
       responses:
         '200':
           content:
@@ -240,7 +237,7 @@ paths:
                     \                        "
           description: ''
     delete:
-      operationId: api_Restaurant_api_Restaurant_Comment_Detail_destroy
+      operationId: Restaurant_api_Restaurant_Comment_Detail_destroy
       description: "\n        You can use this to delete specific restaurant comment\
         \ data,be careful and make sure the data you want to delete before you call\
         \ this api./\n        可以透過這個API刪除一則餐廳評論的資料，因為是刪除請確認好你要刪除這筆資料再來使用這個刪除功能。\n\
@@ -252,12 +249,11 @@ paths:
           type: integer
         required: true
       tags:
-      - api
+      - Restaurant-api
       security:
       - jwtAuth: []
       - basicAuth: []
       - cookieAuth: []
-      - tokenAuth: []
       responses:
         '200':
           content:
@@ -281,9 +277,9 @@ paths:
                     \ comment API做delete行為的格式，請確定你真的要刪除檔案再進行動作。\n                \
                     \        "
           description: ''
-  /api/Restaurant-api/Restaurant-Comment-List:
+  /Restaurant-api/Restaurant-Comment-List:
     get:
-      operationId: api_Restaurant_api_Restaurant_Comment_List_list
+      operationId: Restaurant_api_Restaurant_Comment_List_list
       description: "\n        You can use this API to get whole restaurant comment\
         \ data inside database/\n        你將可以使用此API來獲取資料庫中的全部的餐廳評論列表。\n        "
       parameters:
@@ -300,12 +296,11 @@ paths:
         schema:
           type: integer
       tags:
-      - api
+      - Restaurant-api
       security:
       - jwtAuth: []
       - basicAuth: []
       - cookieAuth: []
-      - tokenAuth: []
       responses:
         '200':
           content:
@@ -343,37 +338,9 @@ paths:
                   summary: Successful Response
                   description: Sample response for the restaurants list endpoint.
           description: ''
-    post:
-      operationId: api_Restaurant_api_Restaurant_Comment_List_create
-      tags:
-      - api
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RestaurantComment'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/RestaurantComment'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/RestaurantComment'
-        required: true
-      security:
-      - jwtAuth: []
-      - basicAuth: []
-      - cookieAuth: []
-      - tokenAuth: []
-      responses:
-        '201':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RestaurantComment'
-          description: ''
-  /api/Restaurant-api/Restaurant-Detail/{id}/:
+  /Restaurant-api/Restaurant-Detail/{id}/:
     get:
-      operationId: api_Restaurant_api_Restaurant_Detail_retrieve
+      operationId: Restaurant_api_Restaurant_Detail_retrieve
       description: "\n        You can use this to get specific restaurant data\n \
         \       可以透過這個API獲得特定一間的餐廳描述\n        "
       parameters:
@@ -383,12 +350,11 @@ paths:
           type: integer
         required: true
       tags:
-      - api
+      - Restaurant-api
       security:
       - jwtAuth: []
       - basicAuth: []
       - cookieAuth: []
-      - tokenAuth: []
       responses:
         '200':
           content:
@@ -412,7 +378,7 @@ paths:
                     specific restaurant data.
           description: ''
     post:
-      operationId: api_Restaurant_api_Restaurant_Detail_create
+      operationId: Restaurant_api_Restaurant_Detail_create
       description: "\n        You can use this to post specific restaurant data\n\
         \        可以透過這個API去張貼一間的餐廳描述\n        "
       parameters:
@@ -422,7 +388,7 @@ paths:
           type: integer
         required: true
       tags:
-      - api
+      - Restaurant-api
       requestBody:
         content:
           application/json:
@@ -454,7 +420,6 @@ paths:
       - jwtAuth: []
       - basicAuth: []
       - cookieAuth: []
-      - tokenAuth: []
       responses:
         '200':
           content:
@@ -478,7 +443,7 @@ paths:
                     \                "
           description: ''
     put:
-      operationId: api_Restaurant_api_Restaurant_Detail_update
+      operationId: Restaurant_api_Restaurant_Detail_update
       description: "\n        You can use this to edit specific restaurant data, but\
         \ need to update whole data in the same time/\n        可以透過這個API變更特定一間的餐廳描述，但每次變更資料時都要上傳全部的欄位。\n\
         \        "
@@ -489,7 +454,7 @@ paths:
           type: integer
         required: true
       tags:
-      - api
+      - Restaurant-api
       requestBody:
         content:
           application/json:
@@ -522,7 +487,6 @@ paths:
       - jwtAuth: []
       - basicAuth: []
       - cookieAuth: []
-      - tokenAuth: []
       responses:
         '200':
           content:
@@ -547,7 +511,7 @@ paths:
                     or this verb will be fail.
           description: ''
     patch:
-      operationId: api_Restaurant_api_Restaurant_Detail_partial_update
+      operationId: Restaurant_api_Restaurant_Detail_partial_update
       description: "\n        You can use this to edit specific restaurant data, can\
         \ submit any single data each time/\n        可以透過這個API變更特定一間的餐廳描述，每次上傳只要傳送一個欄位即可。\n\
         \        "
@@ -558,7 +522,7 @@ paths:
           type: integer
         required: true
       tags:
-      - api
+      - Restaurant-api
       requestBody:
         content:
           application/json:
@@ -584,7 +548,6 @@ paths:
       - jwtAuth: []
       - basicAuth: []
       - cookieAuth: []
-      - tokenAuth: []
       responses:
         '200':
           content:
@@ -603,7 +566,7 @@ paths:
                     specific restaurant detail data.
           description: ''
     delete:
-      operationId: api_Restaurant_api_Restaurant_Detail_destroy
+      operationId: Restaurant_api_Restaurant_Detail_destroy
       description: "\n        You can use this to delete specific restaurant data,be\
         \ careful and make sure the data you want to delete before you call this api./\n\
         \        可以透過這個API刪除一間餐廳的資料，因為是刪除請確認好你要刪除這筆資料再來使用這個刪除功能。\n        "
@@ -614,12 +577,11 @@ paths:
           type: integer
         required: true
       tags:
-      - api
+      - Restaurant-api
       security:
       - jwtAuth: []
       - basicAuth: []
       - cookieAuth: []
-      - tokenAuth: []
       responses:
         '200':
           content:
@@ -642,9 +604,9 @@ paths:
                   description: Delete verb in Restaurant-detail api. make sure you
                     want delete the data before you use this verb.
           description: ''
-  /api/Restaurant-api/Restaurant-List:
+  /Restaurant-api/Restaurant-List:
     get:
-      operationId: api_Restaurant_api_Restaurant_List_list
+      operationId: Restaurant_api_Restaurant_List_list
       description: "\n        You can use this API to get whole restaurant data inside\
         \ database/\n        你將可以使用此API來獲取資料庫中的全部餐廳列表。\n        "
       parameters:
@@ -677,12 +639,11 @@ paths:
         schema:
           type: integer
       tags:
-      - api
+      - Restaurant-api
       security:
       - jwtAuth: []
       - basicAuth: []
       - cookieAuth: []
-      - tokenAuth: []
       responses:
         '200':
           content:
@@ -717,37 +678,9 @@ paths:
                   summary: Successful Response
                   description: Sample response for the restaurants list endpoint.
           description: ''
-    post:
-      operationId: api_Restaurant_api_Restaurant_List_create
-      tags:
-      - api
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Restaurant'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/Restaurant'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/Restaurant'
-        required: true
-      security:
-      - jwtAuth: []
-      - basicAuth: []
-      - cookieAuth: []
-      - tokenAuth: []
-      responses:
-        '201':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Restaurant'
-          description: ''
-  /api/Settlement-api/Detail/{id}/:
+  /Settlement-api/Detail/{id}/:
     get:
-      operationId: api_Settlement_api_Detail_retrieve
+      operationId: Settlement_api_Detail_retrieve
       parameters:
       - in: path
         name: id
@@ -756,12 +689,11 @@ paths:
           format: uuid
         required: true
       tags:
-      - api
+      - Settlement-api
       security:
       - jwtAuth: []
       - basicAuth: []
       - cookieAuth: []
-      - tokenAuth: []
       responses:
         '200':
           content:
@@ -769,8 +701,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/Settlement'
           description: ''
-    put:
-      operationId: api_Settlement_api_Detail_update
+    post:
+      operationId: Settlement_api_Detail_create
       parameters:
       - in: path
         name: id
@@ -779,7 +711,7 @@ paths:
           format: uuid
         required: true
       tags:
-      - api
+      - Settlement-api
       requestBody:
         content:
           application/json:
@@ -796,7 +728,40 @@ paths:
       - jwtAuth: []
       - basicAuth: []
       - cookieAuth: []
-      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Settlement'
+          description: ''
+    put:
+      operationId: Settlement_api_Detail_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - Settlement-api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Settlement'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Settlement'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Settlement'
+        required: true
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -805,7 +770,7 @@ paths:
                 $ref: '#/components/schemas/Settlement'
           description: ''
     patch:
-      operationId: api_Settlement_api_Detail_partial_update
+      operationId: Settlement_api_Detail_partial_update
       parameters:
       - in: path
         name: id
@@ -814,7 +779,7 @@ paths:
           format: uuid
         required: true
       tags:
-      - api
+      - Settlement-api
       requestBody:
         content:
           application/json:
@@ -830,7 +795,6 @@ paths:
       - jwtAuth: []
       - basicAuth: []
       - cookieAuth: []
-      - tokenAuth: []
       responses:
         '200':
           content:
@@ -839,7 +803,7 @@ paths:
                 $ref: '#/components/schemas/Settlement'
           description: ''
     delete:
-      operationId: api_Settlement_api_Detail_destroy
+      operationId: Settlement_api_Detail_destroy
       parameters:
       - in: path
         name: id
@@ -848,18 +812,17 @@ paths:
           format: uuid
         required: true
       tags:
-      - api
+      - Settlement-api
       security:
       - jwtAuth: []
       - basicAuth: []
       - cookieAuth: []
-      - tokenAuth: []
       responses:
         '204':
           description: No response body
-  /api/Settlement-api/List:
+  /Settlement-api/List:
     get:
-      operationId: api_Settlement_api_List_list
+      operationId: Settlement_api_List_list
       parameters:
       - name: limit
         required: false
@@ -874,12 +837,11 @@ paths:
         schema:
           type: integer
       tags:
-      - api
+      - Settlement-api
       security:
       - jwtAuth: []
       - basicAuth: []
       - cookieAuth: []
-      - tokenAuth: []
       responses:
         '200':
           content:
@@ -887,37 +849,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/PaginatedSettlementList'
           description: ''
-    post:
-      operationId: api_Settlement_api_List_create
-      tags:
-      - api
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Settlement'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/Settlement'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/Settlement'
-        required: true
-      security:
-      - jwtAuth: []
-      - basicAuth: []
-      - cookieAuth: []
-      - tokenAuth: []
-      responses:
-        '201':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Settlement'
-          description: ''
-  /api/Settlement-api/Reply-Detail/{id}/:
+  /Settlement-api/Reply-Detail/{id}/:
     get:
-      operationId: api_Settlement_api_Reply_Detail_retrieve
+      operationId: Settlement_api_Reply_Detail_retrieve
       parameters:
       - in: path
         name: id
@@ -926,12 +860,11 @@ paths:
           format: uuid
         required: true
       tags:
-      - api
+      - Settlement-api
       security:
       - jwtAuth: []
       - basicAuth: []
       - cookieAuth: []
-      - tokenAuth: []
       responses:
         '200':
           content:
@@ -939,8 +872,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/Reply'
           description: ''
-    put:
-      operationId: api_Settlement_api_Reply_Detail_update
+    post:
+      operationId: Settlement_api_Reply_Detail_create
       parameters:
       - in: path
         name: id
@@ -949,7 +882,7 @@ paths:
           format: uuid
         required: true
       tags:
-      - api
+      - Settlement-api
       requestBody:
         content:
           application/json:
@@ -966,7 +899,40 @@ paths:
       - jwtAuth: []
       - basicAuth: []
       - cookieAuth: []
-      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Reply'
+          description: ''
+    put:
+      operationId: Settlement_api_Reply_Detail_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - Settlement-api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Reply'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Reply'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Reply'
+        required: true
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -975,7 +941,7 @@ paths:
                 $ref: '#/components/schemas/Reply'
           description: ''
     patch:
-      operationId: api_Settlement_api_Reply_Detail_partial_update
+      operationId: Settlement_api_Reply_Detail_partial_update
       parameters:
       - in: path
         name: id
@@ -984,7 +950,7 @@ paths:
           format: uuid
         required: true
       tags:
-      - api
+      - Settlement-api
       requestBody:
         content:
           application/json:
@@ -1000,7 +966,6 @@ paths:
       - jwtAuth: []
       - basicAuth: []
       - cookieAuth: []
-      - tokenAuth: []
       responses:
         '200':
           content:
@@ -1009,7 +974,7 @@ paths:
                 $ref: '#/components/schemas/Reply'
           description: ''
     delete:
-      operationId: api_Settlement_api_Reply_Detail_destroy
+      operationId: Settlement_api_Reply_Detail_destroy
       parameters:
       - in: path
         name: id
@@ -1018,18 +983,17 @@ paths:
           format: uuid
         required: true
       tags:
-      - api
+      - Settlement-api
       security:
       - jwtAuth: []
       - basicAuth: []
       - cookieAuth: []
-      - tokenAuth: []
       responses:
         '204':
           description: No response body
-  /api/Settlement-api/Reply-List:
+  /Settlement-api/Reply-List:
     get:
-      operationId: api_Settlement_api_Reply_List_list
+      operationId: Settlement_api_Reply_List_list
       parameters:
       - name: limit
         required: false
@@ -1044,12 +1008,11 @@ paths:
         schema:
           type: integer
       tags:
-      - api
+      - Settlement-api
       security:
       - jwtAuth: []
       - basicAuth: []
       - cookieAuth: []
-      - tokenAuth: []
       responses:
         '200':
           content:
@@ -1057,42 +1020,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/PaginatedReplyList'
           description: ''
+  /api-jwt/token/:
     post:
-      operationId: api_Settlement_api_Reply_List_create
-      tags:
-      - api
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Reply'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/Reply'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/Reply'
-        required: true
-      security:
-      - jwtAuth: []
-      - basicAuth: []
-      - cookieAuth: []
-      - tokenAuth: []
-      responses:
-        '201':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Reply'
-          description: ''
-  /api/api-jwt/token/:
-    post:
-      operationId: api_api_jwt_token_create
+      operationId: api_jwt_token_create
       description: |-
         Takes a set of user credentials and returns an access and refresh JSON web
         token pair to prove the authentication of those credentials.
       tags:
-      - api
+      - api-jwt
       requestBody:
         content:
           application/json:
@@ -1112,14 +1047,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/TokenObtainPair'
           description: ''
-  /api/api-jwt/token/refresh/:
+  /api-jwt/token/refresh/:
     post:
-      operationId: api_api_jwt_token_refresh_create
+      operationId: api_jwt_token_refresh_create
       description: |-
         Takes a refresh type JSON web token and returns an access type JSON web
         token if the refresh token is valid.
       tags:
-      - api
+      - api-jwt
       requestBody:
         content:
           application/json:
@@ -1139,9 +1074,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/TokenRefresh'
           description: ''
-  /api/dj-rest-auth/facebook/:
+  /dj-rest-auth/facebook/:
     post:
-      operationId: api_dj_rest_auth_facebook_create
+      operationId: dj_rest_auth_facebook_create
       description: |-
         class used for social authentications
         example usage for facebook with access_token
@@ -1164,7 +1099,7 @@ paths:
             callback_url = 'localhost:8000'
         -------------
       tags:
-      - api
+      - dj-rest-auth
       requestBody:
         content:
           application/json:
@@ -1180,7 +1115,6 @@ paths:
       - jwtAuth: []
       - basicAuth: []
       - cookieAuth: []
-      - tokenAuth: []
       - {}
       responses:
         '200':
@@ -1188,360 +1122,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SocialLogin'
-          description: ''
-  /api/dj-rest-auth/login/:
-    post:
-      operationId: api_dj_rest_auth_login_create
-      description: |-
-        Check the credentials and return the REST Token
-        if the credentials are valid and authenticated.
-        Calls Django Auth login method to register User ID
-        in Django session framework
-
-        Accept the following POST parameters: username, password
-        Return the REST Framework Token Object's key.
-      tags:
-      - api
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Login'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/Login'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/Login'
-        required: true
-      security:
-      - jwtAuth: []
-      - basicAuth: []
-      - cookieAuth: []
-      - tokenAuth: []
-      - {}
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Token'
-          description: ''
-  /api/dj-rest-auth/logout/:
-    post:
-      operationId: api_dj_rest_auth_logout_create
-      description: |-
-        Calls Django logout method and delete the Token object
-        assigned to the current User object.
-
-        Accepts/Returns nothing.
-      tags:
-      - api
-      security:
-      - jwtAuth: []
-      - basicAuth: []
-      - cookieAuth: []
-      - tokenAuth: []
-      - {}
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RestAuthDetail'
-          description: ''
-  /api/dj-rest-auth/password/change/:
-    post:
-      operationId: api_dj_rest_auth_password_change_create
-      description: |-
-        Calls Django Auth SetPasswordForm save method.
-
-        Accepts the following POST parameters: new_password1, new_password2
-        Returns the success/fail message.
-      tags:
-      - api
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PasswordChange'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/PasswordChange'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/PasswordChange'
-        required: true
-      security:
-      - jwtAuth: []
-      - basicAuth: []
-      - cookieAuth: []
-      - tokenAuth: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RestAuthDetail'
-          description: ''
-  /api/dj-rest-auth/password/reset/:
-    post:
-      operationId: api_dj_rest_auth_password_reset_create
-      description: |-
-        Calls Django Auth PasswordResetForm save method.
-
-        Accepts the following POST parameters: email
-        Returns the success/fail message.
-      tags:
-      - api
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PasswordReset'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/PasswordReset'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/PasswordReset'
-        required: true
-      security:
-      - jwtAuth: []
-      - basicAuth: []
-      - cookieAuth: []
-      - tokenAuth: []
-      - {}
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RestAuthDetail'
-          description: ''
-  /api/dj-rest-auth/password/reset/confirm/:
-    post:
-      operationId: api_dj_rest_auth_password_reset_confirm_create
-      description: |-
-        Password reset e-mail link is confirmed, therefore
-        this resets the user's password.
-
-        Accepts the following POST parameters: token, uid,
-            new_password1, new_password2
-        Returns the success/fail message.
-      tags:
-      - api
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PasswordResetConfirm'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/PasswordResetConfirm'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/PasswordResetConfirm'
-        required: true
-      security:
-      - jwtAuth: []
-      - basicAuth: []
-      - cookieAuth: []
-      - tokenAuth: []
-      - {}
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RestAuthDetail'
-          description: ''
-  /api/dj-rest-auth/registration/:
-    post:
-      operationId: api_dj_rest_auth_registration_create
-      tags:
-      - api
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Register'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/Register'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/Register'
-        required: true
-      security:
-      - jwtAuth: []
-      - basicAuth: []
-      - cookieAuth: []
-      - tokenAuth: []
-      - {}
-      responses:
-        '201':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Token'
-          description: ''
-  /api/dj-rest-auth/registration/resend-email/:
-    post:
-      operationId: api_dj_rest_auth_registration_resend_email_create
-      tags:
-      - api
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ResendEmailVerification'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/ResendEmailVerification'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/ResendEmailVerification'
-      security:
-      - jwtAuth: []
-      - basicAuth: []
-      - cookieAuth: []
-      - tokenAuth: []
-      - {}
-      responses:
-        '201':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RestAuthDetail'
-          description: ''
-  /api/dj-rest-auth/registration/verify-email/:
-    post:
-      operationId: api_dj_rest_auth_registration_verify_email_create
-      tags:
-      - api
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/VerifyEmail'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/VerifyEmail'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/VerifyEmail'
-        required: true
-      security:
-      - jwtAuth: []
-      - basicAuth: []
-      - cookieAuth: []
-      - tokenAuth: []
-      - {}
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RestAuthDetail'
-          description: ''
-  /api/dj-rest-auth/user/:
-    get:
-      operationId: api_dj_rest_auth_user_retrieve
-      description: |-
-        Reads and updates UserModel fields
-        Accepts GET, PUT, PATCH methods.
-
-        Default accepted fields: username, first_name, last_name
-        Default display fields: pk, username, email, first_name, last_name
-        Read-only fields: pk, email
-
-        Returns UserModel fields.
-      tags:
-      - api
-      security:
-      - jwtAuth: []
-      - basicAuth: []
-      - cookieAuth: []
-      - tokenAuth: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UserDetails'
-          description: ''
-    put:
-      operationId: api_dj_rest_auth_user_update
-      description: |-
-        Reads and updates UserModel fields
-        Accepts GET, PUT, PATCH methods.
-
-        Default accepted fields: username, first_name, last_name
-        Default display fields: pk, username, email, first_name, last_name
-        Read-only fields: pk, email
-
-        Returns UserModel fields.
-      tags:
-      - api
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UserDetails'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/UserDetails'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/UserDetails'
-      security:
-      - jwtAuth: []
-      - basicAuth: []
-      - cookieAuth: []
-      - tokenAuth: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UserDetails'
-          description: ''
-    patch:
-      operationId: api_dj_rest_auth_user_partial_update
-      description: |-
-        Reads and updates UserModel fields
-        Accepts GET, PUT, PATCH methods.
-
-        Default accepted fields: username, first_name, last_name
-        Default display fields: pk, username, email, first_name, last_name
-        Read-only fields: pk, email
-
-        Returns UserModel fields.
-      tags:
-      - api
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PatchedUserDetails'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/PatchedUserDetails'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/PatchedUserDetails'
-      security:
-      - jwtAuth: []
-      - basicAuth: []
-      - cookieAuth: []
-      - tokenAuth: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UserDetails'
           description: ''
   /dj-rest-auth/google/:
     post:
@@ -1584,7 +1164,6 @@ paths:
       - jwtAuth: []
       - basicAuth: []
       - cookieAuth: []
-      - tokenAuth: []
       - {}
       responses:
         '200':
@@ -1592,6 +1171,350 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SocialLogin'
+          description: ''
+  /dj-rest-auth/login/:
+    post:
+      operationId: dj_rest_auth_login_create
+      description: |-
+        Check the credentials and return the REST Token
+        if the credentials are valid and authenticated.
+        Calls Django Auth login method to register User ID
+        in Django session framework
+
+        Accept the following POST parameters: username, password
+        Return the REST Framework Token Object's key.
+      tags:
+      - dj-rest-auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Login'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Login'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Login'
+        required: true
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Token'
+          description: ''
+  /dj-rest-auth/logout/:
+    post:
+      operationId: dj_rest_auth_logout_create
+      description: |-
+        Calls Django logout method and delete the Token object
+        assigned to the current User object.
+
+        Accepts/Returns nothing.
+      tags:
+      - dj-rest-auth
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAuthDetail'
+          description: ''
+  /dj-rest-auth/password/change/:
+    post:
+      operationId: dj_rest_auth_password_change_create
+      description: |-
+        Calls Django Auth SetPasswordForm save method.
+
+        Accepts the following POST parameters: new_password1, new_password2
+        Returns the success/fail message.
+      tags:
+      - dj-rest-auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PasswordChange'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PasswordChange'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PasswordChange'
+        required: true
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAuthDetail'
+          description: ''
+  /dj-rest-auth/password/reset/:
+    post:
+      operationId: dj_rest_auth_password_reset_create
+      description: |-
+        Calls Django Auth PasswordResetForm save method.
+
+        Accepts the following POST parameters: email
+        Returns the success/fail message.
+      tags:
+      - dj-rest-auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PasswordReset'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PasswordReset'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PasswordReset'
+        required: true
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAuthDetail'
+          description: ''
+  /dj-rest-auth/password/reset/confirm/:
+    post:
+      operationId: dj_rest_auth_password_reset_confirm_create
+      description: |-
+        Password reset e-mail link is confirmed, therefore
+        this resets the user's password.
+
+        Accepts the following POST parameters: token, uid,
+            new_password1, new_password2
+        Returns the success/fail message.
+      tags:
+      - dj-rest-auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PasswordResetConfirm'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PasswordResetConfirm'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PasswordResetConfirm'
+        required: true
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAuthDetail'
+          description: ''
+  /dj-rest-auth/registration/:
+    post:
+      operationId: dj_rest_auth_registration_create
+      tags:
+      - dj-rest-auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Register'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Register'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Register'
+        required: true
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Token'
+          description: ''
+  /dj-rest-auth/registration/resend-email/:
+    post:
+      operationId: dj_rest_auth_registration_resend_email_create
+      tags:
+      - dj-rest-auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResendEmailVerification'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ResendEmailVerification'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ResendEmailVerification'
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAuthDetail'
+          description: ''
+  /dj-rest-auth/registration/verify-email/:
+    post:
+      operationId: dj_rest_auth_registration_verify_email_create
+      tags:
+      - dj-rest-auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VerifyEmail'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/VerifyEmail'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/VerifyEmail'
+        required: true
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAuthDetail'
+          description: ''
+  /dj-rest-auth/user/:
+    get:
+      operationId: dj_rest_auth_user_retrieve
+      description: |-
+        Reads and updates UserModel fields
+        Accepts GET, PUT, PATCH methods.
+
+        Default accepted fields: username, first_name, last_name
+        Default display fields: pk, username, email, first_name, last_name
+        Read-only fields: pk, email
+
+        Returns UserModel fields.
+      tags:
+      - dj-rest-auth
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDetails'
+          description: ''
+    put:
+      operationId: dj_rest_auth_user_update
+      description: |-
+        Reads and updates UserModel fields
+        Accepts GET, PUT, PATCH methods.
+
+        Default accepted fields: username, first_name, last_name
+        Default display fields: pk, username, email, first_name, last_name
+        Read-only fields: pk, email
+
+        Returns UserModel fields.
+      tags:
+      - dj-rest-auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserDetails'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UserDetails'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UserDetails'
+        required: true
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDetails'
+          description: ''
+    patch:
+      operationId: dj_rest_auth_user_partial_update
+      description: |-
+        Reads and updates UserModel fields
+        Accepts GET, PUT, PATCH methods.
+
+        Default accepted fields: username, first_name, last_name
+        Default display fields: pk, username, email, first_name, last_name
+        Read-only fields: pk, email
+
+        Returns UserModel fields.
+      tags:
+      - dj-rest-auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedUserDetails'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedUserDetails'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedUserDetails'
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDetails'
           description: ''
 components:
   schemas:
@@ -1734,20 +1657,14 @@ components:
           type: string
           format: uuid
           readOnly: true
-        AreaName:
-          type: string
-          readOnly: true
-        UserName:
-          type: string
-          readOnly: true
         Title:
           type: string
           maxLength: 80
         Body:
           type: string
-        user_pk:
-          type: integer
-          nullable: true
+        Picture:
+          type: string
+          format: uri
         Area:
           type: string
           format: uuid
@@ -1756,9 +1673,6 @@ components:
       properties:
         id:
           type: integer
-          readOnly: true
-        userName:
-          type: string
           readOnly: true
         Name:
           type: string
@@ -1788,9 +1702,6 @@ components:
           type: string
           format: uri
           nullable: true
-        user_pk:
-          type: integer
-          nullable: true
     PatchedRestaurantComment:
       type: object
       properties:
@@ -1798,9 +1709,6 @@ components:
           type: integer
           readOnly: true
         RestaurantName:
-          type: string
-          readOnly: true
-        userName:
           type: string
           readOnly: true
         Rating:
@@ -1850,8 +1758,10 @@ components:
           title: ID
         username:
           type: string
-          nullable: true
-          maxLength: 255
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          pattern: ^[\w.@+-]+$
+          maxLength: 150
         email:
           type: string
           format: email
@@ -1868,7 +1778,7 @@ components:
       properties:
         username:
           type: string
-          maxLength: 255
+          maxLength: 150
           minLength: 1
         email:
           type: string
@@ -1890,29 +1800,22 @@ components:
           type: string
           format: uuid
           readOnly: true
-        AreaName:
-          type: string
-          readOnly: true
-        UserName:
-          type: string
-          readOnly: true
         Title:
           type: string
           maxLength: 80
         Body:
           type: string
-        user_pk:
-          type: integer
-          nullable: true
+        Picture:
+          type: string
+          format: uri
         Area:
           type: string
           format: uuid
       required:
       - Area
-      - AreaName
       - Body
+      - Picture
       - Title
-      - UserName
       - id
     ResendEmailVerification:
       type: object
@@ -1933,9 +1836,6 @@ components:
       properties:
         id:
           type: integer
-          readOnly: true
-        userName:
-          type: string
           readOnly: true
         Name:
           type: string
@@ -1965,15 +1865,11 @@ components:
           type: string
           format: uri
           nullable: true
-        user_pk:
-          type: integer
-          nullable: true
       required:
       - Address
       - Country
       - Name
       - id
-      - userName
     RestaurantComment:
       type: object
       properties:
@@ -1981,9 +1877,6 @@ components:
           type: integer
           readOnly: true
         RestaurantName:
-          type: string
-          readOnly: true
-        userName:
           type: string
           readOnly: true
         Rating:
@@ -2005,7 +1898,6 @@ components:
       - RestaurantName
       - Title
       - id
-      - userName
       - user_pk
     Settlement:
       type: object
@@ -2098,8 +1990,10 @@ components:
           title: ID
         username:
           type: string
-          nullable: true
-          maxLength: 255
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          pattern: ^[\w.@+-]+$
+          maxLength: 150
         email:
           type: string
           format: email
@@ -2114,6 +2008,7 @@ components:
       required:
       - email
       - pk
+      - username
     VerifyEmail:
       type: object
       properties:
@@ -2134,8 +2029,3 @@ components:
       type: http
       scheme: bearer
       bearerFormat: JWT
-    tokenAuth:
-      type: apiKey
-      in: header
-      name: Authorization
-      description: Token-based authentication with required prefix "Token"
